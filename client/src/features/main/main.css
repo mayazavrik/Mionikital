@@ -1,0 +1,112 @@
+/* @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  background: #f17563;
+  font-family: Open Sans;
+  font-size: 50px;
+  color: #222;
+}
+
+label {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  display: block;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 600ms;
+  transition: all 600ms;
+  z-index: 20;
+}
+
+.card div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  line-height: 200px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 2px;
+}
+
+.card .back {
+  background: #222;
+  color: #fff;
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+
+label:hover .card {
+  -webkit-transform: rotateX(20deg);
+  transform: rotateX(20deg);
+  box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
+}
+
+input {
+  display: none;
+}
+
+:checked + .card {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+label:hover :checked + .card {
+    transform: rotateX(160deg);
+    -webkit-transform: rotateX(160deg);
+    box-shadow: 0 20px 20px rgba(255, 255, 255, 0.2);
+} */
+
+/* .thema {
+  display: flex;
+  flex-direction: column;
+} */
+/* style={{ display: 'flex', flexDirection: 'row', marginTop: '50px' } */
+body {
+  background-color: rgba(188, 229, 241, 0.5);
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+.theme-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.theme-title,
+.question-item {
+  height: 250px;
+  width: 250px;
+  background-image: linear-gradient(to right, #79bdf8 0%, #3bedf7 100%);
+  margin: 5px;
+  font-size: 70px;
+  color: aliceblue;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.4);
+}
+.question-item:disabled {
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #a3c3f7 100%);
+  border: 1px solid #666;
+  padding: 5px;
+}

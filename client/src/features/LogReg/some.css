@@ -1,0 +1,13 @@
+.log form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.log input {
+  width: 200px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.form-btn {
+  width: 200px;
+}
