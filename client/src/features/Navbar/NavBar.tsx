@@ -19,8 +19,24 @@ function NavBar(): JSX.Element {
   
 
       <div className="collapse navbar-collapse" id="navbarResponsive">
-   
-        <ul className="navbar-nav text-uppercase ml-auto">
+      <div className="nav-item"> 
+            <label className="form-label">
+              Выберите город
+              <div>
+                <select id="group" name="groupGold">
+                  <option className='gold' value="spb">Санкт-Петербург</option>
+                  <option className='gold' value="msk">Москва</option>
+                  <option className='gold' value="kaz">Казань</option>
+                  <option className='gold' value="nov">Великий Новгород</option>
+                  <option className='gold' value="vlad">Владивосток</option>
+                </select>
+              </div>
+            </label>
+          </div>
+      <li className="nav-item">
+            <NavLink to="/main">На главную</NavLink>
+          </li>
+      
           <li className="nav-item">
             <NavLink to="/services">Сервисы</NavLink>
           </li>
@@ -30,20 +46,7 @@ function NavBar(): JSX.Element {
           <li className="nav-item">
             <NavLink to="/sales">Акции</NavLink>
           </li>
-          <div className="nav-item"> 
-            <label className="form-label">
-              Выберите город
-              <div>
-                <select id="group" name="group">
-                  <option value="orel">Санкт-Петербург</option>
-                  <option value="owl">Москва</option>
-                  <option value="bee">Казань</option>
-                  <option value="bear">Великий Новгород</option>
-                  <option value="enot">Владивосток</option>
-                </select>
-              </div>
-            </label>
-          </div>
+       
           {/* {!user ? (
             <>
               <li>
@@ -60,7 +63,7 @@ function NavBar(): JSX.Element {
               </NavLink>
             </li>
           )} */}
-        </ul>
+      
       </div>
       <Outlet />
     </>

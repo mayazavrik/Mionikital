@@ -1,0 +1,36 @@
+.form__container {
+    color: aliceblue;
+    border-radius: 8px;
+  /* border: 1px solid white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.form__add-post {
+  border: 1px solid white;
+ margin: 20px;
+ padding: 20px;
+ width: 50%;
+ border-radius: 20px;
+}
+
+input {
+  background-color: rgb(78, 77, 77);
+  border-radius: 20px;
+
+   margin-top: 20px;
+   margin-bottom: 20px;
+   color: black;
+}
+
+.biginput{
+  height: 200px;
+}
+
+
+.addbtn {
+  background-color: goldenrod;
+  color: black;
+  
+}

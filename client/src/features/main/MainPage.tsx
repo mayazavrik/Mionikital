@@ -1,17 +1,19 @@
 import React from 'react';
 import video from './style/tesla.mp4';
+import NewsBlock from '../news/NewsBlock';
+import './style/main.css';
 
 function MainPage(): JSX.Element {
   return (
-    <>
+    <div className='container'>
       {/* <div className="preload" data-preaload>
         <div className="circle"></div>
         <p className="text">Garage Guru</p>
       </div> */}
 
-<div className="content">
-          <div>
-            <button id="b1" type="button" className="btn btn-outline-light">
+      <div className="content">
+        
+          <button id="b1" type="button" className="btn btn-outline-light">
             <label className="form-label">
               Выберите марку авто
               <div>
@@ -24,12 +26,11 @@ function MainPage(): JSX.Element {
                 </select>
               </div>
             </label>
-            </button>
-          </div>
+          </button>
+        
 
-          <div>
-            <button id="b1" type="button" className="btn btn-outline-light">
-            
+        
+          <button id="b1" type="button" className="btn btn-outline-light">
             <label className="form-label">
               Выберите тип услуги
               <div>
@@ -42,10 +43,10 @@ function MainPage(): JSX.Element {
                 </select>
               </div>
             </label>
-            </button>
-          </div>
-          <div>
-            <button id="b1" type="button" className="btn btn-outline-light">
+          </button>
+        
+        
+          <button id="b1" type="button" className="btn btn-outline-light">
             <label className="form-label">
               Выберите местоположение
               <div>
@@ -58,21 +59,18 @@ function MainPage(): JSX.Element {
                 </select>
               </div>
             </label>
-            </button>
-          </div>
-          
-        </div>
-      <video  id="background-video" muted loop autoPlay>
+          </button>
+        
+      </div>
+      <video id="background-video" muted loop autoPlay>
         <source src={video} type="video/mp4" />
       </video>
       <div>
         {/* <video autoPlay muted loop id="myVideo">
         <source  src={video} type="video/mp4" />
       </video> */}
-
-       
       </div>
-    </>
+    </div>
   );
 }
 

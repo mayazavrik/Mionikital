@@ -1,0 +1,11 @@
+h2, h3 {
+    color: aliceblue;
+}
+body {
+    height: 100%;
+}
+
+.containerPostForm{
+    padding: 40px;
+    
+}
