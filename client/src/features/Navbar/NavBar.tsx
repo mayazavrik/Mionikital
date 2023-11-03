@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../redux/store';
 import type { User } from '../../redux/type';
-import { Data } from '../LogReg/types';
+import { Data } from '../logreg/types/type';
 import fetchLogout from './api';
 
 function NavBar(): JSX.Element {
