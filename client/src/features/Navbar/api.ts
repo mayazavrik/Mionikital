@@ -1,4 +1,4 @@
-import { Data } from '../LogReg/types';
+import { Data } from '../logreg/types/type';
 
 const fetchLogout = async (): Promise<Data> => {
   const res = await fetch('/api/authLog/logout');

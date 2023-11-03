@@ -8,10 +8,10 @@ import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import type { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
-import type { Data } from './types';
+import type { Data } from './types/type';
 import { regUser, logUser } from './api/api';
 
-import './some.css';
+import './style/style.css';
 
 // import { useSelector } from 'react-redux';
 

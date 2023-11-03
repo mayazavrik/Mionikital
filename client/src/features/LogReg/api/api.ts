@@ -1,4 +1,4 @@
-import type { Data } from '../types';
+import type { Data } from '../types/type';
 
 export const logUser = async (password: string, email: string): Promise<Data> => {
   const res = await fetch('api/authLog', {
