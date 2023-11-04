@@ -35,7 +35,11 @@ const authSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload;
+        if (!action.payload.message) {
+          state.user = action.payload;
+        } else {
+          console.log(action.payload.message);
+        }
       })
       .addCase(signIn.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;

@@ -1,5 +1,4 @@
-import { Post} from './Post';
-
+import type { Post } from './Post';
 
 export type PostsState = {
   posts: Post[];
