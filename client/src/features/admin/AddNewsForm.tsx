@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import './style/style.css';
-import { fetchPostAdd } from './api/api';
+import { useAppDispatch } from '../../redux/store';
+import { addNews } from '../news/newsSlice';
 
 function AddNewsForm(): JSX.Element {
+
   const [img, setImg] = useState('');
   const [text, setText] = useState('');
-  const dispatch = useDispatch();
-  const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const dispatch = useAppDispatch();
+  const onHandleSubmit = (e: React.FormEventHandler<HTMLFormElement>): void => {
     e.preventDefault();
-    fetchPostAdd({  img, text }).then((data) => {
-      dispatch({ type: 'posts/add', payload: data });
-      setImg('');
-      setText('');
-    });
+    dispatch(addNews({ img, text }));
+    setImg('');
+    setText('');
   };
 
   return (
@@ -25,10 +24,17 @@ function AddNewsForm(): JSX.Element {
         </label>
         <label className="form__label ">
           Текст статьи
-          <input className='biginput' value={text} onChange={(e) => setText(e.target.value)} type="text" />
+          <input
+            className="biginput"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            type="text"
+          />
         </label>
 
-        <button className='addbtn' type="submit">Добавить статью</button>
+        <button className="addbtn" type="submit">
+          Добавить статью
+        </button>
       </form>
     </div>
   );

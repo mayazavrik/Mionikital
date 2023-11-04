@@ -1,4 +1,4 @@
-:root {
+/* :root {
 	/* colors */
 	--tiffany: hsl(64, 89%, 63%);
 	--tiffany-light: hsl(178, 76%, 90%);
@@ -107,7 +107,7 @@
 	--transition-1: 250ms ease;
 	--transition-2: 500ms ease;
 	--transition-3: 1000ms ease;
-}
+
 
 /*-----------------------------------*\
    #RESET
@@ -2286,5 +2286,5 @@ dot:hover {
 .together {
 	color: var(--more-rose);
 	padding: 90px;
-}
+} 
 

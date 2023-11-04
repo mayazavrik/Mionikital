@@ -5,7 +5,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import MainPage from '../features/main/MainPage';
-import ErrorWindow from '../features/404/ErrorWindow';
+// import ErrorWindow from '../features/404/ErrorWindow';
 // import LogReg from '../features/logreg/LogReg';
 import NavBar from '../features/navbar/NavBar';
 import NewsBlock from '../features/news/NewsBlock';
@@ -16,7 +16,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadPosts());
-  });
+  }, []);
   return (
     <div className="App">
       <Routes>
@@ -25,7 +25,7 @@ function App(): JSX.Element {
           <Route path="/news" element={<NewsBlock />} />
           {/* <Route path="/" element={<LogReg />} /> */}
         </Route>
-        <Route path="*" element={<ErrorWindow />} />
+        {/* <Route path="*" element={<ErrorWindow />} /> */}
       </Routes>
     </div>
   );
