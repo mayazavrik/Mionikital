@@ -20,10 +20,8 @@ router.get("/:postId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-	console.log("=========");
 	try {
 		const { img, text } = req.body;
-		console.log(req.body);
 		const post = await Post.create({
 			img: img,
 			text: text,
@@ -37,9 +35,10 @@ router.post("/", async (req, res) => {
 router.delete("/:postId", async (req, res) => {
 	try {
 		const { postId } = req.params;
-		const result = await Post.destroy({ where: { id: postId } });
+		const result = await Post.destroy({ where: { id: +postId } });
+		console.log("========");
 		if (result > 0) {
-			res.json({ message: "success" });
+			res.json({ postId: +postId });
 			return;
 		}
 		res.json({ message: "error" });

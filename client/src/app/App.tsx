@@ -9,11 +9,11 @@ import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
 import NavBar from '../features/Navbar/NavBar';
 import ServicesPage from '../features/service/ServicesPage';
-import { useAppDispatch } from '../redux/store';
+
 import NewsBlock from '../features/news/NewsBlock';
 import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
-
+import NewsPostPage from '../features/news/NewsPostPage';
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -30,6 +30,7 @@ function App(): JSX.Element {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
+          <Route path="/news/:postId" element={<NewsPostPage />} />
         </Route>
       </Routes>
     </div>

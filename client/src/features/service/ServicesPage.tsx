@@ -9,7 +9,7 @@ export default function ServicesPage(): JSX.Element {
   const loading = useSelector((store: RootState) => store.servicesSlice.loading);
 
   return (
-    <div>
+    <div className="services__container">
       ServicesPage
       {services.map((service) => (
         <ServiceItem key={service.id} service={service} />
