@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PostsState } from './types/state';
-import * as api from '../../features/news/api/api';
+import * as api from './api/api';
 import { fetchPostAdd } from '../admin/api/api';
 import type { Post } from './types/Post';
 import { fetchPostRemove } from '../../features/news/api/api';

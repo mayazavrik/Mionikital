@@ -47,7 +47,7 @@ function SignIn(): JSX.Element {
   const fontService = function (): void {
     const select = document.getElementById('selectClickService');
     select?.addEventListener('change', () => {
-      const { value } = select;
+      const value = select.value;
       if (value) {
         console.log(value);
         setTearif(value);

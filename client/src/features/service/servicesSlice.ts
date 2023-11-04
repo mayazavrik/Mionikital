@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Sale, ServicesState } from './types/type';
+import type { Sale, SaleId, ServicesState } from './types/type';
 import * as api from './api/api';
 
 const initialState: ServicesState = {
@@ -12,7 +12,9 @@ export const loadServices = createAsyncThunk('services/load', () => api.fetchSer
 export const addSales = createAsyncThunk('services/sales/add', (sale: Sale) =>
   api.fetchAddSale(sale),
 );
-
+export const deleteSale = createAsyncThunk('services/sales/delete', (saleId: SaleId) =>
+  api.fetchDeleteSale(saleId),
+);
 const servicesSlice = createSlice({
   name: 'services',
   initialState,
@@ -42,6 +44,13 @@ const servicesSlice = createSlice({
       })
       .addCase(addSales.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(deleteSale.fulfilled, (state, action) => {
+        state.services.forEach((service) =>
+          service.id === action.payload.service_id
+            ? (service.Sales = service.Sales.filter((sale) => sale.id !== action.payload.saleId))
+            : service,
+        );
       });
   },
 });

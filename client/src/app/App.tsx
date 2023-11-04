@@ -7,19 +7,13 @@ import SignIn from '../features/LogReg/SignIn';
 import { checkUser } from '../features/LogReg/AuthSlice';
 import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
-// import ErrorWindow from '../features/404/ErrorWindow';
-// import LogReg from '../features/logreg/LogReg';
 import NavBar from '../features/Navbar/NavBar';
 import ServicesPage from '../features/service/ServicesPage';
 
 import NewsBlock from '../features/news/NewsBlock';
-import { useAppDispatch } from '../redux/store';
 import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
-
 import NewsPostPage from '../features/news/NewsPostPage';
-
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -37,9 +31,7 @@ function App(): JSX.Element {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
-         {/* <Route path="/" element={<LogReg />} />  */}
         </Route>
-        {/* <Route path="*" element={<ErrorWindow />} />  */}
       </Routes>
     </div>
   );
