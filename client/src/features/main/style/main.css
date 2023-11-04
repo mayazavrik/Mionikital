@@ -3,6 +3,8 @@ body {
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    display: flex;
+    
 }
 
 
@@ -25,13 +27,18 @@ body {
 }
 
 .content {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   color: #f1f1f1;
   width: 100%;
   padding-left: 400px;
   padding-bottom: 200px;
   padding-left: 350px;
+ 
+  
+}
+
+.container {
   
 }
 
@@ -39,25 +46,4 @@ body {
 
 
 
-#background-video{
-
-  height: 200px;
-  width: 100vw;
-  float: left;
-  top: 0;
-  padding: none;
-  position: fixed; /* optional depending on what you want to do in your app */
-  
-  
-  }
-
-  /* #myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-  
-    width: 1800px;
-    height: 950px;
-   
-  } */
   
