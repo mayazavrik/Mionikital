@@ -1,46 +1,30 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-// import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 
-// import ModalQuest from '../features/modalka/ModalQuest';
-// import NavBar from '../features/NavBar';
 import MainPage from '../features/main/MainPage';
-// import { useAppDispatch } from '../redux/store';
-import * as api from './api';
 import ErrorWindow from '../features/404/ErrorWindow';
-import LogReg from '../features/logreg/LogReg';
-import NavBar from '../features/navbar/NavBar';
-import type { User } from '../redux/type';
-// import { fetchUser } from '../features/logreg/api/api';
-// import type { Data } from '../features/logreg/types/type';
+import SignIn from '../features/LogReg/SignIn';
+import NavBar from '../features/Navbar/NavBar';
+import { useAppDispatch } from '../redux/store';
+import { checkUser } from '../features/LogReg/AuthSlice';
 
 function App(): JSX.Element {
-  // const dispatch = useAppDispatch();
-  // const user: User = useSelector((store: RootState): User => store.user.user);
-  // console.log(user);
-
-  // useEffect(() => {
-  //   api.fetchThemes().then((data) => dispatch({ type: 'themes/load', payload: data }));
-  //   api.fetchQuestions().then((data) => dispatch({ type: 'question/load', payload: data }));
-  //   fetchUser().then((data: Data) =>
-  //     data.message === 'success'
-  //       ? dispatch({ type: 'user/get', payload: { user: data.user } })
-  //       : console.log(data.message),
-  //   );
-  // }, []);
-  // console.log(user);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(checkUser());
+  }, []);
 
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/game" element={<MainPage />} />
-          <Route path="/" element={<LogReg />} />
+          <Route path="/reg" element={<SignIn />} />
+          <Route path="*" element={<ErrorWindow />} />
         </Route>
-        <Route path="*" element={<ErrorWindow />} />
       </Routes>
     </div>
   );

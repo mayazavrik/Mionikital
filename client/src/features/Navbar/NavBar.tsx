@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../../redux/store';
-import type { User } from '../../redux/type';
-import { Data } from '../logreg/types/type';
-import fetchLogout from './api';
+import { NavLink, Outlet } from 'react-router-dom';
+import type { RootState } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
+import { logOut } from '../LogReg/AuthSlice';
+import type { User } from '../LogReg/type';
 
 function NavBar(): JSX.Element {
-  const user: User = useSelector((store: RootState): User => store.user.user);
+  const user: User = useSelector((store: RootState): User => store.auth.user);
   console.log(user);
 
   const dispatch = useAppDispatch();
+
   const onHandleLogout = async (): Promise<void> => {
-    const data: Data = await fetchLogout();
-    if (data.message === 'success') {
-      dispatch({ type: 'user/get', payload: {} });
-    }
+    dispatch(logOut());
   };
+
   return (
     <>
       <div className="nav-container">
-        <ul>
+        rfer{' '}
+        {user ? (
+          <NavLink onClick={onHandleLogout} to="/">
+            logout
+          </NavLink>
+        ) : (
+          <li>
+            <NavLink to="reg">Вход</NavLink>
+          </li>
+        )}
+        {/* <ul>
           {!user.id && (
             <li>
               <NavLink to="/">Auth page</NavLink>
@@ -36,12 +45,10 @@ function NavBar(): JSX.Element {
               <li>
                 <NavLink to="/services">Сервисы</NavLink>
               </li>
-              <li>
-                Hello, {user.name}, your score: {user.score}
-              </li>
+              <li>Hello, {user.name}</li>
             </>
           )}
-        </ul>
+        </ul> */}
       </div>
       <Outlet />
     </>

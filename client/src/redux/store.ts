@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import AuthSlice from '../features/LogReg/AuthSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    auth: AuthSlice,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
