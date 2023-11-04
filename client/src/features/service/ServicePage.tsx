@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import type { RootState } from '../../redux/store';
 import SaleItem from '../sales/SaleItem';
 import AddSaleForm from './AddSaleForm';
+import './style/style.css';
 
 export default function ServicePage(): JSX.Element {
   const { serviceId } = useParams();
@@ -11,15 +12,19 @@ export default function ServicePage(): JSX.Element {
     store.servicesSlice.services.find((service) => service.id === +serviceId),
   );
   return (
-    <div className="post-page">
-      <br />
-      <AddSaleForm service={service} />
+   
+    <div className="services-page">
+       <AddSaleForm service={service} />
+      <div className='post-page'>
+     
       <h2>{service?.title}</h2>
       <img src={service?.img} alt="" />
       <h3>Адрес: {service?.adress}</h3>
       <div className="sales-container">
         {service?.Sales.map((sale) => <SaleItem sale={sale} key={sale.id} />)}
       </div>
+      </div>
+      
     </div>
   );
 }
