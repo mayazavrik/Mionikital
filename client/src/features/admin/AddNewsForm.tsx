@@ -4,11 +4,10 @@ import { useAppDispatch } from '../../redux/store';
 import { addNews } from '../news/newsSlice';
 
 function AddNewsForm(): JSX.Element {
-
   const [img, setImg] = useState('');
   const [text, setText] = useState('');
   const dispatch = useAppDispatch();
-  const onHandleSubmit = (e: React.FormEventHandler<HTMLFormElement>): void => {
+  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(addNews({ img, text }));
     setImg('');
@@ -17,7 +16,7 @@ function AddNewsForm(): JSX.Element {
 
   return (
     <div className="form__container">
-      <form className="form__add-post" onSubmit={onHandleSubmit}>
+      <form className="form__add-post" onSubmit={(e) => onHandleSubmit(e)}>
         <label className="form__label">
           Фото
           <input value={img} onChange={(e) => setImg(e.target.value)} type="text" />
