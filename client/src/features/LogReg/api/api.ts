@@ -1,40 +1,36 @@
-import type { Data } from '../types/type';
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 
-export const logUser = async (password: string, email: string): Promise<Data> => {
-  const res = await fetch('api/authLog', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      password,
-      email,
-    }),
-  });
+import type { User } from '../type';
 
-  const data: Data = await res.json();
+export const fetchLogOut = async (): Promise<{ message: string }> => {
+  const res = await fetch('/api/auth/logout');
+  const data: { message: string } = await res.json();
   return data;
 };
 
-export const regUser = async (password: string, email: string, name: string): Promise<Data> => {
-  const res = await fetch('api/sign-up', {
-    method: 'POST',
+export const fetchSignIn = async (user: User): Promise<User> => {
+  const res = await fetch('/api/auth/sign-in', {
+    method: 'post',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({
-      password,
-      email,
-      name,
-    }),
+    body: JSON.stringify(user),
   });
-
-  const data: Data = await res.json();
-  return data;
+  return res.json();
 };
-export const fetchUser = async (): Promise<Data> => {
-  const res = await fetch('/api/getUser');
-  const data = await res.json();
-  console.log(data);
-  return data;
+
+export const fetchSignUp = async (user: User): Promise<User> => {
+  const res = await fetch('/api/auth/sign-up', {
+    method: 'post',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+  return res.json();
+};
+
+export const fetchCheckUser = async (): Promise<{ message: string; user: User }> => {
+  const res = await fetch('/api/auth/check');
+  return res.json();
 };

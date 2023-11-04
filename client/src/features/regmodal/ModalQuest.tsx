@@ -4,7 +4,7 @@ import './MyModal.css';
 import { RootState, useAppDispatch } from '../../redux/store';
 import { Question } from '../type';
 import scoreFetch from './api.modal';
-import { Data } from '../logreg/types/type';
+import { Data } from '../LogReg/type';
 
 function ModalQuest({
   active,

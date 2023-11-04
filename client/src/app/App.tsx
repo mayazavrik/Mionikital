@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import SignIn from '../features/LogReg/SignIn';
+import { checkUser } from '../features/LogReg/AuthSlice';
 import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
 import ErrorWindow from '../features/404/ErrorWindow';
@@ -20,11 +22,13 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(loadServices());
     dispatch(loadPosts());
+    dispatch(checkUser());
   }, []);
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<NavBar />}>
+          <Route path="/reg" element={<SignIn />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
