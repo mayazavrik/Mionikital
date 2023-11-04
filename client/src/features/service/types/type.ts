@@ -18,3 +18,4 @@ export type Sale = {
   img: string;
   text: string;
 };
+export type SaleId = Sale['id'];

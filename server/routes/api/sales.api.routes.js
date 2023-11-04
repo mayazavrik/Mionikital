@@ -15,4 +15,21 @@ router.post('/', async (req, res) => {
     res.json({ message });
   }
 });
+
+router.delete('/:saleId', async (req, res) => {
+  try {
+    const { saleId } = req.params;
+    console.log(saleId);
+    const sale = await Sale.findOne({ where: { id: +saleId } });
+    if (sale) {
+      const service_id = sale.service_id;
+      const result = await Sale.destroy({ where: { id: +saleId } });
+      if (result > 0) {
+        res.json({ saleId: +saleId, service_id });
+      }
+    }
+  } catch ({ message }) {
+    res.json({ message });
+  }
+});
 module.exports = router;

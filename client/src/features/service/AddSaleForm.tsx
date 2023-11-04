@@ -11,6 +11,8 @@ export default function AddSaleForm({ service }: { service: ServiceCard }): JSX.
   const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(addSales({ service_id: service.id, img, text }));
+    setText('');
+    setImg('');
   };
   return (
     <div>
