@@ -3,6 +3,7 @@ import type { PostsState } from './types/state';
 import * as api from '../../features/news/api/api';
 import { fetchPostAdd } from '../admin/api/api';
 import type { Post } from './types/Post';
+import { fetchPostRemove } from '../../features/news/api/api';
 
 const initialState: PostsState = {
   posts: [],
@@ -12,6 +13,7 @@ const initialState: PostsState = {
 
 export const loadPosts = createAsyncThunk('posts/load', () => api.fetchPosts());
 export const addNews = createAsyncThunk('posts/add', (post: Post) => fetchPostAdd(post));
+export const deleteNews = createAsyncThunk('posts/delete', (id: number) => api.fetchPostRemove(id));
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -31,6 +33,11 @@ const postsSlice = createSlice({
       })
       .addCase(loadPosts.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(deleteNews.fulfilled, (state, action) => {
+        console.log(action.payload.postId);
+
+        state.posts = state.posts.filter((post) => post.id !== action.payload.postId);
       })
       .addCase(addNews.fulfilled, (state, action) => {
         state.posts.push(action.payload);

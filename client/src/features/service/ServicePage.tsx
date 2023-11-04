@@ -11,7 +11,7 @@ export default function ServicePage(): JSX.Element {
     store.servicesSlice.services.find((service) => service.id === +serviceId),
   );
   return (
-    <div>
+    <div className="post-page">
       <br />
       <AddSaleForm service={service} />
       <h2>{service?.title}</h2>

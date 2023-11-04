@@ -3,6 +3,7 @@ import video from './style/tesla.mp4';
 import NewsBlock from '../news/NewsBlock';
 import './style/main.css';
 
+
 function MainPage(): JSX.Element {
   return (
     <div className='container'>
@@ -65,10 +66,12 @@ function MainPage(): JSX.Element {
       <video id="background-video" muted loop autoPlay>
         <source src={video} type="video/mp4" />
       </video>
-      <div>
+      <div className='newsPart'>
         {/* <video autoPlay muted loop id="myVideo">
         <source  src={video} type="video/mp4" />
       </video> */}
+      {/* <NewsBlock/> */}
+   
       </div>
     </div>
   );
