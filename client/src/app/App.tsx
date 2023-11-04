@@ -14,6 +14,8 @@ import NewsBlock from '../features/news/NewsBlock';
 import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
+import { useAppDispatch } from '../redux/store';
+
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
