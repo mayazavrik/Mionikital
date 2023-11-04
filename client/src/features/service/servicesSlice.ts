@@ -39,6 +39,9 @@ const servicesSlice = createSlice({
       })
       .addCase(addSales.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(addSales.pending, (state) => {
+        state.loading = true;
       });
   },
 });
