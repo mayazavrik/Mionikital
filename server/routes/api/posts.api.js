@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 			img: img,
 			text: text,
 		});
-		console.log(post);
+	
 		res.status(200).json(post);
 	} catch ({ message }) {
 		res.status(500).json({ message });
@@ -36,7 +36,7 @@ router.delete("/:postId", async (req, res) => {
 	try {
 		const { postId } = req.params;
 		const result = await Post.destroy({ where: { id: +postId } });
-		console.log("========");
+
 		if (result > 0) {
 			res.json({ postId: +postId });
 			return;
@@ -51,14 +51,17 @@ router.put("/:postId", async (req, res) => {
 	try {
 		const { postId } = req.params;
 		const { img, text } = req.body;
-		const post = await Post.update(
+		const [result] = await Post.update(
 			{
 				img,
 				text,
 			},
 			{ where: { id: postId } },
 		);
-		res.json(post);
+		if (result > 0) {
+			const post = await Post.findOne({ where: { id: +postId } });
+			res.json(post);
+		}
 	} catch ({ message }) {
 		res.json({ message });
 	}

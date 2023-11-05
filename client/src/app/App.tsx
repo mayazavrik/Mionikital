@@ -33,6 +33,7 @@ function App(): JSX.Element {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
+          
         </Route>
       </Routes>
     </div>

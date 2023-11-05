@@ -5,7 +5,7 @@ import servicesSlice from '../features/service/servicesSlice';
 import newsSlice from '../features/news/newsSlice';
 
 const store = configureStore({
-  reducer: { servicesSlice,news: newsSlice, auth: AuthSlice},
+  reducer: { servicesSlice, news: newsSlice, auth: AuthSlice},
 });
 
 export type AppDispatch = typeof store.dispatch;

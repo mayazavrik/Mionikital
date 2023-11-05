@@ -5,7 +5,7 @@ export const fetchPosts = async (): Promise<Post[]> => {
   const res = await fetch('/api/news');
 
   if (res.status >= 400) {
-    console.log(res);
+    // console.log(res);
 
     throw new Error(res.statusText);
   }
@@ -15,6 +15,15 @@ export const fetchPosts = async (): Promise<Post[]> => {
 export const fetchPostRemove = async (id: number): Promise<{ postId: PostId }> => {
   const res = await fetch(`/api/news/${id}`, {
     method: 'DELETE',
+  });
+  return res.json();
+};
+
+export const fetchPostChange = async (obj: Post): Promise<Post[]> => {
+  const res = await fetch(`/api/news/${obj.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ img: obj.img, text: obj.text }),
   });
   return res.json();
 };
