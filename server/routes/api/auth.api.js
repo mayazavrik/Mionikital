@@ -114,6 +114,7 @@ router.post("/sign-in/service", async (req, res) => {
 
 router.get("/logout", (req, res) => {
   console.log("--------------");
+  setTimeout(() => 1000);
   if (req.session) {
     req.session.destroy((error) => {
       if (error) {
@@ -127,9 +128,8 @@ router.get("/logout", (req, res) => {
         //   res.clearCookie("user_sid").json({ message: "success" }) ||
         //     res.clearCookie("service_sid").json({ message: "success" });
         // }
-        if (req.session.user_sid !== undefined) {
-          res.clearCookie("user_sid").json({ message: "success" });
-        } else if (req.session.service_sid !== undefined) {
+        setTimeout(() => 3000);
+        if (req.session.service_sid) {
           res.clearCookie("service_sid").json({ message: "success" });
         }
         // if (req.session.service_sid) {
@@ -143,10 +143,12 @@ router.get("/logout", (req, res) => {
 router.get("/check", async (req, res) => {
   try {
     if (req.session.userId) {
+      setTimeout(() => 1000);
       const user = await User.findOne({ where: { id: req.session.userId } });
       res.json({ message: "success", user });
       return;
     }
+
     res.json({ message: "false" });
   } catch ({ message }) {
     res.json({ message });
@@ -157,6 +159,7 @@ router.get("/check/service", async (req, res) => {
   try {
     // console.log(req.session.serviceId);
     if (req.session.serviceId) {
+      setTimeout(() => 1000);
       const service = await Service.findOne({
         where: { id: req.session.serviceId },
       });

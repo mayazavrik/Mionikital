@@ -8,7 +8,6 @@ import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
 
 function NavBar(): JSX.Element {
-
   const dispatch = useAppDispatch();
   const user: User = useSelector((store: RootState): User => store.auth.user);
   const service: Service = useSelector((store: RootState): User => store.auth.service);
@@ -17,7 +16,6 @@ function NavBar(): JSX.Element {
 
   const onHandleLogout = async (): Promise<void> => {
     console.log('---');
-
     dispatch(logOut());
   };
 
@@ -79,9 +77,7 @@ function NavBar(): JSX.Element {
           <NavLink style={{ color: 'orange' }} to="/personalArea">
             Личный кабинет
           </NavLink>
-        
         )}
-
       </div>
       <Outlet />
     </>
