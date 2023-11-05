@@ -3,13 +3,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const indexRoutes = require("../routes/index.routes");
-
 // const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 
-const sessionConfig = {
+const sessionConfigServer = {
   store: new FileStore(),
-  name: "user_sid", // ИМЯ КУКИ ДЛЯ ХРАНЕНИЯ ID сессии
+  name: "service_sid", // ИМЯ КУКИ ДЛЯ ХРАНЕНИЯ ID сессии
   secret: process.env.SECRET ?? "test",
   resave: false,
   saveUninitialized: false,
@@ -18,14 +17,13 @@ const sessionConfig = {
     httpOnly: true,
   },
 };
-
-const serverConfig = (app) => {
+const serverConfigServer = (app) => {
   app.use(cookieParser());
-  app.use(session(sessionConfig));
+  app.use(session(sessionConfigServer)); // << Исправленное имя переменной
   app.use(express.static(path.join(__dirname, "../public")));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use("/", indexRoutes);
 };
 
-module.exports = serverConfig;
+module.exports = serverConfigServer;

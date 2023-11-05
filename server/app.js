@@ -1,10 +1,11 @@
 // require('@babel/register');
-require('dotenv').config();
-const express = require('express');
-const serverConfig = require('./config/serverConfig');
+require("dotenv").config();
+const express = require("express");
+const serverConfig = require("./config/serverConfig");
+const serverConfigServer = require("./config/serverConfigServer");
 
 const app = express();
-serverConfig(app);
+serverConfigServer(app) && serverConfig(app);
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {

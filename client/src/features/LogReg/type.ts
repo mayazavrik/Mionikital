@@ -6,7 +6,19 @@ export type User = {
   password: string;
   isAdmin?: boolean;
 };
+export type Service = {
+  id?: number;
+  title?: string;
+  email: string;
+  adress?: string;
+  phone?: string;
+  password: string;
+  tarif?: string;
+  img?: string;
+};
+
 export type AuthState = {
   user: User | undefined;
-  error: string | null;
+  service: Service | undefined;
+  error: string | undefined;
 };
