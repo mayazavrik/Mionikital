@@ -22,3 +22,9 @@ export async function fetchUslugasPrice(): Promise<UslugaPrice[]> {
   const res = await fetch('/api/uslugasPrice');
   return res.json();
 }
+export async function fetchUslugaPriceDelete(id: number): Promise<number> {
+  const res = await fetch(`/api/uslugasPrice/${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+}

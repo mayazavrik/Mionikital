@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
     const { id, img, text } = req.body;
     if ((img.trim(), text.trim())) {
       const sale = await Sale.create({ service_id: id, img, text });
-      console.log(sale);
       res.status(200).json(sale);
     } else {
       res.json('Заполните все поля');

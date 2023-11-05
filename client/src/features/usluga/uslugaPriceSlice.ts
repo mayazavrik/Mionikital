@@ -12,6 +12,9 @@ export const addUsluga = createAsyncThunk('/usluga/add', (uslugaPrice: UslugaPri
   api.fetchAddUslugas(uslugaPrice),
 );
 export const loadPrices = createAsyncThunk('load/uslugaPrice', () => api.fetchUslugasPrice());
+export const deletePrice = createAsyncThunk('delete/uslugaPrice', (id: number) =>
+  api.fetchUslugaPriceDelete(id),
+);
 
 const uslugasPriceSlice = createSlice({
   name: 'uslugasPrice',
@@ -39,6 +42,15 @@ const uslugasPriceSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(loadPrices.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deletePrice.fulfilled, (state, action) => {
+        state.uslugasPrices = state.uslugasPrices.filter((el) => el.id !== action.payload);
+      })
+      .addCase(deletePrice.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(deletePrice.pending, (state) => {
         state.loading = true;
       });
   },
