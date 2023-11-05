@@ -19,3 +19,14 @@ export async function fetchDeleteSale(id: number): Promise<SaleId> {
   });
   return res.json();
 }
+
+export async function fetchUpdSale(sale: Sale): Promise<Sale> {
+  const res = await fetch(`/api/sales/${sale.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({ img: sale.img, text: sale.text, service_id: sale.service_id }),
+  });
+  return res.json();
+}
