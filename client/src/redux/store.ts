@@ -3,9 +3,17 @@ import { useDispatch } from 'react-redux';
 import AuthSlice from '../features/LogReg/AuthSlice';
 import servicesSlice from '../features/service/servicesSlice';
 import newsSlice from '../features/news/newsSlice';
+import uslugaSlice from '../features/usluga/uslugaSlice';
+import uslugaPriceSlice from '../features/usluga/uslugaPriceSlice';
 
 const store = configureStore({
-  reducer: { servicesSlice,news: newsSlice, auth: AuthSlice},
+  reducer: {
+    servicesSlice,
+    news: newsSlice,
+    auth: AuthSlice,
+    uslugas: uslugaSlice,
+    prices: uslugaPriceSlice,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
