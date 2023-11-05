@@ -25,6 +25,9 @@ export const signUp = createAsyncThunk('auth/signup', (user: User) => fetchSignU
 
 export const signIn = createAsyncThunk('auth/signin', (user: User) => fetchSignIn(user));
 
+
+
+
 export const signInService = createAsyncThunk('auth/signin/service', (service: Service) =>
   fetchSignInService(service),
 );

@@ -21,15 +21,15 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const service = useSelector((store: RootState) => store.auth.service);
   const user = useSelector((store: RootState) => store.auth.user);
-  console.log(service);
-  console.log(user);
+  // console.log(service);
+  // console.log(user);
 
   useEffect(() => {
     dispatch(loadServices());
     dispatch(loadPosts());
     dispatch(checkUser());
     dispatch(checkService());
-  }, []);
+  }, [service]);
   return (
     <div className="App">
       <Routes>

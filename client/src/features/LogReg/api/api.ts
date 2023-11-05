@@ -34,6 +34,8 @@ export const fetchSignIn = async (user: User): Promise<{ message: string; user: 
   return res.json();
 };
 
+
+
 // export const fetchSignInService = async (
 //   service: Service,
 // ): Promise<{ message: string; service: Service }> => {

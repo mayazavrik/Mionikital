@@ -9,10 +9,10 @@ export type User = {
 export type Service = {
   id?: number;
   title?: string;
-  email: string;
+  email?: string;
   adress?: string;
   phone?: string;
-  password: string;
+  password?: string;
   tarif?: string;
   img?: string;
 };

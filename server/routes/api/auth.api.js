@@ -114,7 +114,6 @@ router.post("/sign-in/service", async (req, res) => {
 
 router.get("/logout", (req, res) => {
   console.log("--------------");
-  setTimeout(() => 1000);
   if (req.session) {
     req.session.destroy((error) => {
       if (error) {
