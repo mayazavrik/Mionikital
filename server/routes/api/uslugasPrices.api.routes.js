@@ -20,4 +20,20 @@ router.delete('/:uslugaPriceId', async (req, res) => {
     res.status(500).json({ message });
   }
 });
+router.put('/:uslugaPriceId', async (req, res) => {
+  try {
+    const { uslugaPriceId } = req.params;
+    const { mark_id, carModel_id, cost, usluga_id } = req.body;
+    const [result] = await UslugaPrice.update(
+      { mark_id, carModel_id, cost, usluga_id },
+      { where: { id: +uslugaPriceId } }
+    );
+    console.log(result);
+    if (result > 0) {
+      res.json(req.body);
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
 module.exports = router;

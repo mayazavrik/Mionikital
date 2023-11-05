@@ -3,7 +3,6 @@ import type { PostsState } from './types/state';
 import * as api from './api/api';
 import { fetchPostAdd } from '../admin/api/api';
 import type { Post } from './types/Post';
-import { fetchPostRemove } from '../../features/news/api/api';
 
 const initialState: PostsState = {
   posts: [],

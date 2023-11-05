@@ -1,5 +1,5 @@
 export type UslugaPrice = {
-  id?: number;
+  id: number;
   usluga_id: number;
   service_id: number;
   cost: number;

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../redux/store';
 import type { UslugaPrice } from './types/types';
 import './style/style.css';
 import { deletePrice } from './uslugaPriceSlice';
+import UpdateUslugaForm from './UpdateUslugaForm';
 
 export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Element {
   const dispatch = useAppDispatch();
+  const [flag, setFlag] = useState(false);
   const usluga = useSelector((store: RootState) => store.uslugas.uslugas).find(
     (el) => el.id === price.usluga_id,
   );
@@ -26,7 +28,12 @@ export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Elemen
       <button type="button" style={{ background: 'red' }} onClick={onHandleDelete}>
         Удалить услугу
       </button>
-      <button type="button">Изменить услугу</button>
+      <button type="button" onClick={() => setFlag(!flag)}>
+        Изменить услугу
+      </button>
+      {flag && (
+        <UpdateUslugaForm carModel={model} carMark={marka} serviceUsluga={usluga} price={price} />
+      )}
     </div>
   );
 }

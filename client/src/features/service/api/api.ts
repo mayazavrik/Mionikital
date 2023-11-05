@@ -13,7 +13,7 @@ export async function fetchAddSale(sale: Sale): Promise<Sale> {
   return res.json();
 }
 
-export async function fetchDeleteSale(id: number): Promise<SaleId> {
+export async function fetchDeleteSale(id: number): Promise<{ saleId: SaleId; service_id: number }> {
   const res = await fetch(`/api/sales/${id}`, {
     method: 'DELETE',
   });

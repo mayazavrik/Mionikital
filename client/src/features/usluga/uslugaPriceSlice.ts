@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { UslugaPrice, UslugaPriceState } from './types/types';
 import * as api from './api';
@@ -8,12 +9,15 @@ const initialState: UslugaPriceState = {
   loading: true,
 };
 
-export const addUsluga = createAsyncThunk('/usluga/add', (uslugaPrice: UslugaPrice) =>
+export const addUsluga = createAsyncThunk('usluga/add', (uslugaPrice: UslugaPrice) =>
   api.fetchAddUslugas(uslugaPrice),
 );
 export const loadPrices = createAsyncThunk('load/uslugaPrice', () => api.fetchUslugasPrice());
 export const deletePrice = createAsyncThunk('delete/uslugaPrice', (id: number) =>
   api.fetchUslugaPriceDelete(id),
+);
+export const updPrice = createAsyncThunk('update/uslugaPrice', (price: UslugaPrice) =>
+  api.fetchUpdUslugas(price),
 );
 
 const uslugasPriceSlice = createSlice({
@@ -51,6 +55,17 @@ const uslugasPriceSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(deletePrice.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updPrice.fulfilled, (state, action) => {
+        state.uslugasPrices = state.uslugasPrices.map((el) =>
+          el.id === action.payload.id ? (el = action.payload) : el,
+        );
+      })
+      .addCase(updPrice.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(updPrice.pending, (state) => {
         state.loading = true;
       });
   },

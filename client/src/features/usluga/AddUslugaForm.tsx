@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
+import type { RootState } from '../../redux/store';
 import type { ServiceCard } from '../service/types/type';
 import { addUsluga } from './uslugaPriceSlice';
 
@@ -22,9 +23,9 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
       .find((el) => el.title === marka)
       ?.CarModels.find((carModel) => carModel.title === model)?.id;
     const usluga_id = uslugas.find((elem) => elem.title === usluga)?.id;
-    console.log(usluga_id);
+
     dispatch(
-      addUsluga({ service_id: service.id, mark_id, carModel_id: model_id, usluga_id, cost }),
+      addUsluga({ service_id: service.id, mark_id, carModel_id: model_id, usluga_id, cost: +cost }),
     );
   };
 
@@ -34,7 +35,9 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
         <select name="usluga" onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
           {uslugas.map((usluga) => (
-            <option value={usluga.title}>{usluga.title}</option>
+            <option key={usluga.id} value={usluga.title}>
+              {usluga.title}
+            </option>
           ))}
         </select>
         <select
@@ -47,7 +50,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
         >
           <option value="">Выберите марку авто</option>
           {marks.map((mark) => (
-            <option id={`${mark.id}`} value={mark.title}>
+            <option key={mark.id} value={mark.title}>
               {mark.title}
             </option>
           ))}
@@ -61,7 +64,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
                 mark.CarModels.map((car) => <option value={car.title}>{car.title}</option>),
             )}
         </select>
-        <input type="number" name="cost" value={cost} onChange={(e) => setCost(+e.target.value)} />
+        <input type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)} />
         <button type="submit">Добавить услугу</button>
       </form>
     </div>

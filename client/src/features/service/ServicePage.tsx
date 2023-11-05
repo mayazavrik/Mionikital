@@ -13,7 +13,6 @@ export default function ServicePage(): JSX.Element {
   const service = useSelector((store: RootState) =>
     store.servicesSlice.services.find((service) => service.id === +serviceId),
   );
-  console.log(service);
 
   return (
     <div className="services-page">

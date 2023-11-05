@@ -1,4 +1,4 @@
-import { Mark, Usluga, UslugaPrice } from './types/types';
+import type { Mark, Usluga, UslugaPrice } from './types/types';
 
 export async function fetchUslugas(): Promise<Usluga[]> {
   const res = await fetch('/api/uslugas');
@@ -25,6 +25,15 @@ export async function fetchUslugasPrice(): Promise<UslugaPrice[]> {
 export async function fetchUslugaPriceDelete(id: number): Promise<number> {
   const res = await fetch(`/api/uslugasPrice/${id}`, {
     method: 'DELETE',
+  });
+  return res.json();
+}
+
+export async function fetchUpdUslugas(uslugaPrice: UslugaPrice): Promise<UslugaPrice> {
+  const res = await fetch(`/api/uslugasPrice/${uslugaPrice.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(uslugaPrice),
   });
   return res.json();
 }
