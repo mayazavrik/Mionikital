@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import type { ServiceCard } from './types/type';
+import './style/style.css';
 
 export default function ServiceItem({ service }: { service: ServiceCard }): JSX.Element {
   return (

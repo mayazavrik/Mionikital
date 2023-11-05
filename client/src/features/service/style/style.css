@@ -5,7 +5,7 @@ body {
     height: 100%;
 }
 img {
-    width: 80vw;
+    width: 50vw;
     margin: 20px;
    }
  
@@ -34,10 +34,46 @@ img {
     align-items: center;
 
   }
-  .services__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
+
+
+  .form__container {
+    color: aliceblue;
+    border-radius: 8px;
+  /* border: 1px solid white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+}
+.formsale {
+  border: 1px solid white;
+ margin: 20px;
+ padding: 30px;
+ width: 80%;
+ border-radius: 20px;
+}
+
+input {
+  background-color: rgb(78, 77, 77);
+  border-radius: 20px;
+font-size: x-large;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   color: black;
+}
+
+.biginput{
+  height: 200px;
+}
+
+.service-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__label {
+  font-size: x-large;
+}
