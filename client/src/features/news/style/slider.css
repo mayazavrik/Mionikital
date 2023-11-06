@@ -1,0 +1,22 @@
+.container {
+    padding: 40px;
+
+
+  }
+  
+
+  .slick-list{
+    margin: auto;
+  
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+
+
+.posts_slider_container{
+  display: flex;
+  background-color: yellow;
+  flex-direction: column;
+}
