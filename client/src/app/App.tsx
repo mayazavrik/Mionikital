@@ -10,26 +10,25 @@ import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
 import NavBar from '../features/Navbar/NavBar';
 import ServicesPage from '../features/service/ServicesPage';
-import type { RootState } from '../redux/store';
-import { useAppDispatch } from '../redux/store';
+import type { RootState } from '../redux/store';;
+import PersonalArea from '../features/personalArea/PersonalArea';
+import PersonalAreaAdmin from '../features/personalArea/PersonalAreaAdmin';
 import NewsBlock from '../features/news/NewsBlock';
 import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
-import PersonalArea from '../features/personalArea/PersonalArea';
-import PersonalAreaAdmin from '../features/personalArea/PersonalAreaAdmin';
+import NewsPostPage from '../features/news/NewsPostPage';
+import { useAppDispatch } from '../redux/store';
+import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
+import { loadPrices } from '../features/usluga/uslugaPriceSlice';
+
 
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
   const dispatch = useAppDispatch();
   const service = useSelector((store: RootState) => store.auth.service);
   const user = useSelector((store: RootState) => store.auth.user);
-  // console.log(service);
-  // console.log(user);
 
   useEffect(() => {
-    // fetch('/api/auth/check/service')
-    //   .then((data) => data.json())
-    //   .then(console.log);
     dispatch(loadServices());
     dispatch(loadPosts());
     dispatch(checkService());
@@ -37,6 +36,9 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(checkUser());
+    dispatch(loadUslugas());
+    dispatch(loadMarks());
+    dispatch(loadPrices());
   }, []);
 
   useEffect(() => {
@@ -68,6 +70,7 @@ function App(): JSX.Element {
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
+          <Route path="/news/:postId" element={<NewsPostPage />} />
         </Route>
       </Routes>
     </div>

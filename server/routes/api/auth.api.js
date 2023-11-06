@@ -5,9 +5,7 @@ const { Service } = require("../../db/models");
 
 router.post("/sign-up", async (req, res) => {
   try {
-    // console.log(req.body);
     const { name, email, password, phone } = req.body;
-    // console.log(req.body);
     let user = await User.findOne({ where: { email } });
     if (!name || !email || !password || !phone) {
       res.json({ message: "Заполните  все поля" });
@@ -19,7 +17,6 @@ router.post("/sign-up", async (req, res) => {
     }
     const hash = await bcrypt.hash(password, 10);
     user = await User.create({ name, email, phone, password: hash });
-    // console.log(user);
     req.session.userId = user.id;
     res.status(200).json(user);
   } catch ({ message }) {
@@ -35,11 +32,11 @@ router.post("/sign-in", async (req, res) => {
       res.json({ message: "Такого юзера не существует или пароль неверный" });
       return;
     }
-    // const compare = await bcrypt.compare(password, user.password);
-    // if (!compare) {
-    //   res.json({ message: "Такого юзера не существует или пароль неверный" });
-    //   return;
-    // }
+    const compare = await bcrypt.compare(password, user.password);
+    if (!compare) {
+      res.json({ message: "Такого юзера не существует или пароль неверный" });
+      return;
+    }
     if (!email.trim() || !password.trim()) {
       res.json({ message: "Заполните все поля" });
       return;

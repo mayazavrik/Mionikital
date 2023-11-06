@@ -1,11 +1,59 @@
-h2, h3 {
+h2, h3, h4 {
     color: aliceblue;
 }
+
 body {
     height: 100%;
 }
 
 .containerPostForm{
+
     padding: 40px;
     
 }
+.containerSaleForm{
+
+  padding: 40px;
+  
+}
+/* .swiper {
+    width: 600px;
+    height: 300px;
+  } */
+
+  /* .post-page_container{
+    background-color: aqua;
+  } */
+
+  .post-page{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+ img {
+   width: 80vw;
+   margin: 20px;
+  }
+
+  h3 {
+    line-height: 30px;
+    font-size: large;
+
+  }
+
+  button {
+    background-color: goldenrod;
+    color: black;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 120%;
+    border-radius: 30px;
+    border-width: 3px;
+    margin: 24px;
+  }
