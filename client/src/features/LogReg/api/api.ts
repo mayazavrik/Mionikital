@@ -12,7 +12,7 @@ import type { Service, User } from '../type';
 
 //   // Выполняем запрос после ожидания
 //   const res = await fetch('/api/auth/logout');
-//   const data: { message: string } = await res.json();
+//   const data: { message: string }  = await res.json();
 
 //   return data;
 // };
