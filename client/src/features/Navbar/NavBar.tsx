@@ -2,25 +2,28 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { logOut } from '../LogReg/AuthSlice';
 import './style/style.css';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
+import { chooseCity } from '../service/servicesSlice';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [city, setCity] = useState('Санкт-петербург');
   const user = useSelector((store: RootState) => store.auth.user);
   const service = useSelector((store: RootState) => store.auth.service);
-  // console.log(service);
-  console.log(user, service);
 
   const onHandleLogout = async (): Promise<void> => {
     // console.log('---');
     dispatch(logOut()).catch(console.log);
   };
+  useEffect(() => {
+    dispatch(chooseCity(city));
+  }, [city]);
 
   return (
     <>
@@ -29,21 +32,23 @@ function NavBar(): JSX.Element {
           <label className="form-label">
             Выберите город
             <div>
-              <select id="group" name="groupGold">
-                <option className="gold" value="spb">
+              <select
+                id="group"
+                name="groupGold"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <option className="gold" value="Санкт-петербург">
                   Санкт-Петербург
                 </option>
-                <option className="gold" value="msk">
+                <option className="gold" value="Москва">
                   Москва
                 </option>
-                <option className="gold" value="kaz">
+                <option className="gold" value="Казань">
                   Казань
                 </option>
-                <option className="gold" value="nov">
-                  Великий Новгород
-                </option>
-                <option className="gold" value="vlad">
-                  Владивосток
+                <option className="gold" value="Екатеринбург">
+                  Екатеринбург
                 </option>
               </select>
             </div>
