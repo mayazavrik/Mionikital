@@ -11,14 +11,14 @@ export const fetchPosts = async (): Promise<Post[]> => {
   return res.json();
 };
 
-export const fetchPostRemove = async (id: number): Promise<{ postId: PostId }> => {
+export const fetchPostRemove = async (id: number): Promise<PostId> => {
   const res = await fetch(`/api/news/${id}`, {
     method: 'DELETE',
   });
   return res.json();
 };
 
-export const fetchPostChange = async (obj: Post): Promise<Post[]> => {
+export const fetchPostChange = async (obj: Post): Promise<Post> => {
   const res = await fetch(`/api/news/${obj.id}`, {
     method: 'PUT',
     headers: { 'Content-type': 'application/json' },
@@ -26,4 +26,3 @@ export const fetchPostChange = async (obj: Post): Promise<Post[]> => {
   });
   return res.json();
 };
-

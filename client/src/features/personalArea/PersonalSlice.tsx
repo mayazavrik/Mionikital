@@ -6,6 +6,7 @@ export const updatePhoto = createAsyncThunk('update/photo', (obj: Service) =>
   fetchUpdatePhoto(obj),
 );
 const initialState: AuthState = {
+  user: undefined,
   service: undefined,
   error: null,
 };

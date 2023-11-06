@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../redux/store';
 import { deleteSale, updateSale } from '../service/servicesSlice';
 import type { Sale } from '../service/types/type';
 import './style/style.css';
+
 export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
   const dispatch = useAppDispatch();
   const [flag, setFlag] = useState(false);

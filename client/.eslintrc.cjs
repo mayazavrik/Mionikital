@@ -47,5 +47,13 @@ module.exports = {
     'no-console': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+    'no-return-assign': 'off',
   },
 };

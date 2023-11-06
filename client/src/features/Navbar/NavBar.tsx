@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import type { Service, User } from '../LogReg/type';
 import { logOut } from '../LogReg/AuthSlice';
 import './style/style.css';
 import type { RootState } from '../../redux/store';

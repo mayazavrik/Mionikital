@@ -11,20 +11,5 @@ export const fetchUpdatePhoto = async (obj: Service): Promise<{ message: string 
   });
 
   const data = await res.json();
-  console.log(data);
-  return res;
-};
-
-export const addConditionsDataFetch = async (obj: ExportData): Promise<Tooth> => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const data = await (
-    await fetch('/api/teeth', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(obj),
-    })
-  ).json();
   return data;
 };

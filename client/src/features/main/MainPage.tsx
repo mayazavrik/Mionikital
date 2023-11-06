@@ -1,8 +1,6 @@
 import React from 'react';
 import video from './style/tesla.mp4';
-import NewsBlock from '../news/NewsBlock';
 import './style/main.css';
-import Slider from '../news/SliderBlock';
 import SliderBlock from '../news/SliderBlock';
 
 function MainPage(): JSX.Element {

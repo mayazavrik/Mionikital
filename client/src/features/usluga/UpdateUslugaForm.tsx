@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
+import type { RootState } from '../../redux/store';
 import type { UslugaPrice } from './types/types';
 import { updPrice } from './uslugaPriceSlice';
 
@@ -46,9 +46,9 @@ export default function UpdateUslugaForm({
       <form id="usluga" onSubmit={onHandleUpd}>
         <select name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
-          {uslugas.map((usluga) => (
-            <option key={usluga.id} value={usluga.title}>
-              {usluga.title}
+          {uslugas.map((uslugaa) => (
+            <option key={uslugaa.id} value={uslugaa.title}>
+              {uslugaa.title}
             </option>
           ))}
         </select>
