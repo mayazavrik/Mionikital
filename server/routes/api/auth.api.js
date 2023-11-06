@@ -35,11 +35,11 @@ router.post("/sign-in", async (req, res) => {
       res.json({ message: "Такого юзера не существует или пароль неверный" });
       return;
     }
-    // const compare = await bcrypt.compare(password, user.password);
-    // if (!compare) {
-    //   res.json({ message: "Такого юзера не существует или пароль неверный" });
-    //   return;
-    // }
+    const compare = await bcrypt.compare(password, user.password);
+    if (!compare) {
+      res.json({ message: "Такого юзера не существует или пароль неверный" });
+      return;
+    }
     if (!email.trim() || !password.trim()) {
       res.json({ message: "Заполните все поля" });
       return;
