@@ -3,19 +3,6 @@
 
 import type { Service, User } from '../type';
 
-// export const fetchLogOut = async (): Promise<{ message: string }> => {
-//   // Создаем обещание, которое разрешится через 1 секунду
-//   const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-//   // Ожидаем 1 секунду
-//   await delay(3000);
-
-//   // Выполняем запрос после ожидания
-//   const res = await fetch('/api/auth/logout');
-//   const data: { message: string }  = await res.json();
-
-//   return data;
-// };
 export const fetchLogOut = async (): Promise<{ message: string }> => {
   const res = await fetch('/api/auth/logout');
   const data: { message: string } = await res.json();
@@ -34,18 +21,6 @@ export const fetchSignIn = async (user: User): Promise<{ message: string; user: 
   return res.json();
 };
 
-// export const fetchSignInService = async (
-//   service: Service,
-// ): Promise<{ message: string; service: Service }> => {
-//   const res = await fetch('/api/auth/sign-in/service', {
-//     method: 'post',
-//     headers: {
-//       'Content-type': 'application/json',
-//     },
-//     body: JSON.stringify(service),
-//   });
-//   return res.json();
-// };
 export const fetchSignInService = async (
   service: Service,
 ): Promise<{ message: string; service: Service }> => {
@@ -70,7 +45,6 @@ export const fetchSignUp = async (user: User): Promise<User> => {
   });
 
   // Добавляем setTimeout на 1 секунду
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return res.json();
 };
