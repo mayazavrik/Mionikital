@@ -16,6 +16,7 @@ import NewsBlock from '../features/news/NewsBlock';
 import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import PersonalArea from '../features/personalArea/PersonalArea';
+import PersonalAreaAdmin from '../features/personalArea/PersonalAreaAdmin';
 
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
@@ -66,6 +67,7 @@ function App(): JSX.Element {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/personalArea" element={<PersonalArea />} />
+          <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
         </Route>
       </Routes>
     </div>

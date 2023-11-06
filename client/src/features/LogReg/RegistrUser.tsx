@@ -14,8 +14,10 @@ function SignIn(): JSX.Element {
   const [tarif, setTearif] = useState('');
   const [sign, setSign] = useState(false);
   const [status, setStatus] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
+  const errorUser = useSelector((store: RootState) => store.auth.error);
   const service = useSelector((store: RootState) => store.auth.service);
   const navigate = useNavigate();
 
@@ -51,7 +53,7 @@ function SignIn(): JSX.Element {
     });
   };
   useEffect(() => {
-    if (user|| service) {
+    if (user || service) {
       navigate('/');
     }
     fontSelectClick();
@@ -132,7 +134,10 @@ function SignIn(): JSX.Element {
                     required
                   />
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit" onClick={() => setSubmitted(true)}>
+                  Submit
+                </button>
+                <button type="submit">Забыли пароль?</button>
               </form>
               <button
                 type="button"
@@ -176,7 +181,11 @@ function SignIn(): JSX.Element {
                   required
                 />
               </label>
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={() => setSubmitted(true)}>
+                save
+              </button>
+              <button type="submit">Забыли пароль?</button>
+              {submitted === true && errorUser && <h3>{errorUser}</h3>}
             </form>
             <button
               type="button"

@@ -44,7 +44,6 @@ router.post("/sign-in", async (req, res) => {
       res.json({ message: "Заполните все поля" });
       return;
     }
-    console.log(user);
     req.session.userId = user.id;
 
     res.json({ message: "succes", user });
@@ -87,47 +86,22 @@ router.post("/sign-up/service", async (req, res) => {
 router.post("/sign-in/service", async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // console.log(req.body);
     const seervice = await Service.findOne({ where: { email: email } });
     if (!seervice) {
       res.json({ message: "Такого сервиса не существует или пароль неверный" });
       return;
     }
-    // const compare = await bcrypt.compare(password, seervice.password);
-    // if (!compare) {
-    //   res.json({ message: "Такого сервиса не существует или пароль неверный" });
-    //   return;
-    // }
     if (!email.trim() || !password.trim()) {
       res.json({ message: "Заполните все поля" });
       return;
     }
+    console.log(seervice);
     req.session.serviceId = seervice.id;
-    res.json({ message: "succes", seervice });
+    res.json({ message: "succes", service: seervice });
   } catch ({ message }) {
     res.json({ message });
   }
 });
-
-// router.get("/logout", (req, res) => {
-//   if (req.session) {
-//     console.log(req.session);
-//     req.session.destroy((error) => {
-//       if (error) {
-//         return res.status(500).json({ message: "Ошибка при удалении сессии" });
-//       } else {
-//         // if (req.session.userId) {
-//         //   res.clearCookie("user_sid");
-//         // }
-//         if (req.session.serviceId) {
-//           res.clearCookie("service_sid");
-//         }
-//         res.json({ message: "success" });
-//       }
-//     });
-//   }
-// });
 
 router.get("/logout", (req, res) => {
   req.session.destroy((error) => {
@@ -154,14 +128,13 @@ router.get("/check", async (req, res) => {
 router.get("/check/service", async (req, res) => {
   try {
     if (req.session.serviceId) {
-      console.log(1231231231);
       const service = await Service.findOne({
         where: { id: req.session.serviceId },
       });
       res.status(200).json({ message: "success", service });
       return;
     }
-    res.json({ message: "false" });
+    res.status(401).json({ message: "false" });
   } catch ({ message }) {
     res.status(500).json({ message });
   }

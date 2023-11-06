@@ -83,7 +83,7 @@ const authSlice = createSlice({
       })
 
       .addCase(signInService.fulfilled, (state, action) => {
-        if (!action.payload.message) {
+        if (action.payload.message === 'succes') {
           console.log(action.payload.service);
 
           state.service = action.payload.service;

@@ -125,6 +125,7 @@ function SignUpService(): JSX.Element {
               </select>
             </label>
             <button type="submit">save</button>
+            <button type="submit">Забыли пароль?</button>
           </form>
           <button type="submit" onClick={() => setSignService(false)}>
             У меня есть

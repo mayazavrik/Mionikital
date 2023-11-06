@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import SignUpService from './SignUpService';
+import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
 import { signInService } from './AuthSlice';
 
@@ -7,6 +9,7 @@ function SignInService(): JSX.Element {
   const [email, setEmail] = useState('');
   const [signService, setSignService] = useState(false);
   const [password, setPassword] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const dispatch = useAppDispatch();
   //   const onHandleSignIn = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -14,7 +17,7 @@ function SignInService(): JSX.Element {
   //     setPhone(phone.replace(/-/g, ''));
   //     dispatch(signUp({ name, password, phone, email }));
   //   };
-
+  const service = useSelector((strore: RootState) => strore.auth);
   const onHandleServiceIn = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     void dispatch(signInService({ password, email }));
@@ -54,7 +57,11 @@ function SignInService(): JSX.Element {
                   required
                 />
               </label>
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={() => setSubmitted(true)}>
+                Submit
+              </button>
+              <button type="submit">Забыли пароль?</button>
+              {submitted === true && service.error && <h3>{service.error}</h3>}
             </form>
             <button type="submit" onClick={() => setSignService(true)}>
               Регистрация

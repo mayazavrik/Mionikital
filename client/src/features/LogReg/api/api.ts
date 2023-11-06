@@ -17,7 +17,6 @@ import type { Service, User } from '../type';
 //   return data;
 // };
 export const fetchLogOut = async (): Promise<{ message: string }> => {
-  console.log('----------');
   const res = await fetch('/api/auth/logout');
   const data: { message: string } = await res.json();
   return data;
@@ -50,7 +49,7 @@ export const fetchSignIn = async (user: User): Promise<{ message: string; user: 
 export const fetchSignInService = async (
   service: Service,
 ): Promise<{ message: string; service: Service }> => {
-  const fetchPromise = fetch('/api/auth/sign-in/service', {
+  const res = await fetch('/api/auth/sign-in/service', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -58,20 +57,7 @@ export const fetchSignInService = async (
     body: JSON.stringify(service),
   });
 
-  const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => {
-      reject(new Error('Время запроса истекло'));
-    }, 1000); // 1000 миллисекунд (1 секунда)
-  });
-
-  try {
-    const result = await Promise.race([fetchPromise, timeoutPromise]);
-    return result.json();
-  } catch (error) {
-    // Здесь можно обработать ошибку сеттаймаута или другие ошибки запроса
-    console.error(error);
-    throw error;
-  }
+  return res.json();
 };
 
 export const fetchSignUp = async (user: User): Promise<User> => {
@@ -104,18 +90,19 @@ export const fetchCheckUser = async (): Promise<{ message: string; user: User }>
   const res = await fetch('/api/auth/check');
   // await new Promise((resolve) => setTimeout(resolve, 1000));
   if (res.status > 399) {
-    throw new Error('kabzda')
+    throw new Error('Такого сервиса не существует или пароль неверный');
   }
   const data = await res.json();
-  console.log(data);
 
   return data;
 };
 
 export const fetchCheckService = async (): Promise<{ message: string; service: Service }> => {
   const res = await fetch('/api/auth/check/service');
+  if (res.status > 399) {
+    throw new Error('Такого сервиса не существует или пароль неверный');
+  }
 
   const data = await res.json();
-  console.log(data);
   return data;
 };

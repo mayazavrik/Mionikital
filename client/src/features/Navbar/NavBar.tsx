@@ -78,6 +78,11 @@ function NavBar(): JSX.Element {
             Личный кабинет
           </NavLink>
         )}
+        {user && (
+          <NavLink style={{ color: 'orange' }} to="/personalArea/admin">
+            Личный кабинет
+          </NavLink>
+        )}
       </div>
       <Outlet />
     </>
