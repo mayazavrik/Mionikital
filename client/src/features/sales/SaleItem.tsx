@@ -12,6 +12,7 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
   const onHandleUpd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(updateSale({ id: sale.id, text, img, service_id: sale.service_id }));
+    setFlag((prev) => !prev);
   };
   const onHandleDelete = (): void => {
     dispatch(deleteSale(sale.id));

@@ -9,21 +9,18 @@ import UpdateUslugaForm from './UpdateUslugaForm';
 export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Element {
   const dispatch = useAppDispatch();
   const [flag, setFlag] = useState(false);
-  const usluga = useSelector((store: RootState) => store.uslugas.uslugas).find(
-    (el) => el.id === price.usluga_id,
-  );
-  const marka = useSelector((store: RootState) => store.uslugas.marks).find(
-    (el) => el.id === price.mark_id,
-  );
-  const model = marka?.CarModels.find((el) => el.id === price.carModel_id);
+
   const onHandleDelete = (): void => {
     dispatch(deletePrice(price.id));
   };
+  const onHandleFlag = (): void => {
+    setFlag((prev) => !prev);
+  };
   return (
     <div className="price-item">
-      <h4>Вид услуги: {usluga?.title}|</h4>
-      <h4> Марка: {marka?.title}|</h4>
-      <h4> Модель: {model?.title}|</h4>
+      <h4>Вид услуги: {price.Usluga.title}|</h4>
+      <h4> Марка: {price.Mark.title}|</h4>
+      <h4> Модель: {price.CarModel.title}|</h4>
       <h4>Цена: {price.cost} рублей</h4>
       <button type="button" style={{ background: 'red' }} onClick={onHandleDelete}>
         Удалить услугу
@@ -31,9 +28,7 @@ export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Elemen
       <button type="button" onClick={() => setFlag(!flag)}>
         Изменить услугу
       </button>
-      {flag && (
-        <UpdateUslugaForm carModel={model} carMark={marka} serviceUsluga={usluga} price={price} />
-      )}
+      {flag && <UpdateUslugaForm price={price} onHandleFlag={onHandleFlag} />}
     </div>
   );
 }

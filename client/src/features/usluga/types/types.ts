@@ -5,6 +5,9 @@ export type UslugaPrice = {
   cost: number;
   mark_id: number;
   carModel_id: number;
+  CarModel: CarModel;
+  Mark: Mark;
+  Usluga: Usluga;
 };
 
 export type Usluga = {

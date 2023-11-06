@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../redux/store';
@@ -6,8 +7,6 @@ import type { ServiceCard } from '../service/types/type';
 import { addUsluga } from './uslugaPriceSlice';
 
 export default function AddUslugaForm({ service }: { service: ServiceCard }): JSX.Element {
-  console.log(service);
-
   const dispatch = useAppDispatch();
   const [marka, setMarka] = useState('');
   const [cost, setCost] = useState('');
@@ -61,7 +60,11 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
             marks.map(
               (mark) =>
                 mark.title === marka &&
-                mark.CarModels.map((car) => <option value={car.title}>{car.title}</option>),
+                mark.CarModels.map((car) => (
+                  <option key={car.id} value={car.title}>
+                    {car.title}
+                  </option>
+                )),
             )}
         </select>
         <input type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)} />

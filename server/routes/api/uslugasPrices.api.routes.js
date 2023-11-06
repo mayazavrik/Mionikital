@@ -1,9 +1,11 @@
-const { UslugaPrice } = require('../../db/models');
+const { UslugaPrice, CarModel, Mark, Usluga } = require('../../db/models');
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   try {
-    const uslugasPrices = await UslugaPrice.findAll();
+    const uslugasPrices = await UslugaPrice.findAll({
+      include: [CarModel, Mark, Usluga],
+    });
     res.json(uslugasPrices);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -28,10 +30,33 @@ router.put('/:uslugaPriceId', async (req, res) => {
       { mark_id, carModel_id, cost, usluga_id },
       { where: { id: +uslugaPriceId } }
     );
-    console.log(result);
     if (result > 0) {
-      res.json(req.body);
+      const price = await UslugaPrice.findOne({
+        where: { id: +uslugaPriceId },
+        include: [CarModel, Mark, Usluga],
+      });
+      res.json(price);
     }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const { carModel_id, mark_id, service_id, cost, usluga_id } = req.body;
+    const uslugaPrice = await UslugaPrice.create({
+      carModel_id,
+      mark_id,
+      service_id,
+      cost: +cost,
+      usluga_id,
+    });
+    const price = await UslugaPrice.findOne({
+      where: { id: uslugaPrice.id },
+      include: [CarModel, Mark, Usluga],
+    });
+    res.json(price);
   } catch ({ message }) {
     res.status(500).json({ message });
   }

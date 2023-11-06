@@ -11,7 +11,7 @@ export async function fetchMarks(): Promise<Mark[]> {
 }
 
 export async function fetchAddUslugas(uslugaPrice: UslugaPrice): Promise<UslugaPrice> {
-  const res = await fetch('/api/uslugas', {
+  const res = await fetch('/api/uslugasPrice', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(uslugaPrice),

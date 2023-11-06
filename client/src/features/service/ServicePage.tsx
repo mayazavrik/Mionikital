@@ -11,14 +11,14 @@ export default function ServicePage(): JSX.Element {
   const { serviceId } = useParams();
   const [flag, setFlag] = useState('usluga');
   const service = useSelector((store: RootState) =>
-    store.servicesSlice.services.find((service) => service.id === +serviceId),
+    store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
   );
 
   return (
     <div className="services-page">
       <div className="post-page">
         <h2>{service?.title}</h2>
-        <img src={service?.img} alt="" />
+        <img className="photo" src={service?.img} alt="" />
         <h3>Адрес: {service?.adress}</h3>
       </div>
       <div className="content">

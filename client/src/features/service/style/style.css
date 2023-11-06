@@ -5,10 +5,6 @@ h3 {
 body {
   height: 100%;
 }
-img {
-  width: 50vw;
-  margin: 20px;
-}
 
 h3 {
   line-height: 30px;
@@ -91,4 +87,16 @@ input {
 }
 #usluga {
   display: flex;
+}
+.sales-container {
+  height: 800px;
+  overflow-y: scroll;
+}
+.photo {
+  width: 600px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin: 10px;
 }

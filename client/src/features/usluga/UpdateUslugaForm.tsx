@@ -1,37 +1,31 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import type { Dispatch, SetStateAction } from 'react';
 import { RootState, useAppDispatch } from '../../redux/store';
-import type { CarModel, Mark, Usluga, UslugaPrice } from './types/types';
+import type { UslugaPrice } from './types/types';
 import { updPrice } from './uslugaPriceSlice';
 
 export default function UpdateUslugaForm({
-  carMark,
-  carModel,
-  serviceUsluga,
   price,
-  setFlag,
+  onHandleFlag,
 }: {
-  carMark: Mark;
-  carModel: CarModel;
   price: UslugaPrice;
-  serviceUsluga: Usluga;
-  setFlag: Dispatch<SetStateAction<boolean>>;
+  onHandleFlag: () => void;
 }): JSX.Element {
   const dispatch = useAppDispatch();
-  const [marka, setMarka] = useState(carMark.title);
+  const [marka, setMarka] = useState(price.Mark.title);
   const [cost, setCost] = useState(price.cost);
-  const [model, setModel] = useState('');
-  const [usluga, setUsluga] = useState('');
+  const [model, setModel] = useState(price.CarModel.title);
+  const [usluga, setUsluga] = useState(price.Usluga.title);
   const uslugas = useSelector((store: RootState) => store.uslugas.uslugas);
   const marks = useSelector((store: RootState) => store.uslugas.marks);
+
   const onHandleUpd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const mark_id = marks.find((el) => el.title === marka)?.id;
     const model_id = marks
       .find((el) => el.title === marka)
-      ?.CarModels.find((carModel) => carModel.title === model)?.id;
+      .CarModels.find((carModel) => carModel.title === model)?.id;
     const usluga_id = uslugas.find((elem) => elem.title === usluga)?.id;
 
     dispatch(
@@ -44,17 +38,13 @@ export default function UpdateUslugaForm({
         service_id: price.service_id,
       }),
     );
-    setFlag(false);
+    onHandleFlag();
   };
 
   return (
     <div>
       <form id="usluga" onSubmit={onHandleUpd}>
-        <select
-          name="usluga"
-          defaultValue={serviceUsluga?.title}
-          onChange={(e) => setUsluga(e.target.value)}
-        >
+        <select name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
           {uslugas.map((usluga) => (
             <option key={usluga.id} value={usluga.title}>
@@ -77,11 +67,7 @@ export default function UpdateUslugaForm({
             </option>
           ))}
         </select>
-        <select
-          name="model"
-          defaultValue={carModel.title}
-          onChange={(e) => setModel(e.target.value)}
-        >
+        <select name="model" defaultValue={model} onChange={(e) => setModel(e.target.value)}>
           <option value="">Выберите модель авто</option>
           {marka !== '' &&
             marks.map(
@@ -98,7 +84,7 @@ export default function UpdateUslugaForm({
           type="number"
           name="cost"
           defaultValue={cost}
-          onChange={(e) => setCost(e.target.value)}
+          onChange={(e) => setCost(+e.target.value)}
         />
         <button type="submit">Изменить</button>
       </form>
