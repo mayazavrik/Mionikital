@@ -1,0 +1,83 @@
+
+.footer{
+ 
+    padding-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+}
+a{
+    text-decoration: none;
+}
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap:1.5rem;
+}
+
+.footer .box-container .box2 h3{
+    font-size: 2.2rem;
+    padding:1rem 0;
+    color:gold;
+}
+.footer .box-container .box h3{
+    font-size: 2.2rem;
+    padding:1rem 0;
+
+  
+}
+
+.footer .box-container .box2 a{
+    display: block;
+    font-size: 1.4rem;
+    padding:1rem 0;
+  
+    color:rgb(255, 255, 255);
+}
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.4rem;
+    padding:1rem 0;
+
+    color:rgb(255, 255, 255);
+}
+
+.footer .box-container .box2 a i{
+    padding-right: .5rem;
+ 
+}
+.footer .box-container .box a i{
+    padding-right: .5rem;
+  
+}
+
+
+.footer .box-container .box2 a:hover i{
+    padding-right: 2rem;
+ 
+}
+.footer .box-container .box a:hover i{
+    padding-right: 2rem;
+ 
+}
+
+.footer .credit{
+    text-align: center;
+    padding:1.5rem;
+    padding-top: 2.5rem;
+    margin-top: 2rem;
+    border-top: var(--border);
+    font-size: 2rem;
+    color:gold;
+}
+.box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.nav-link.active {
+    color: #0E1333;
+    border-bottom: solid 2.5px #0E1333;
+    padding-bottom: 2.5em;
+}

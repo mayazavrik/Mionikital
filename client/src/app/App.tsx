@@ -20,6 +20,9 @@ import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
 import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
+import { loadSales } from '../features/sales/salesSlice';
+import SalesPage from '../features/sales/SalesPage';
+import Footer from '../features/footer/Footer';
 
 
 function App(): JSX.Element {
@@ -39,6 +42,7 @@ function App(): JSX.Element {
     dispatch(loadUslugas());
     dispatch(loadMarks());
     dispatch(loadPrices());
+    dispatch(loadSales());
   }, []);
 
   useEffect(() => {
@@ -63,17 +67,21 @@ function App(): JSX.Element {
       )} */}
       <Routes>
         <Route path="/" element={<NavBar />}>
+          
           <Route path="/reg" element={<SignIn />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
+          <Route path="/sales" element={<SalesPage />} />
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
+          {/* <Route path="/" element={<Footer />} /> */}
           
         </Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }
