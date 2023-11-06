@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
 import type { Service, User } from '../type';
@@ -33,8 +34,6 @@ export const fetchSignIn = async (user: User): Promise<{ message: string; user: 
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return res.json();
 };
-
-
 
 // export const fetchSignInService = async (
 //   service: Service,
@@ -103,19 +102,20 @@ export const fetchSignUpService = async (service: Service): Promise<Service> => 
 
 export const fetchCheckUser = async (): Promise<{ message: string; user: User }> => {
   const res = await fetch('/api/auth/check');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return res.json();
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  if (res.status > 399) {
+    throw new Error('kabzda')
+  }
+  const data = await res.json();
+  console.log(data);
+
+  return data;
 };
 
 export const fetchCheckService = async (): Promise<{ message: string; service: Service }> => {
-  // Создаем обещание, которое разрешится через 5 секунд
-  const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  // Ожидаем 5 секунд
-  await delay(1000);
-
-  // Выполняем запрос после ожидания
   const res = await fetch('/api/auth/check/service');
 
-  return res.json();
+  const data = await res.json();
+  console.log(data);
+  return data;
 };

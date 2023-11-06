@@ -9,14 +9,14 @@ import { useAppDispatch } from '../../redux/store';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user: User = useSelector((store: RootState): User => store.auth.user);
-  const service: Service = useSelector((store: RootState): User => store.auth.service);
+  const user = useSelector((store: RootState) => store.auth.user);
+  const service = useSelector((store: RootState) => store.auth.service);
   // console.log(service);
-  // console.log(user);
+  console.log(user, service);
 
   const onHandleLogout = async (): Promise<void> => {
     // console.log('---');
-    dispatch(logOut());
+    dispatch(logOut()).catch(console.log);
   };
 
   return (

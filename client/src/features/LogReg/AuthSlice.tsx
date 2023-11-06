@@ -25,9 +25,6 @@ export const signUp = createAsyncThunk('auth/signup', (user: User) => fetchSignU
 
 export const signIn = createAsyncThunk('auth/signin', (user: User) => fetchSignIn(user));
 
-
-
-
 export const signInService = createAsyncThunk('auth/signin/service', (service: Service) =>
   fetchSignInService(service),
 );
@@ -45,8 +42,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(checkUser.fulfilled, (state, action) => {
-        console.log(action.payload.user);
-
+        console.log(action.payload);
         state.user = action.payload.user;
       })
       .addCase(checkUser.rejected, (state, action) => {
@@ -76,7 +72,7 @@ const authSlice = createSlice({
       })
 
       .addCase(signIn.fulfilled, (state, action) => {
-        if (!action.payload.message) {
+        if (action.payload.message === 'succes') {
           state.user = action.payload.user;
         } else {
           console.log(action.payload.message);
@@ -110,10 +106,10 @@ const authSlice = createSlice({
         state.service = undefined;
         state.user = undefined;
         state.error = '';
-      })
-      // .addCase(logOut.rejected, (state, action) => {
-      //   state.error = action.error.message;
-      // });
+      });
+    // .addCase(logOut.rejected, (state, action) => {
+    //   state.error = action.error.message;
+    // });
   },
 });
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -18,6 +18,7 @@ import ServicePage from '../features/service/ServicePage';
 import PersonalArea from '../features/personalArea/PersonalArea';
 
 function App(): JSX.Element {
+  const [isPageClickable, setIsPageClickable] = useState(false);
   const dispatch = useAppDispatch();
   const service = useSelector((store: RootState) => store.auth.service);
   const user = useSelector((store: RootState) => store.auth.user);
@@ -25,13 +26,38 @@ function App(): JSX.Element {
   // console.log(user);
 
   useEffect(() => {
+    // fetch('/api/auth/check/service')
+    //   .then((data) => data.json())
+    //   .then(console.log);
     dispatch(loadServices());
     dispatch(loadPosts());
-    dispatch(checkUser());
     dispatch(checkService());
-  }, [service]);
+  }, []);
+
+  useEffect(() => {
+    dispatch(checkUser());
+  }, []);
+
+  useEffect(() => {
+    if (service?.isChecked === false) {
+      setIsPageClickable(false);
+    }
+  }, [service?.isChecked]);
+
   return (
-    <div className="App">
+    <div className={`App ${isPageClickable ? '' : 'unclickable'}`}>
+      {/* {isPageClickable == false && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '0vh', // Задайте желаемую высоту, чтобы текст был посередине
+          }}
+        >
+          <h1>Pдравствуйте, {service?.title}, ваша учетная пока не активна</h1>
+        </div>
+      )} */}
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/reg" element={<SignIn />} />

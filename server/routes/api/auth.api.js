@@ -56,7 +56,6 @@ router.post("/sign-in", async (req, res) => {
 router.post("/sign-up/service", async (req, res) => {
   try {
     const { title, email, password, phone, adress, tarif } = req.body;
-    // console.log(req.body);
     let service = await Service.findOne({ where: { email } });
     if (!title || !email || !password || !phone || !adress || !tarif) {
       res.status(501).json({ message: "Заполните  все поля" });
@@ -66,18 +65,17 @@ router.post("/sign-up/service", async (req, res) => {
       res.status(501).json({ message: "Такой емайл уже занят" });
       return;
     }
-    // const hash = await bcrypt.hash(password, 10);
+    const hash = await bcrypt.hash(password, 10);
     // console.log("---------------");
     service = await Service.create({
       title: title,
       email: email,
       phone: phone,
-      password: password,
+      password: hash,
       adress: adress,
       tarif: tarif,
       isChecked: false,
     });
-    // console.log(service);
     req.session.serviceId = service.id;
     res.status(200).json(service);
   } catch ({ message }) {
@@ -112,43 +110,42 @@ router.post("/sign-in/service", async (req, res) => {
   }
 });
 
-router.get("/logout", (req, res) => {
-  console.log("--------------");
-  if (req.session) {
-    req.session.destroy((error) => {
-      if (error) {
-        return res.status(500).json({ message: "Ошибка при удалении сессии" });
-      } else {
-        // Успешное удаление сессии
-        res.json({ message: "success" });
+// router.get("/logout", (req, res) => {
+//   if (req.session) {
+//     console.log(req.session);
+//     req.session.destroy((error) => {
+//       if (error) {
+//         return res.status(500).json({ message: "Ошибка при удалении сессии" });
+//       } else {
+//         // if (req.session.userId) {
+//         //   res.clearCookie("user_sid");
+//         // }
+//         if (req.session.serviceId) {
+//           res.clearCookie("service_sid");
+//         }
+//         res.json({ message: "success" });
+//       }
+//     });
+//   }
+// });
 
-        // Удаляем куку только после успешного удаления сессии
-        // if (req.session.user_sid ||  req.session.service_sid) {
-        //   res.clearCookie("user_sid").json({ message: "success" }) ||
-        //     res.clearCookie("service_sid").json({ message: "success" });
-        // }
-        setTimeout(() => 3000);
-        if (req.session.service_sid) {
-          res.clearCookie("service_sid").json({ message: "success" });
-        }
-        // if (req.session.service_sid) {
-        //   res.clearCookie("service_sid").json({ message: "success" });
-        // }
-      }
-    });
-  }
+router.get("/logout", (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      return res.status(500).json({ message: "Ошибка при удалении сессии" });
+    }
+    res.clearCookie("service_sid").json({ message: "success" });
+  });
 });
 
 router.get("/check", async (req, res) => {
   try {
     if (req.session.userId) {
-      setTimeout(() => 1000);
       const user = await User.findOne({ where: { id: req.session.userId } });
       res.json({ message: "success", user });
       return;
     }
-
-    res.json({ message: "false" });
+    res.status(401).json({ message: "false" });
   } catch ({ message }) {
     res.json({ message });
   }
@@ -156,13 +153,11 @@ router.get("/check", async (req, res) => {
 
 router.get("/check/service", async (req, res) => {
   try {
-    // console.log(req.session.serviceId);
     if (req.session.serviceId) {
-      setTimeout(() => 1000);
+      console.log(1231231231);
       const service = await Service.findOne({
         where: { id: req.session.serviceId },
       });
-      // console.log(service);
       res.status(200).json({ message: "success", service });
       return;
     }

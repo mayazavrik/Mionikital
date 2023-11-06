@@ -15,10 +15,11 @@ export type Service = {
   password?: string;
   tarif?: string;
   img?: string;
+  isChecked?: boolean;
 };
 
 export type AuthState = {
   user: User | undefined;
   service: Service | undefined;
-  error: string | undefined;
+  error: string | null;
 };
