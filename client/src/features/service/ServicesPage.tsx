@@ -6,17 +6,23 @@ import './style/style.css';
 
 export default function ServicesPage(): JSX.Element {
   const city = useSelector((store: RootState) => store.servicesSlice.city);
+  const uslugas = useSelector((store: RootState) => store.uslugas.uslugas);
+  const marks = useSelector((store: RootState) => store.uslugas.marks);
   const [usluga, setUsluga] = useState('Все');
+  const [mark, setMark] = useState('Все');
   const services = useSelector((store: RootState) => store.servicesSlice.services)
     .filter((service) => service.adress.split(',').includes(city))
+    .filter((service) =>
+      mark === 'Все'
+        ? service
+        : service.UslugaPrices.some((elem) => elem.Mark.title === mark) && service,
+    )
     .filter((service) =>
       usluga === 'Все'
         ? service
         : service.UslugaPrices.some((elem) => elem.Usluga.title === usluga) && service,
     );
-  console.log(services);
 
-  const uslugas = useSelector((store: RootState) => store.uslugas.uslugas);
   // const error = useSelector((store: RootState) => store.servicesSlice.error);
   // const loading = useSelector((store: RootState) => store.servicesSlice.loading);
 
@@ -25,8 +31,16 @@ export default function ServicesPage(): JSX.Element {
       <h2>Тут страница с сервисами</h2>
 
       <div className="sortServices">
+        <select name="mark" defaultValue={mark} onChange={(e) => setMark(e.target.value)}>
+          <option value="Все">Выберите марку</option>
+          {marks.map((marka) => (
+            <option key={marka.id} value={marka.title}>
+              {marka.title}
+            </option>
+          ))}
+        </select>
         <select name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
-          <option value="1">Выберите услугу</option>
+          <option value="Все">Выберите услугу</option>
           {uslugas.map((uslugaa) => (
             <option key={uslugaa.id} value={uslugaa.title}>
               {uslugaa.title}
