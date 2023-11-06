@@ -12,9 +12,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-
-
-
 function NewsBlock(): JSX.Element {
   const posts = useSelector((store: RootState) => store.news.posts);
   const error = useSelector((store: RootState) => store.news.error);
@@ -42,6 +39,8 @@ function NewsBlock(): JSX.Element {
     <div className="containerPostForm">
       <h2>Тут страница со статьями и форма</h2>
       <AddNewsForm />
+   
+
       <div className="swiper">
         <div className="posts__container">
           {posts?.map((post) => <NewsItem key={post.id} post={post} />)}

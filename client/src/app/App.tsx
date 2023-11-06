@@ -71,6 +71,7 @@ function App(): JSX.Element {
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
+          
         </Route>
       </Routes>
     </div>

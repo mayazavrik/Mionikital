@@ -18,3 +18,12 @@ export const fetchPostRemove = async (id: number): Promise<{ postId: PostId }> =
   return res.json();
 };
 
+export const fetchPostChange = async (obj: Post): Promise<Post[]> => {
+  const res = await fetch(`/api/news/${obj.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ img: obj.img, text: obj.text }),
+  });
+  return res.json();
+};
+

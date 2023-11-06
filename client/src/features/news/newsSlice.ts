@@ -13,6 +13,7 @@ const initialState: PostsState = {
 export const loadPosts = createAsyncThunk('posts/load', () => api.fetchPosts());
 export const addNews = createAsyncThunk('posts/add', (post: Post) => fetchPostAdd(post));
 export const deleteNews = createAsyncThunk('posts/delete', (id: number) => api.fetchPostRemove(id));
+export const changeNews = createAsyncThunk('posts/change', (post: Post) => api.fetchPostChange(post));
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -40,6 +41,12 @@ const postsSlice = createSlice({
       })
       .addCase(addNews.fulfilled, (state, action) => {
         state.posts.push(action.payload);
+      })
+      .addCase(changeNews.fulfilled, (state, action) => {
+
+        state.posts = state.posts.map((post) =>
+          post.id === action.payload.id ? (post = action.payload) : post,
+        );
       });
   },
 });
