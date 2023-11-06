@@ -10,7 +10,7 @@ import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
 import NavBar from '../features/Navbar/NavBar';
 import ServicesPage from '../features/service/ServicesPage';
-import type { RootState } from '../redux/store';;
+import type { RootState } from '../redux/store';
 import PersonalArea from '../features/personalArea/PersonalArea';
 import PersonalAreaAdmin from '../features/personalArea/PersonalAreaAdmin';
 import NewsBlock from '../features/news/NewsBlock';
@@ -21,12 +21,10 @@ import { useAppDispatch } from '../redux/store';
 import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 
-
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
   const dispatch = useAppDispatch();
   const service = useSelector((store: RootState) => store.auth.service);
-  const user = useSelector((store: RootState) => store.auth.user);
 
   useEffect(() => {
     dispatch(loadServices());
@@ -71,7 +69,6 @@ function App(): JSX.Element {
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
-          
         </Route>
       </Routes>
     </div>

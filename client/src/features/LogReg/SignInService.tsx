@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+// eslint-disable-next-line import/no-cycle
 import SignUpService from './SignUpService';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';

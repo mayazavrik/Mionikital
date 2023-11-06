@@ -110,7 +110,7 @@ function SignIn(): JSX.Element {
                     placeholder="phone"
                     type="tel"
                     name="tel"
-                    maxLength="11"
+                    maxLength={11}
                     value={phone}
                     onChange={(e) => {
                       const phoneWithoutDashes = e.target.value.replace(/-/g, ''); // Удаляем все существующие дефисы из значения ввода

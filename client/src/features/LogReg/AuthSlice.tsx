@@ -6,6 +6,8 @@ import {
   fetchSignIn,
   fetchSignUp,
   fetchCheckService,
+  fetchSignInService,
+  fetchSignUpService,
 } from './api/api';
 import type { AuthState, Service, User } from './type';
 
