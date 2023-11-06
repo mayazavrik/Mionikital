@@ -1,3 +1,5 @@
+import { UslugaPrice } from '../../usluga/types/types';
+
 export type ServiceCard = {
   id: number;
   title: string;
@@ -6,6 +8,7 @@ export type ServiceCard = {
   phone: string;
   img: string;
   Sales: Sale[];
+  UslugaPrices: UslugaPrice[];
 };
 export type ServicesState = {
   services: ServiceCard[];

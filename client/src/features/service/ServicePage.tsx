@@ -1,30 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import type { RootState } from '../../redux/store';
 import SaleItem from '../sales/SaleItem';
+import UslugaContainter from '../usluga/UslugaContainter';
 import AddSaleForm from './AddSaleForm';
 import './style/style.css';
 
 export default function ServicePage(): JSX.Element {
   const { serviceId } = useParams();
+  const [flag, setFlag] = useState('usluga');
   const service = useSelector((store: RootState) =>
-    store.servicesSlice.services.find((service) => service.id === +serviceId),
+    store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
   );
+
   return (
-   
     <div className="services-page">
-       <AddSaleForm service={service} />
-      <div className='post-page'>
-     
-      <h2>{service?.title}</h2>
-      <img src={service?.img} alt="" />
-      <h3>Адрес: {service?.adress}</h3>
-      <div className="sales-container">
-        {service?.Sales.map((sale) => <SaleItem sale={sale} key={sale.id} />)}
+      <div className="post-page">
+        <h2>{service?.title}</h2>
+        <img className="photo" src={service?.img} alt="" />
+        <h3>Адрес: {service?.adress}</h3>
       </div>
+      <div className="content">
+        <div className="selector">
+          <button type="button" onClick={() => setFlag('sale')}>
+            Акции и скидки
+          </button>
+          <button type="button" onClick={() => setFlag('usluga')}>
+            Услуги
+          </button>
+        </div>
+        {flag === 'sale' ? (
+          <div className="sales-container">
+            <AddSaleForm service={service} />
+            {service?.Sales.map((sale) => <SaleItem sale={sale} key={sale.id} />)}
+          </div>
+        ) : (
+          <UslugaContainter service={service} />
+        )}
       </div>
-      
     </div>
   );
 }

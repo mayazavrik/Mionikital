@@ -11,23 +11,32 @@ export default function AddSaleForm({ service }: { service: ServiceCard }): JSX.
 
   const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(addSales({ service_id: service.id, img, text }));
+    dispatch(addSales({ id: 1, service_id: service.id, img, text }));
     setText('');
     setImg('');
   };
   return (
-    <div className='form__container'>
-      <form className='formsale' onSubmit={onHandleAdd}>
-     
-        <label className="form__label" >
-         
+    <div className="form__container">
+      <form className="formsale" onSubmit={onHandleAdd}>
+        <label className="form__label">
           Фото акции
-          <input className="form__label" value={img} name="img" type="text" onChange={(e) => setImg(e.target.value)} />
+          <input
+            className="form__label"
+            value={img}
+            name="img"
+            type="text"
+            onChange={(e) => setImg(e.target.value)}
+          />
         </label>
-        <label className="form__label" >
-         
+        <label className="form__label">
           Текст акции
-          <input className="biginput" value={text} name="text" type="text" onChange={(e) => setText(e.target.value)} />
+          <input
+            className="biginput"
+            value={text}
+            name="text"
+            type="text"
+            onChange={(e) => setText(e.target.value)}
+          />
         </label>
         <button type="submit">Отправить</button>
       </form>

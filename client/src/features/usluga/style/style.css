@@ -1,0 +1,17 @@
+.sale-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.price-item {
+  display: flex;
+}
+.usluga-cont {
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #c1c1c1;
+  padding: 3px;
+}
