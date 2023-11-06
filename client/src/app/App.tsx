@@ -15,6 +15,8 @@ import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
+import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
+import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,6 +24,9 @@ function App(): JSX.Element {
     dispatch(loadServices());
     dispatch(loadPosts());
     dispatch(checkUser());
+    dispatch(loadUslugas());
+    dispatch(loadMarks());
+    dispatch(loadPrices());
   }, []);
   return (
     <div className="App">

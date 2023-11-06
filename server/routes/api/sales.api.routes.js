@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
     const { id, img, text } = req.body;
     if ((img.trim(), text.trim())) {
       const sale = await Sale.create({ service_id: id, img, text });
-      console.log(sale);
       res.status(200).json(sale);
     } else {
       res.json('Заполните все поля');
@@ -19,7 +18,6 @@ router.post('/', async (req, res) => {
 router.delete('/:saleId', async (req, res) => {
   try {
     const { saleId } = req.params;
-    console.log(saleId);
     const sale = await Sale.findOne({ where: { id: +saleId } });
     if (sale) {
       const service_id = sale.service_id;
@@ -30,6 +28,25 @@ router.delete('/:saleId', async (req, res) => {
     }
   } catch ({ message }) {
     res.json({ message });
+  }
+});
+router.put('/:saleId', async (req, res) => {
+  try {
+    const { saleId } = req.params;
+    const { img, text, service_id } = req.body;
+    const sale = await Sale.findOne({ where: { id: +saleId } });
+    if (sale) {
+      const result = await Sale.update(
+        { img, text },
+        { where: { id: +saleId } }
+      );
+      if (result > 0) {
+        const updSale = await Sale.findOne({ where: { id: +saleId } });
+        res.json(updSale);
+      }
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 });
 module.exports = router;

@@ -4,9 +4,7 @@ const { User } = require('../../db/models');
 
 router.post('/sign-up', async (req, res) => {
   try {
-    console.log(req.body);
     const { name, email, password, phone } = req.body;
-    console.log(req.body);
     let user = await User.findOne({ where: { email } });
     if (!name || !email || !password || !phone) {
       res.json({ message: 'Заполните  все поля' });
@@ -18,7 +16,6 @@ router.post('/sign-up', async (req, res) => {
     }
     const hash = await bcrypt.hash(password, 10);
     user = await User.create({ name, email, phone, password: hash });
-    console.log(user);
     req.session.userId = user.id;
     res.status(200).json(user);
   } catch ({ message }) {

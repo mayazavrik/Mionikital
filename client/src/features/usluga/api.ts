@@ -1,0 +1,39 @@
+import type { Mark, Usluga, UslugaPrice } from './types/types';
+
+export async function fetchUslugas(): Promise<Usluga[]> {
+  const res = await fetch('/api/uslugas');
+  return res.json();
+}
+
+export async function fetchMarks(): Promise<Mark[]> {
+  const res = await fetch('/api/marks');
+  return res.json();
+}
+
+export async function fetchAddUslugas(uslugaPrice: UslugaPrice): Promise<UslugaPrice> {
+  const res = await fetch('/api/uslugasPrice', {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(uslugaPrice),
+  });
+  return res.json();
+}
+export async function fetchUslugasPrice(): Promise<UslugaPrice[]> {
+  const res = await fetch('/api/uslugasPrice');
+  return res.json();
+}
+export async function fetchUslugaPriceDelete(id: number): Promise<number> {
+  const res = await fetch(`/api/uslugasPrice/${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+}
+
+export async function fetchUpdUslugas(uslugaPrice: UslugaPrice): Promise<UslugaPrice> {
+  const res = await fetch(`/api/uslugasPrice/${uslugaPrice.id}`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(uslugaPrice),
+  });
+  return res.json();
+}
