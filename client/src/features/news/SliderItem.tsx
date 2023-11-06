@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import type { Post, PostId } from './types/Post';
 import './style/slider.css';
-import { changeNews, deleteNews } from './newsSlice';
+import { deleteNews } from './newsSlice';
 import ChangeNewsForm from './ChangeNewsForm';
 
 function SliderItem({ post }: { post: Post }): JSX.Element {
@@ -34,4 +34,4 @@ function SliderItem({ post }: { post: Post }): JSX.Element {
   );
 }
 
-export default memo( SliderItem);
+export default memo(SliderItem);

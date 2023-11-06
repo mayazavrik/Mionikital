@@ -40,7 +40,7 @@ router.delete('/:postId', async (req, res) => {
     const result = await Post.destroy({ where: { id: +postId } });
     console.log('========');
     if (result > 0) {
-      res.json({ postId: +postId });
+      res.json(+postId);
       return;
     }
     res.json({ message: 'error' });
@@ -53,14 +53,17 @@ router.put('/:postId', async (req, res) => {
   try {
     const { postId } = req.params;
     const { img, text } = req.body;
-    const post = await Post.update(
+    const [result] = await Post.update(
       {
         img,
         text,
       },
       { where: { id: postId } }
     );
-    res.json(post);
+    if (result > 0) {
+      const post = await Post.findOne({ where: { id: +postId } });
+      res.json(post);
+    }
   } catch ({ message }) {
     res.json({ message });
   }

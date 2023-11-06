@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/default-param-last */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
-  fetchCheckService,
   fetchCheckUser,
   fetchLogOut,
   fetchSignIn,
-  fetchSignInService,
   fetchSignUp,
-  fetchSignUpService,
+  fetchCheckService,
 } from './api/api';
 import type { AuthState, Service, User } from './type';
 

@@ -9,7 +9,7 @@ function AddNewsForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(addNews({ img, text }));
+    dispatch(addNews({ id: 1, img, text }));
     setImg('');
     setText('');
   };

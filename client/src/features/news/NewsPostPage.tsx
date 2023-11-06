@@ -10,7 +10,7 @@ function NewsPostPage(): JSX.Element {
 
   const posts = useSelector((store: RootState) => store.news.posts);
 
-  const post = posts.find((post) => postId && post.id === +postId);
+  const post = posts.find((postt) => postId && postt.id === +postId);
 
   const error = <h1>Такой статьи нет</h1>;
 
@@ -19,7 +19,6 @@ function NewsPostPage(): JSX.Element {
       <img className="post-page__img" src={post?.img} alt="post" />
       <h3>{post?.text}</h3>
 
-  
       <button onClick={() => navigate(-1)} type="button">
         Назад к списку статей
       </button>
@@ -29,4 +28,4 @@ function NewsPostPage(): JSX.Element {
   return <div className="post-page__container">{!post ? error : content}</div>;
 }
 
-export default  NewsPostPage;
+export default NewsPostPage;

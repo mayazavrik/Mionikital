@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import type { UslugaPrice } from './types/types';
 import './style/style.css';
 import { deletePrice } from './uslugaPriceSlice';

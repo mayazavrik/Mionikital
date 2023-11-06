@@ -33,9 +33,9 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
       <form id="usluga" onSubmit={onHandleAdd}>
         <select name="usluga" onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
-          {uslugas.map((usluga) => (
-            <option key={usluga.id} value={usluga.title}>
-              {usluga.title}
+          {uslugas.map((uslugaa) => (
+            <option key={uslugaa.id} value={uslugaa.title}>
+              {uslugaa.title}
             </option>
           ))}
         </select>
@@ -43,8 +43,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
           name="mark"
           id="mark"
           onChange={(e) => {
-            let selectedValue = e.target.value;
-            setMarka(selectedValue);
+            setMarka(e.target.value);
           }}
         >
           <option value="">Выберите марку авто</option>

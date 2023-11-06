@@ -7,12 +7,11 @@ import { updatePhoto } from './PersonalSlice';
 import Calendarr from './Calendar';
 
 function PersonalArea(): JSX.Element {
-  const [photo, setPhoto] = useState('true');
+  const [photo, setPhoto] = useState(true);
   const [img, setImg] = useState('');
   const dispatch = useAppDispatch();
   const service: Service = useSelector((store: RootState) => store.auth.service);
   const user = useSelector((store: RootState) => store.auth.user);
-  console.log(service);
 
   const handleServicePut = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
@@ -31,7 +30,7 @@ function PersonalArea(): JSX.Element {
   return (
     <div>
       {service?.img ? (
-        <img style={{ width: '300px' }} src={service.img} />
+        <img style={{ width: '300px' }} src={service.img} alt="photka" />
       ) : (
         <img
           style={{ width: '300px' }}
@@ -43,7 +42,7 @@ function PersonalArea(): JSX.Element {
       <button type="submit" onClick={() => setPhoto(!photo)}>
         Изменить фото аккаунта
       </button>
-      {photo === false && (
+      {!photo && (
         <>
           <input placeholder="url image" value={img} onChange={(e) => setImg(e.target.value)} />
           <div>или</div>
@@ -53,7 +52,9 @@ function PersonalArea(): JSX.Element {
             accept="image/*"
             onChange={(e) => handleFileChange(e)}
           />
-          <button onClick={(e) => handleServicePut(e)}>save</button>
+          <button type="button" onClick={(e) => handleServicePut(e)}>
+            save
+          </button>
         </>
       )}
 
