@@ -1,4 +1,10 @@
-const { UslugaPrice, CarModel, Mark, Usluga } = require('../../db/models');
+const {
+  UslugaPrice,
+  CarModel,
+  Mark,
+  Usluga,
+  Service,
+} = require('../../db/models');
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
