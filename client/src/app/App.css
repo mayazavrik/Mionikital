@@ -1,3 +1,11 @@
+/* .unclickable {
+	pointer-events: none;
+	cursor: not-allowed;
+	background-color: #000000;
+	opacity: 0.2 ;
+
+	
+  } */
 /* :root {
 	/* colors */
 	--tiffany: hsl(64, 89%, 63%);
