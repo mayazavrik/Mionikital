@@ -2,23 +2,24 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { logOut } from '../LogReg/AuthSlice';
 import './style/style.css';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
+import { chooseCity } from '../sales/salesSlice';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
   const service = useSelector((store: RootState) => store.auth.service);
-;
 
   const onHandleLogout = async (): Promise<void> => {
     dispatch(logOut()).catch(console.log);
   };
+ 
 
   return (
     <>
@@ -27,20 +28,20 @@ function NavBar(): JSX.Element {
           <label className="form-label">
             Выберите город
             <div>
-              <select id="group" name="groupGold">
-                <option className="gold" value="spb">
+              <select onChange={(e) => dispatch(chooseCity(e.target.value))} id="group" name="groupGold">
+                <option className="gold" value="Санкт-Петербург">
                   Санкт-Петербург
                 </option>
-                <option className="gold" value="msk">
+                <option className="gold" value="Москва">
                   Москва
                 </option>
-                <option className="gold" value="kaz">
+                <option className="gold" value="Казань">
                   Казань
                 </option>
-                <option className="gold" value="nov">
+                <option className="gold" value="Великий Новгород">
                   Великий Новгород
                 </option>
-                <option className="gold" value="vlad">
+                <option className="gold" value="Владивосток">
                   Владивосток
                 </option>
               </select>
@@ -50,6 +51,17 @@ function NavBar(): JSX.Element {
         <li className="nav-item">
           <NavLink to="/main">На главную</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to="/services">Сервисы</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/news">Статьи</NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink to="/sales">Акции</NavLink>
+        </li>
+
         {service || user ? (
           <>
             <NavLink style={{ color: 'orange' }} onClick={onHandleLogout} to="/">
@@ -63,16 +75,6 @@ function NavBar(): JSX.Element {
             <NavLink to="reg">Вход</NavLink>
           </li>
         )}
-        <li className="nav-item">
-          <NavLink to="/services">Сервисы</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/news">Статьи</NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/sales">Акции</NavLink>
-        </li>
 
         {service && (
           <NavLink style={{ color: 'orange' }} to="/personalArea">
