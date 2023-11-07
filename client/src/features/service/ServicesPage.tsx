@@ -5,7 +5,9 @@ import ServiceItem from './ServiceItem';
 import './style/style.css';
 
 export default function ServicesPage(): JSX.Element {
-  const city = useSelector((store: RootState) => store.servicesSlice.city);
+  const city = useSelector((store: RootState) => store.sales.city);
+  console.log(city);
+
   const uslugas = useSelector((store: RootState) => store.uslugas.uslugas);
   const marks = useSelector((store: RootState) => store.uslugas.marks);
   const [usluga, setUsluga] = useState('Все');

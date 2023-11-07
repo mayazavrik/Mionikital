@@ -6,11 +6,10 @@ const initialState: SalesState = {
   sales: [],
   error: null,
   loading: true,
-  city: 'Санкт-Петербург',
+  city: 'Санкт-петербург',
 };
 
 export const loadSales = createAsyncThunk('sales/load', () => api.fetchSales());
-
 
 const salesSlice = createSlice({
   name: 'sales',
