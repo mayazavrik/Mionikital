@@ -16,11 +16,7 @@ function NavBar(): JSX.Element {
   const user = useSelector((store: RootState) => store.auth.user);
   const service = useSelector((store: RootState) => store.auth.service);
 
-
-  console.log(user, service);
-
   const onHandleLogout = async (): Promise<void> => {
-
     dispatch(logOut()).catch(console.log);
   };
  
@@ -85,12 +81,18 @@ function NavBar(): JSX.Element {
             Личный кабинет
           </NavLink>
         )}
-        {user && (
+        {user?.id === 1 && (
           <NavLink style={{ color: 'orange' }} to="/personalArea/admin">
             Личный кабинет
           </NavLink>
         )}
       </div>
+      {service?.isChecked === false && (
+        <span className="centered-text" style={{ textAlign: 'center', fontSize: '15px' }}>
+          Ваш аккаунт находится на проверке, после успешной аутентификации ваш профиль станет
+          активным и пользователи смогут записаться или связаться с вами.
+        </span>
+      )}
       <Outlet />
     </>
   );

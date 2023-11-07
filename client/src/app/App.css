@@ -147,7 +147,7 @@ a,
 img,
 data,
 span,
-input,
+/* input, */
 button,
 select,
 ion-icon,
@@ -164,7 +164,7 @@ img {
 	height: auto;
 }
 
-input,
+/* input, */
 button,
 select,
 textarea {
@@ -173,11 +173,14 @@ textarea {
 	font: inherit;
 }
 
-input,
+
 select,
 textarea {
 	width: 100%;
 	outline: none;
+}
+input{
+	width: 60%;
 }
 
 button {
@@ -398,8 +401,8 @@ body.nav-active {
 	bottom: 100%;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 200%;
-	height: 200%;
+	width: 60%;
+	height: 60%;
 	border-radius: var(--radius-circle);
 	background-color: var(--gold-crayola);
 	transition: var(--transition-2);
@@ -412,7 +415,7 @@ body.nav-active {
 
 .btn .text-2 {
 	position: absolute;
-	top: 100%;
+	top: 80%;
 	left: 50%;
 	transform: translateX(-50%);
 	min-width: max-content;
@@ -2089,7 +2092,7 @@ header .shopping span {
 .list .item button {
 	background-color: var(--more-rose);
 	color: #fff;
-	width: 100%;
+	width: 70%;
 	padding: 10px;
 	border-radius: 3%;
 }

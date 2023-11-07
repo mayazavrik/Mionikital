@@ -20,5 +20,4 @@ router.use('/api/uslugas', uslugasApiRouter);
 router.use('/api/marks', markApiRouter);
 router.use('/api/uslugasPrice', uslugasPricesApiRouter);
 router.use("/api/service", authPersonRoute);
-
 module.exports = router;
