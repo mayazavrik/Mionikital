@@ -13,12 +13,13 @@ export default function ServicePage(): JSX.Element {
   const service = useSelector((store: RootState) =>
     store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
   );
+  const servicePhoto = useSelector((store: RootState) => store.auth.service);
 
   return (
     <div className="services-page">
       <div className="post-page">
         <h2>{service?.title}</h2>
-        <img className="photo" src={service?.img} alt="" />
+        <img className="photo" src={servicePhoto?.img} alt="" />
         <h3>Адрес: {service?.adress}</h3>
       </div>
       <div className="content">

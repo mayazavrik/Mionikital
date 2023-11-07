@@ -10,6 +10,7 @@ import {
   fetchSignUpService,
 } from './api/api';
 import type { AuthState, Service, User } from './type';
+import { fetchUpdatePhoto } from '../personalArea/api';
 
 const initialState: AuthState = {
   user: undefined,
@@ -35,6 +36,10 @@ export const registrService = createAsyncThunk('auth/signup/service', (service: 
 
 export const logOut = createAsyncThunk('auth/logout', () => fetchLogOut());
 
+export const updatePhoto = createAsyncThunk('update/photo', (obj: Service) =>
+  fetchUpdatePhoto(obj),
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -42,7 +47,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(checkUser.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.user = action.payload.user;
       })
       .addCase(checkUser.rejected, (state, action) => {
@@ -84,7 +89,7 @@ const authSlice = createSlice({
 
       .addCase(signInService.fulfilled, (state, action) => {
         if (action.payload.message === 'succes') {
-          console.log(action.payload.service);
+          // console.log(action.payload.service);
 
           state.service = action.payload.service;
         } else {
@@ -94,22 +99,17 @@ const authSlice = createSlice({
       .addCase(signInService.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;
       })
-
-      // .addCase(logOut.fulfilled, (state) => {
-      //   state.service = undefined;
-      //   state.user = undefined;
-      // })
-      // .addCase(logOut.rejected, (state, action) => {
-      //   state.error = action.error.message ? action.error.message : null;
-      // });
       .addCase(logOut.fulfilled, (state) => {
         state.service = undefined;
         state.user = undefined;
         state.error = '';
+      })
+
+      .addCase(updatePhoto.fulfilled, (state, action) => {
+        if (state.service?.id === action.payload.service.id) {
+          state.service.img = action.payload.service.img;
+        }
       });
-    // .addCase(logOut.rejected, (state, action) => {
-    //   state.error = action.error.message;
-    // });
   },
 });
 

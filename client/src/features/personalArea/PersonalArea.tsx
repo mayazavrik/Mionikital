@@ -3,21 +3,19 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import type { Service } from '../LogReg/type';
 import { useAppDispatch, type RootState } from '../../redux/store';
-import { updatePhoto } from './PersonalSlice';
 import Calendarr from './Calendar';
+import { updatePhoto } from '../LogReg/AuthSlice';
 
 function PersonalArea(): JSX.Element {
   const [photo, setPhoto] = useState(true);
-  const [img, setImg] = useState('');
   const dispatch = useAppDispatch();
-  const service: Service = useSelector((store: RootState) => store.auth.service);
-  const user = useSelector((store: RootState) => store.auth.user);
+  const service = useSelector((store: RootState) => store.auth.service);
+  const [img, setImg] = useState(service?.img);
 
   const handleServicePut = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    dispatch(updatePhoto({ img, id: service.id }));
+    dispatch(updatePhoto({ img, id: service?.id }));
   };
-  //   console.log(img);
 
   const navigate = useNavigate();
 
@@ -29,15 +27,7 @@ function PersonalArea(): JSX.Element {
 
   return (
     <div>
-      {service?.img ? (
-        <img style={{ width: '300px' }} src={service.img} alt="photka" />
-      ) : (
-        <img
-          style={{ width: '300px' }}
-          src="https://oir.mobi/uploads/posts/2022-08/1661338462_1-oir-mobi-p-pustoi-fon-vkontakte-1.png"
-          alt="r"
-        />
-      )}
+      <img style={{ width: '300px' }} src={service?.img} alt="photka" />
 
       <button type="submit" onClick={() => setPhoto(!photo)}>
         Изменить фото аккаунта
@@ -63,6 +53,9 @@ function PersonalArea(): JSX.Element {
       <div>Email: {service?.email}</div>
       <div>Номер телефона: {service?.phone}</div>
       <div>Ваш тариф: {service?.tarif}</div>
+      <button type="submit" onClick={() => navigate(`/services/${service.id}`)}>
+        Добавить услуги
+      </button>
       <Calendarr />
     </div>
   );
