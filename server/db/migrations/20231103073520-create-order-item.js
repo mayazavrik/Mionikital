@@ -21,6 +21,7 @@ module.exports = {
         references: { model: 'UslugaPrices', key: 'id' },
         onDelete: 'CASCADE',
       },
+      date: { type: Sequelize.DATE, allowNull: true },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

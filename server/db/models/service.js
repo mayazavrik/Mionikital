@@ -1,12 +1,13 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Service extends Model {
-    static associate({ Comment, Rate, Sale, UslugaPrice }) {
-      this.hasMany(Comment, { foreignKey: "service_id" });
-      this.hasMany(Rate, { foreignKey: "service_id" });
-      this.hasMany(Sale, { foreignKey: "service_id" });
-      this.hasMany(UslugaPrice, { foreignKey: "service_id" });
+    static associate({ Comment, Rate, Sale, UslugaPrice, Order }) {
+      this.hasMany(Comment, { foreignKey: 'service_id' });
+      this.hasMany(Rate, { foreignKey: 'service_id' });
+      this.hasMany(Sale, { foreignKey: 'service_id' });
+      this.hasMany(UslugaPrice, { foreignKey: 'service_id' });
+      this.hasMany(Order, { foreignKey: 'service_id' });
     }
   }
   Service.init(
@@ -51,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Service",
+      modelName: 'Service',
     }
   );
   return Service;

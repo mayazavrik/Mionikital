@@ -13,13 +13,14 @@ import { chooseCity } from '../sales/salesSlice';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [city, setCity] = useState('Санкт-петербург');
   const user = useSelector((store: RootState) => store.auth.user);
   const service = useSelector((store: RootState) => store.auth.service);
 
   const onHandleLogout = async (): Promise<void> => {
     dispatch(logOut()).catch(console.log);
   };
- 
+
 
   return (
     <>
@@ -38,11 +39,8 @@ function NavBar(): JSX.Element {
                 <option className="gold" value="Казань">
                   Казань
                 </option>
-                <option className="gold" value="Великий Новгород">
-                  Великий Новгород
-                </option>
-                <option className="gold" value="Владивосток">
-                  Владивосток
+                <option className="gold" value="Екатеринбург">
+                  Екатеринбург
                 </option>
               </select>
             </div>

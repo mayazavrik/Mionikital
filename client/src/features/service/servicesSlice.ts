@@ -8,6 +8,7 @@ const initialState: ServicesState = {
   services: [],
   error: null,
   loading: true,
+  city: 'Санкт-Петербург',
 };
 
 export const loadServices = createAsyncThunk('services/load', () => api.fetchServices());
@@ -34,6 +35,9 @@ const servicesSlice = createSlice({
   reducers: {
     stopLoading: (state) => {
       state.loading = false;
+    },
+    chooseCity: (state, action) => {
+      state.city = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -95,5 +99,5 @@ const servicesSlice = createSlice({
       });
   },
 });
-export const { stopLoading } = servicesSlice.actions;
+export const { stopLoading, chooseCity } = servicesSlice.actions;
 export default servicesSlice.reducer;

@@ -14,6 +14,7 @@ export type ServicesState = {
   services: ServiceCard[];
   error: string | null;
   loading: boolean;
+  city: string;
 };
 export type Sale = {
   id: number;
