@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Sale, SaleId, ServicesState } from './types/type';
 import * as api from './api/api';
+import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
+import type { Service } from '../LogReg/type';
 
 const initialState: ServicesState = {
   services: [],
@@ -18,6 +20,13 @@ export const deleteSale = createAsyncThunk('services/sales/delete', (saleId: Sal
 );
 export const updateSale = createAsyncThunk('services/sales/upd', (sale: Sale) =>
   api.fetchUpdSale(sale),
+);
+
+export const upStatusService = createAsyncThunk('update/status', (id: Service) =>
+  fetchUpdateStatus(id),
+);
+export const deleteOneService = createAsyncThunk('service/delete', (id: Service) =>
+  fetchDeleteOne(id),
 );
 
 const servicesSlice = createSlice({
@@ -74,6 +83,19 @@ const servicesSlice = createSlice({
               ))
             : service,
         );
+      })
+      .addCase(upStatusService.fulfilled, (state, action) => {
+        if (action.payload.message === 'success') {
+          state.services = state.services.map((el) =>
+            el.id === action.payload.service.id ? (el = action.payload.service) : el,
+          );
+        }
+      })
+      .addCase(upStatusService.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(deleteOneService.fulfilled, (state, action) => {
+        state.services = state.services.filter((el) => el.id !== action.payload.id);
       });
   },
 });

@@ -2,6 +2,9 @@ import React from 'react';
 import video from './style/tesla.mp4';
 import './style/main.css';
 import SliderBlock from '../news/SliderBlock';
+import { BiSolidToTop } from "react-icons/bi";
+import Footer from '../footer/Footer';
+
 
 function MainPage(): JSX.Element {
   return (
@@ -67,7 +70,12 @@ function MainPage(): JSX.Element {
         {/* <NewsBlock/> */}
         <SliderBlock />
       </div>
+      {/* <button onClick={() => window.scrollTo({top:0, bahavior: 'smooth'})}><BiSolidToTop /></button> */}
+ 
     </div>
+    
+
+  //  <Icon icon="ion:chevron-up" color="white" />
   );
 }
 

@@ -1,3 +1,4 @@
+
 const {
   UslugaPrice,
   CarModel,
@@ -7,7 +8,7 @@ const {
 } = require('../../db/models');
 const router = require('express').Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const uslugasPrices = await UslugaPrice.findAll({
       include: [CarModel, Mark, Usluga],
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message });
   }
 });
-router.delete('/:uslugaPriceId', async (req, res) => {
+router.delete("/:uslugaPriceId", async (req, res) => {
   try {
     const { uslugaPriceId } = req.params;
     const result = await UslugaPrice.destroy({ where: { id: +uslugaPriceId } });
@@ -28,7 +29,7 @@ router.delete('/:uslugaPriceId', async (req, res) => {
     res.status(500).json({ message });
   }
 });
-router.put('/:uslugaPriceId', async (req, res) => {
+router.put("/:uslugaPriceId", async (req, res) => {
   try {
     const { uslugaPriceId } = req.params;
     const { mark_id, carModel_id, cost, usluga_id } = req.body;
@@ -48,7 +49,7 @@ router.put('/:uslugaPriceId', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { carModel_id, mark_id, service_id, cost, usluga_id } = req.body;
     const uslugaPrice = await UslugaPrice.create({
