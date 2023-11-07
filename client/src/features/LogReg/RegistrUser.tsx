@@ -47,7 +47,7 @@ function SignIn(): JSX.Element {
     select?.addEventListener('change', () => {
       const { value } = select;
       if (value) {
-        console.log(value);
+        // console.log(value);
         setTearif(value);
       }
     });

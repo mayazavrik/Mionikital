@@ -1,4 +1,4 @@
-import { UslugaPrice } from '../../usluga/types/types';
+import type { UslugaPrice } from '../../usluga/types/types';
 
 export type ServiceCard = {
   id: number;

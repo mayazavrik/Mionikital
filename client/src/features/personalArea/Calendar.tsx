@@ -11,6 +11,7 @@ export default function MyCalendar(): JSX.Element {
 
   return (
     <div>
+      <div>Ваши записи</div>
       <Calendar onChange={() => handleChange()} value={value} selectRange={Array.isArray(value)} />
     </div>
   );
