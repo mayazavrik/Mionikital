@@ -10,6 +10,7 @@ import './style/style.css';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
 import { chooseCity } from '../sales/salesSlice';
+import Footer from '../footer/Footer';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ function NavBar(): JSX.Element {
           <label className="form-label">
             Выберите город
             <div>
-              <select onChange={(e) => dispatch(chooseCity(e.target.value))} id="group" name="groupGold">
+              <select  onChange={(e) => dispatch(chooseCity(e.target.value))} id="group" name="groupGold">
                 <option className="gold" value="Санкт-Петербург">
                   Санкт-Петербург
                 </option>
@@ -47,40 +48,40 @@ function NavBar(): JSX.Element {
           </label>
         </div>
         <li className="nav-item">
-          <NavLink to="/main">На главную</NavLink>
+          <NavLink className='navlink' to="/main">На главную</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/services">Сервисы</NavLink>
+          <NavLink className='navlink' to="/services">Сервисы</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/news">Статьи</NavLink>
+          <NavLink className='navlink' to="/news">Статьи</NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/sales">Акции</NavLink>
+          <NavLink className='navlink' to="/sales">Акции</NavLink>
         </li>
 
         {service || user ? (
           <>
-            <NavLink style={{ color: 'orange' }} onClick={onHandleLogout} to="/">
+            <NavLink className='navlink' style={{ color: 'orange' }} onClick={onHandleLogout} to="/">
               logout
             </NavLink>
             {user && <div>Hello, {user.name}</div>}
             {service && <div>{service.title}</div>}
           </>
         ) : (
-          <li>
-            <NavLink to="reg">Вход</NavLink>
+          <li className="nav-item">
+            <NavLink className='navlink' to="reg">Вход</NavLink>
           </li>
         )}
 
         {service && (
-          <NavLink style={{ color: 'orange' }} to="/personalArea">
+          <NavLink className='navlink' style={{ color: 'orange' }} to="/personalArea">
             Личный кабинет
           </NavLink>
         )}
         {user?.id === 1 && (
-          <NavLink style={{ color: 'orange' }} to="/personalArea/admin">
+          <NavLink className='navlink' style={{ color: 'orange' }} to="/personalArea/admin">
             Личный кабинет
           </NavLink>
         )}
@@ -91,8 +92,12 @@ function NavBar(): JSX.Element {
           активным и пользователи смогут записаться или связаться с вами.
         </span>
       )}
+      
       <Outlet />
+      
+      <Footer/>
     </>
+    
   );
 }
 export default NavBar;

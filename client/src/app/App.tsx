@@ -50,7 +50,7 @@ function App(): JSX.Element {
   }, [service?.isChecked]);
 
   return (
-    <div className={`App ${isPageClickable ? '' : 'unclickable'}`}>
+    <div id='huge' className={`App ${isPageClickable ? '' : 'unclickable'}`}>
       {/* {isPageClickable == false && (
         <div
           style={{
@@ -65,7 +65,7 @@ function App(): JSX.Element {
       )} */}
       <Routes>
         <Route path="/" element={<NavBar />}>
-          
+     
           <Route path="/reg" element={<SignIn />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -75,10 +75,14 @@ function App(): JSX.Element {
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
+       
         </Route>
+       
+
       </Routes>
-      <Footer/>
+
     </div>
+    
   );
 }
 

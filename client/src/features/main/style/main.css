@@ -1,20 +1,3 @@
-body {
-  overflow-x: hidden;
-  font-family:
-    'Roboto Slab',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji';
-  display: flex;
-}
 
 #b1 {
   padding-top: 1.3%;
@@ -25,9 +8,11 @@ body {
   border-radius: 30px;
   border-width: 3px;
   margin: 24px;
+
 }
 
 .btn {
+ 
   font-family:
     Montserrat,
     -apple-system,
@@ -43,18 +28,50 @@ body {
     'Noto Color Emoji';
   font-weight: 700;
 }
+.btn:hover{
+  background:var(--yellow);
+}
 
-/* .content {
-  position: absolute;
-  bottom: 0;
-  color: #f1f1f1;
-  width: 100%;
-  padding-left: 400px;
-  padding-bottom: 200px;
-  padding-left: 350px;
- 
-  
+
+
+
+.newsPart {
+  height: 100px;
+}
+
+ .links_container {
+
+  display: flex;
+ justify-content: center;
+  align-items: center;
+} 
+/* штука которая уменьшает размер */
+/* .wrapper {
+  background-color: blue;
+height: 100%;
+width: 100%;
+
+
+
 } */
 
-.container {
+.sliderPart {
+  width: 100%;
 }
+
+.container {
+  background-color: black;
+  width: 100%;
+
+
+}
+.content {
+  background-color: aquamarine;
+}
+
+#background-video {
+  width: 100%;
+}
+
+
+

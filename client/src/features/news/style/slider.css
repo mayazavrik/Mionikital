@@ -1,22 +1,27 @@
-.container {
+/* .container {
     padding: 40px;
 
+background-color: blue;
 
   }
-  
+   */
 
-  .slick-list{
+  /* .slick-list{
     margin: auto;
   
     display: flex;
     flex-direction: column;
   
+  } */
+  .slick-dots{
+    color: yellow;
   }
-  
 
+.post__img{
+  width: 500px;
 
-.posts_slider_container{
-  display: flex;
-  background-color: yellow;
-  flex-direction: column;
+}
+
+.btn {
+  background-color: aqua;
 }

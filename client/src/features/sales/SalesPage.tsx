@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SaleItem from './SaleItem';
 import './style/style.css';
+// import pic from '../../images//17.png';
 import AddNewsForm from '../admin/AddNewsForm';
 import type { RootState } from '../../redux/store';
 import spinner from '../../assets/Spinner-1s-200px.svg';
@@ -19,7 +20,7 @@ function SalesPage(): JSX.Element {
   return (
     <div className="containerSaleForm">
       <h2>Тут страница с акциями</h2>
-
+{/* <img src={pic} alt='img'/> */}
       <div className="sales">
         <div className="sales__container">
           {sales.map((sale) =>

@@ -18,16 +18,16 @@ function SliderItem({ post }: { post: Post }): JSX.Element {
     <div className="posts_slide_container">
       <img className="post__img" src={post.img} alt="post" />
       <h2>{post.text}</h2>
-      <button onClick={() => onHandleRemove(post.id)} type="button">
+      <button className='btn' onClick={() => onHandleRemove(post.id)} type="button">
         Удалить статью
       </button>
 
       {modalActive && <ChangeNewsForm post={post} setModalActive={setModalActive} />}
 
-      <button onClick={() => setModalActive(!modalActive)} type="button">
+      <button className='btn' onClick={() => setModalActive(!modalActive)} type="button">
         Изменить статью
       </button>
-      <button type="button">
+      <button className='btn' type="button">
         <Link to={`/news/${post.id}`}>Посмотреть статью</Link>
       </button>
     </div>

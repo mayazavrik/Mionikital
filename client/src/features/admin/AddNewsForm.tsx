@@ -18,11 +18,11 @@ function AddNewsForm(): JSX.Element {
     <div className="form__container">
       <form className="form__add-post" onSubmit={(e) => onHandleSubmit(e)}>
         <label className="form__label">
-          Фото
+          Фото  
           <input value={img} onChange={(e) => setImg(e.target.value)} type="text" />
         </label>
         <label className="form__label ">
-          Текст статьи
+          Текст статьи  
           <input
             className="biginput"
             value={text}
