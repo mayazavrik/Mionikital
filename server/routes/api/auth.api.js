@@ -6,6 +6,7 @@ const { Service } = require('../../db/models');
 router.post('/sign-up', async (req, res) => {
   try {
     const { name, email, password, phone } = req.body;
+    console.log(req.body);
     let user = await User.findOne({ where: { email } });
     if (!name || !email || !password || !phone) {
       res.json({ message: 'Заполните  все поля' });

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Sale, SaleId, ServicesState } from './types/type';
+import type { CommentData, Sale, SaleId, ServicesState } from './types/type';
 import * as api from './api/api';
 import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
 import type { Service } from '../LogReg/type';
@@ -27,6 +27,12 @@ export const upStatusService = createAsyncThunk('update/status', (id: Service) =
 );
 export const deleteOneService = createAsyncThunk('service/delete', (id: Service) =>
   fetchDeleteOne(id),
+);
+export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>
+  api.fetchAddComments(comment),
+);
+export const deleteComment = createAsyncThunk('comments/delete', (id: number) =>
+  api.fetchDeleteComments(id),
 );
 
 const servicesSlice = createSlice({
@@ -96,6 +102,37 @@ const servicesSlice = createSlice({
       })
       .addCase(deleteOneService.fulfilled, (state, action) => {
         state.services = state.services.filter((el) => el.id !== action.payload.id);
+      })
+      .addCase(addComments.fulfilled, (state, action) => {
+        state.services.forEach((service) =>
+          service.id === action.payload.service_id
+            ? (service.Comments = [...service.Comments, action.payload])
+            : service,
+        );
+      })
+      .addCase(addComments.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(addComments.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteComment.fulfilled, (state, action) => {
+        state.services = state.services.map((service) =>
+          service.id === action.payload.service_id
+            ? {
+                ...service,
+                Comments: service.Comments.filter(
+                  (comment) => comment.id != action.payload.comment_id,
+                ),
+              }
+            : service,
+        );
+      })
+      .addCase(deleteComment.rejected, (state, action) => {
+        state.error = action.error.message ? action.error.message : null;
+      })
+      .addCase(deleteComment.pending, (state) => {
+        state.loading = true;
       });
   },
 });

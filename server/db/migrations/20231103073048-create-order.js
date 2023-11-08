@@ -15,6 +15,12 @@ module.exports = {
         references: { model: 'Users', key: 'id' },
         onDelete: 'CASCADE',
       },
+      service_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Services', key: 'id' },
+        onDelete: 'CASCADE',
+      },
       isClosed: {
         allowNull: false,
         type: Sequelize.BOOLEAN,

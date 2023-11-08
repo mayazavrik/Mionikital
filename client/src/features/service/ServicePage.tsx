@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -5,6 +6,7 @@ import type { RootState } from '../../redux/store';
 import SaleItem from '../sales/SaleItem';
 import UslugaContainter from '../usluga/UslugaContainter';
 import AddSaleForm from './AddSaleForm';
+import CommentsContainer from './CommentsContainer';
 import './style/style.css';
 
 export default function ServicePage(): JSX.Element {
@@ -13,13 +15,13 @@ export default function ServicePage(): JSX.Element {
   const service = useSelector((store: RootState) =>
     store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
   );
-  const servicePhoto = useSelector((store: RootState) => store.auth.service);
+  console.log(service);
 
   return (
     <div className="services-page">
       <div className="post-page">
         <h2>{service?.title}</h2>
-        <img className="photo" src={servicePhoto?.img} alt="" />
+        <img className="photo" src={service?.img} alt="" />
         <h3>Адрес: {service?.adress}</h3>
       </div>
       <div className="content">
@@ -30,14 +32,19 @@ export default function ServicePage(): JSX.Element {
           <button type="button" onClick={() => setFlag('usluga')}>
             Услуги
           </button>
+          <button type="button" onClick={() => setFlag('comments')}>
+            Отзывы
+          </button>
         </div>
         {flag === 'sale' ? (
           <div className="sales-container">
             <AddSaleForm service={service} />
             {service?.Sales.map((sale) => <SaleItem sale={sale} key={sale.id} />)}
           </div>
-        ) : (
+        ) : flag === 'usluga' ? (
           <UslugaContainter service={service} />
+        ) : (
+          <CommentsContainer service={service} />
         )}
       </div>
     </div>
