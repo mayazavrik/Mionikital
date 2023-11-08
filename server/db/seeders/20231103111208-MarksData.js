@@ -1,32 +1,26 @@
-'use strict';
-const { Mark } = require('../models');
+"use strict";
+const { Mark } = require("../models");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const marksData = [
       {
-        id: 1,
-        title: 'BMW',
+        title: "BMW",
       },
       {
-        id: 2,
-        title: 'Audi',
+        title: "Audi",
       },
       {
-        id: 3,
-        title: 'Toyota',
+        title: "Toyota",
       },
       {
-        id: 4,
-        title: 'Lada',
+        title: "Lada",
       },
       {
-        id: 5,
-        title: 'Nissan',
+        title: "Nissan",
       },
       {
-        id: 6,
-        title: 'Mercedes',
+        title: "Mercedes",
       },
     ];
     await Mark.bulkCreate(marksData);

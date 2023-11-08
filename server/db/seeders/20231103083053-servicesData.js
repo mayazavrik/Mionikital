@@ -6,7 +6,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     const servicesData = [
       {
-        id: 1,
         title: "СуперСервис",
         email: "4@4",
         password: await bcrypt.hash("123", 10),
@@ -17,7 +16,6 @@ module.exports = {
         isChecked: true,
       },
       {
-        id: 2,
         title: "Рольф-лахта",
         email: "5@5",
         password: await bcrypt.hash("123", 10),
@@ -28,7 +26,6 @@ module.exports = {
         isChecked: true,
       },
       {
-        id: 3,
         title: "Евро-авто",
         email: "6@6",
         password: await bcrypt.hash("123", 10),
@@ -39,7 +36,6 @@ module.exports = {
         isChecked: true,
       },
       {
-        id: 4,
         title: "СуперПуперСервис",
         email: "7@7",
         password: await bcrypt.hash("123", 10),
@@ -50,7 +46,6 @@ module.exports = {
         isChecked: true,
       },
       {
-        id: 5,
         title: "Рольф-вахта",
         email: "8@8",
         password: await bcrypt.hash("123", 10),
@@ -61,7 +56,6 @@ module.exports = {
         isChecked: true,
       },
       {
-        id: 6,
         title: "Мега-авто",
         email: "9@9",
         password: await bcrypt.hash("123", 10),
