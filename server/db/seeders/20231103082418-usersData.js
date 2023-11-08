@@ -1,31 +1,28 @@
-'use strict';
-const { User } = require('../models');
-const bcrypt = require('bcrypt');
+"use strict";
+const { User } = require("../models");
+const bcrypt = require("bcrypt");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const usersData = [
       {
-        id: 1,
-        name: 'Admin',
-        email: '1@1',
-        password: await bcrypt.hash('123', 10),
-        phone: '89212140441',
+        name: "Admin",
+        email: "1@1",
+        password: await bcrypt.hash("123", 10),
+        phone: "89212140441",
         isAdmin: true,
       },
       {
-        id: 2,
-        name: 'JohnDoe',
-        email: '2@2',
-        password: await bcrypt.hash('123', 10),
-        phone: '89212140442',
+        name: "JohnDoe",
+        email: "2@2",
+        password: await bcrypt.hash("123", 10),
+        phone: "89212140442",
       },
       {
-        id: 3,
-        name: 'JaneDoe',
-        email: '3@3',
-        password: await bcrypt.hash('123', 10),
-        phone: '89212140445',
+        name: "JaneDoe",
+        email: "3@3",
+        password: await bcrypt.hash("123", 10),
+        phone: "89212140445",
       },
     ];
     await User.bulkCreate(usersData);

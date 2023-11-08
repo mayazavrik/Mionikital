@@ -12,6 +12,7 @@ const initialState: ServicesState = {
 };
 
 export const loadServices = createAsyncThunk('services/load', () => api.fetchServices());
+
 export const addSales = createAsyncThunk('services/sales/add', (sale: Sale) =>
   api.fetchAddSale(sale),
 );
