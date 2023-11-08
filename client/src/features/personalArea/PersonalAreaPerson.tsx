@@ -30,7 +30,7 @@ function PersonalAreaPerson(): JSX.Element {
         Сортировка:{' '}
         <select>
           <option>Активные</option>
-          <option> Неактивные </option>
+          <option>Неактивные</option>
         </select>
       </div>
       {widt && (
