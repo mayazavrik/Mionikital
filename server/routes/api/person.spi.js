@@ -28,7 +28,6 @@ router.put("/person/status/:serviceId", async (req, res) => {
 });
 
 router.delete("/person/delete/:serviceId", async (req, res) => {
-  console.log("----------------------------------");
   try {
     const { serviceId } = req.params;
     const service = await Service.destroy({ where: { id: +serviceId } });

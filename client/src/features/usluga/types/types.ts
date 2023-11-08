@@ -29,10 +29,34 @@ export type UslugasState = {
   uslugas: Usluga[];
   marks: Mark[] | [];
   error: string | null;
+  order: OrderAndUslugaAndMArk[] | [];
   loading: boolean;
 };
 export type UslugaPriceState = {
   uslugasPrices: UslugaPrice[];
   error: string | null;
   loading: boolean;
+};
+
+export type OrderAdd = {
+  id: number;
+  user_id: number;
+  isClosed: boolean;
+  service_id: number;
+};
+export type OrderItemAdd = {
+  id: number;
+  order_id: number;
+  uslugaPrice_id: number;
+  date: string;
+};
+export type UslugasAdd = {
+  carModel: CarModel;
+  mark: Mark;
+  usluga: Usluga;
+};
+export type OrderAndUslugaAndMArk = {
+  order: OrderAdd;
+  orderItem: OrderItemAdd;
+  uslugas: UslugasAdd;
 };

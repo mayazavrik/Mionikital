@@ -5,12 +5,20 @@ import * as api from './api';
 const initialState: UslugasState = {
   uslugas: [],
   marks: [],
+  order: [],
   error: null,
   loading: true,
 };
 
 export const loadUslugas = createAsyncThunk('/uslugas/load', () => api.fetchUslugas());
 export const loadMarks = createAsyncThunk('/marks/load', () => api.fetchMarks());
+export const addOrder = createAsyncThunk(
+  '/api/order',
+  (obj: { user_id: number; service_id: number; data: string; uslugaPrice_id: number }) =>
+    api.fetchOrderAdd(obj),
+);
+// export const loadOrder = createAsyncThunk('/order/load', () => api.fetchOrderLoad());
+
 
 const uslugasSlice = createSlice({
   name: 'uslugas',
@@ -39,6 +47,9 @@ const uslugasSlice = createSlice({
       })
       .addCase(loadMarks.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(addOrder.fulfilled, (state, action) => {
+        state.order.push(action.payload);
       });
   },
 });

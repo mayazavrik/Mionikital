@@ -21,7 +21,6 @@ function NavBar(): JSX.Element {
     dispatch(logOut()).catch(console.log);
   };
 
-
   return (
     <>
       <div className="collapse navbar-collapse" id="navbarResponsive">
@@ -29,7 +28,11 @@ function NavBar(): JSX.Element {
           <label className="form-label">
             Выберите город
             <div>
-              <select onChange={(e) => dispatch(chooseCity(e.target.value))} id="group" name="groupGold">
+              <select
+                onChange={(e) => dispatch(chooseCity(e.target.value))}
+                id="group"
+                name="groupGold"
+              >
                 <option className="gold" value="Санкт-Петербург">
                   Санкт-Петербург
                 </option>
@@ -55,11 +58,9 @@ function NavBar(): JSX.Element {
         <li className="nav-item">
           <NavLink to="/news">Статьи</NavLink>
         </li>
-
         <li className="nav-item">
           <NavLink to="/sales">Акции</NavLink>
         </li>
-
         {service || user ? (
           <>
             <NavLink style={{ color: 'orange' }} onClick={onHandleLogout} to="/">
@@ -73,7 +74,6 @@ function NavBar(): JSX.Element {
             <NavLink to="reg">Вход</NavLink>
           </li>
         )}
-
         {service && (
           <NavLink style={{ color: 'orange' }} to="/personalArea">
             Личный кабинет
@@ -81,6 +81,11 @@ function NavBar(): JSX.Element {
         )}
         {user?.id === 1 && (
           <NavLink style={{ color: 'orange' }} to="/personalArea/admin">
+            Личный кабинет
+          </NavLink>
+        )}{' '}
+        {user && (
+          <NavLink style={{ color: 'orange' }} to="/personalArea/person">
             Личный кабинет
           </NavLink>
         )}

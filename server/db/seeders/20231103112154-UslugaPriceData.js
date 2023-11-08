@@ -1,5 +1,5 @@
 'use strict';
-const { UslugaPrice } = require('../models');
+const { UslugaPrice, Usluga} = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {

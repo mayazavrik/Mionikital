@@ -10,12 +10,13 @@ function PersonalArea(): JSX.Element {
   const [photo, setPhoto] = useState(true);
   const dispatch = useAppDispatch();
   const service = useSelector((store: RootState) => store.auth.service);
+  const user = useSelector((store: RootState) => store.auth.user);
   const [img, setImg] = useState(service?.img);
 
-  const handleServicePut = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
-    dispatch(updatePhoto({ img, id: service?.id }));
-  };
+  // const handleServicePut = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  //   e.preventDefault();
+  //   dispatch(updatePhoto({ img, id: service?.id }));
+  // };
 
   const navigate = useNavigate();
 
@@ -24,6 +25,12 @@ function PersonalArea(): JSX.Element {
       navigate('/');
     }
   }, [service]);
+
+  function handleServicePut(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    e.preventDefault();
+    dispatch(updatePhoto({ img, id: service?.id }));
+    throw new Error('Function not implemented.');
+  }
 
   return (
     <div>
@@ -47,7 +54,6 @@ function PersonalArea(): JSX.Element {
           </button>
         </>
       )}
-
       <div>Название салона: {service?.title}</div>
       <div>Адрес салона: {service?.adress}</div>
       <div>Email: {service?.email}</div>
