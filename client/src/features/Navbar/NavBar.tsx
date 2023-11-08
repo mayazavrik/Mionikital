@@ -15,7 +15,6 @@ import picnav from '../../images/16.png';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
-  const [city, setCity] = useState('Санкт-петербург');
   const user = useSelector((store: RootState) => store.auth.user);
   const service = useSelector((store: RootState) => store.auth.service);
 
@@ -37,7 +36,7 @@ function NavBar(): JSX.Element {
                 id="group"
                 name="groupGold"
               >
-                <option className="gold" value="Санкт-Петербург">
+                <option className="gold" value="Санкт-петербург">
                   Санкт-Петербург
                 </option>
                 <option className="gold" value="Москва">

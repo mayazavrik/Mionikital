@@ -11,6 +11,7 @@ export type ServiceCard = {
   Sales: Sale[];
   UslugaPrices: UslugaPrice[];
   Comments: Comment[];
+  Rates: Rate[];
 };
 export type Comment = {
   id: number;
@@ -18,16 +19,32 @@ export type Comment = {
   service_id: number;
   text: string;
   User: User;
-  createdAt: Date;
+  updatedAt: Date;
 };
 export type CommentData = {
   user_id: number;
   service_id: number;
   text: string;
+  rate?: number;
+};
+export type CommentRes = {
+  comment: Comment;
+  rate?: Rate;
+};
+export type Rate = {
+  id: number;
+  user_id: number;
+  service_id: number;
+  score: number;
 };
 export type CommentDelete = {
   comment_id: number;
   service_id: number;
+  rate_id: number;
+};
+export type CommentDeleteData = {
+  comment_id: number;
+  rate_id: number;
 };
 export type ServicesState = {
   services: ServiceCard[];

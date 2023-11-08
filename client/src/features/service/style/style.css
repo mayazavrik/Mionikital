@@ -157,3 +157,17 @@ input {
 .picservis {
   width: 120px;
 }
+.comm-content {
+  display: flex;
+}
+.comm-rate {
+  display: flex;
+  margin: 2px;
+}
+.comment-item {
+  margin-bottom: 10px;
+  background: orange;
+  border-radius: 2px;
+  padding: 5px;
+}
+

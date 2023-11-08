@@ -18,11 +18,10 @@ import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
-import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
+import { loadMarks, loadOrder, loadUslugas } from '../features/usluga/uslugaSlice';
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
-import Footer from '../features/footer/Footer';
 import PersonalAreaPerson from '../features/personalArea/PersonalAreaPerson';
 import ErrorPage from '../features/404/404';
 
@@ -43,6 +42,7 @@ function App(): JSX.Element {
     dispatch(loadMarks());
     dispatch(loadPrices());
     dispatch(loadSales());
+    dispatch(loadOrder());
   }, []);
 
   useEffect(() => {

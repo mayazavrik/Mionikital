@@ -5,7 +5,7 @@ import * as api from './api';
 const initialState: UslugasState = {
   uslugas: [],
   marks: [],
-  order: [],
+  orders: [],
   error: null,
   loading: true,
 };
@@ -17,8 +17,8 @@ export const addOrder = createAsyncThunk(
   (obj: { user_id: number; service_id: number; data: string; uslugaPrice_id: number }) =>
     api.fetchOrderAdd(obj),
 );
-// export const loadOrder = createAsyncThunk('/order/load', () => api.fetchOrderLoad());
-
+export const loadOrder = createAsyncThunk('/order/load', () => api.fetchOrdersLoad());
+// export const loadOrders = createAsyncThunk('/orders/load', () => api.fetchOrdersLoad());
 
 const uslugasSlice = createSlice({
   name: 'uslugas',
@@ -30,6 +30,18 @@ const uslugasSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(loadOrder.fulfilled, (state, action) => {
+        state.orders = action.payload;
+      })
+      .addCase(addOrder.fulfilled, (state, action) => {
+        if (!state.orders.find((order) => order.id === action.payload.id)) {
+          state.orders.push(action.payload);
+        } else {
+          state.orders = state.orders.map((order) =>
+            order.id === action.payload.id ? (order = action.payload) : order,
+          );
+        }
+      })
       .addCase(loadUslugas.fulfilled, (state, action) => {
         state.uslugas = action.payload;
       })
@@ -47,9 +59,6 @@ const uslugasSlice = createSlice({
       })
       .addCase(loadMarks.pending, (state) => {
         state.loading = true;
-      })
-      .addCase(addOrder.fulfilled, (state, action) => {
-        state.order.push(action.payload);
       });
   },
 });

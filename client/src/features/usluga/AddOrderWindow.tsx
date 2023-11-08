@@ -15,6 +15,8 @@ function AddOrderWindow({
 }): JSX.Element {
   const [dateTimeValue, setDateTimeValue] = useState('');
   const authUser = useSelector((store: RootState) => store.auth.user);
+  console.log(authUser);
+
   const dispatch = useAppDispatch();
   console.log(console.log(authUser));
 
@@ -25,6 +27,8 @@ function AddOrderWindow({
 
   const handlePaymentClick = (): void => {
     if (authUser) {
+      console.log(authUser.id);
+
       dispatch(
         addOrder({
           user_id: authUser.id,

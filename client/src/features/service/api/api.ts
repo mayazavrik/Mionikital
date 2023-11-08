@@ -1,4 +1,11 @@
-import type { CommentData, CommentDelete, Sale, SaleId, ServiceCard } from '../types/type';
+import type {
+  CommentData,
+  CommentDelete,
+  CommentRes,
+  Sale,
+  SaleId,
+  ServiceCard,
+} from '../types/type';
 
 export async function fetchServices(): Promise<ServiceCard[]> {
   const res = await fetch('/api/services');
@@ -30,7 +37,7 @@ export async function fetchUpdSale(sale: Sale): Promise<Sale> {
   });
   return res.json();
 }
-export async function fetchAddComments(comment: CommentData): Promise<Comment> {
+export async function fetchAddComments(comment: CommentData): Promise<CommentRes> {
   const res = await fetch('/api/comments', {
     method: 'POST',
     headers: {
@@ -41,8 +48,6 @@ export async function fetchAddComments(comment: CommentData): Promise<Comment> {
   return res.json();
 }
 export async function fetchDeleteComments(id: number): Promise<CommentDelete> {
-  console.log(id);
-
   const res = await fetch(`/api/comments/${id}`, {
     method: 'Delete',
   });
