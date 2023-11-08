@@ -33,6 +33,8 @@ module.exports = {
       },
       img: {
         type: Sequelize.TEXT,
+        defaultValue:
+          "https://cdn.dribbble.com/users/3726898/screenshots/15573342/media/bb37303858daeb66317d375a7b5a64a8.gif",
       },
       tarif: {
         allowNull: false,

@@ -14,6 +14,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
   const [usluga, setUsluga] = useState('');
   const uslugas = useSelector((store: RootState) => store.uslugas.uslugas);
   const marks = useSelector((store: RootState) => store.uslugas.marks);
+  const serviceAuth = useSelector((store: RootState) => store.auth.service);
 
   const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -67,7 +68,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
             )}
         </select>
         <input type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)} />
-        <button type="submit">Добавить услугу</button>
+        {serviceAuth && <button type="submit">Добавить услугу</button>}
       </form>
     </div>
   );

@@ -1,10 +1,9 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
-    static associate({ User, Service }) {
-      this.belongsTo(User, { foreignKey: 'user_id' });
-      this.belongsTo(Service, { foreignKey: 'service_id' });
+    static associate({ User }) {
+      this.belongsTo(User, { foreignKey: "user_id" });
     }
   }
   Order.init(
@@ -12,24 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       user_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: { model: 'Users', key: 'id' },
-        onDelete: 'CASCADE',
-      },
-      service_id: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: { model: 'Services', key: 'id' },
-        onDelete: 'CASCADE',
-      },
-      isClosed: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        references: { model: "Users", key: "id" },
+        onDelete: "CASCADE",
       },
     },
     {
       sequelize,
-      modelName: 'Order',
+      modelName: "Order",
     }
   );
   return Order;

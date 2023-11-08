@@ -33,12 +33,11 @@ export const signInService = createAsyncThunk('auth/signin/service', (service: S
 export const registrService = createAsyncThunk('auth/signup/service', (service: Service) =>
   fetchSignUpService(service),
 );
-
-export const logOut = createAsyncThunk('auth/logout', () => fetchLogOut());
-
 export const updatePhoto = createAsyncThunk('update/photo', (obj: Service) =>
   fetchUpdatePhoto(obj),
 );
+
+export const logOut = createAsyncThunk('auth/logout', () => fetchLogOut());
 
 const authSlice = createSlice({
   name: 'auth',
@@ -89,7 +88,7 @@ const authSlice = createSlice({
 
       .addCase(signInService.fulfilled, (state, action) => {
         if (action.payload.message === 'succes') {
-          // console.log(action.payload.service);
+          console.log(action.payload.service);
 
           state.service = action.payload.service;
         } else {
@@ -99,15 +98,27 @@ const authSlice = createSlice({
       .addCase(signInService.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;
       })
+
+      // .addCase(logOut.fulfilled, (state) => {
+      //   state.service = undefined;
+      //   state.user = undefined;
+      // })
+      // .addCase(logOut.rejected, (state, action) => {
+      //   state.error = action.error.message ? action.error.message : null;
+      // });
       .addCase(logOut.fulfilled, (state) => {
         state.service = undefined;
         state.user = undefined;
         state.error = '';
       })
-
+      // .addCase(logOut.rejected, (state, action) => {
+      //   state.error = action.error.message;
+      // });
       .addCase(updatePhoto.fulfilled, (state, action) => {
         if (state.service?.id === action.payload.service.id) {
           state.service.img = action.payload.service.img;
+        } else {
+          console.log(console.error);
         }
       });
   },

@@ -23,6 +23,7 @@ import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
 import Footer from '../features/footer/Footer';
+import PersonalAreaPerson from '../features/personalArea/PersonalAreaPerson';
 
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
@@ -65,7 +66,6 @@ function App(): JSX.Element {
       )} */}
       <Routes>
         <Route path="/" element={<NavBar />}>
-     
           <Route path="/reg" element={<SignIn />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -74,13 +74,14 @@ function App(): JSX.Element {
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
+          <Route path="/personalArea/person" element={<PersonalAreaPerson />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
        
         </Route>
        
 
       </Routes>
-
+      <Footer />
     </div>
     
   );
