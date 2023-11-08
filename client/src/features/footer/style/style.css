@@ -110,3 +110,20 @@ a.nav-link.active {
    
 }
 
+ .footeritem{
+    margin:0 1rem;
+    font-size:4rem;
+
+    color: #ffc400;
+  
+}
+.footeritem:hover{
+    color: orange;
+    padding-right: 2rem;
+    text-shadow: 1px 1px 1px orangered;
+}
+.footeritem{
+    text-decoration: none;
+    padding-right: .5rem;
+}
+

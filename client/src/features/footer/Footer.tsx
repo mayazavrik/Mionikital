@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import './style/style.css';
+import '../footer/style/style.css';
 import { NavLink, Outlet } from 'react-router-dom';
 import { BiSolidToTop } from 'react-icons/bi';
 
@@ -10,21 +10,28 @@ function Footer(): JSX.Element {
       <div className="footer" id="footer">
         <div className="box-container">
           <div className="box">
-            <NavLink className="footerlink" to="/main">
+            <li className='footeritem'><NavLink className="footerlink" to="/main">
               На главную
             </NavLink>
-
-            <NavLink className="footerlink" to="/services">
+</li>
+            <li className='footeritem'>
+                <NavLink className="footerlink" to="/services">
               Сервисы
             </NavLink>
+            </li>
 
+            <li className='footeritem'>
             <NavLink className="footerlink" to="/news">
               Статьи
             </NavLink>
-
+            </li>
+          
+            <li className='footeritem'>
             <NavLink className="footerlink" to="/sales">
               Акции
             </NavLink>
+            </li>
+           
           </div>
           <div className="box2">
             <h3>contact info</h3>
