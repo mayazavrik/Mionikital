@@ -13,15 +13,38 @@ background-color: blue;
     flex-direction: column;
   
   } */
-  .slick-dots{
-    color: yellow;
+  .slick-dots li{
+
+    background-color: yellow;
+    border-radius: 10px;
   }
 
+  .slick-dots li.slick-active{
+
+    background-color: yellow;
+    border-radius: 10px;
+  }
 .post__img{
   width: 500px;
 
 }
 
+ .slick-next {
+  background-color: yellow;
+  display: none;
+}
+.slick-prev {
+  background-color: yellow;
+  display: none;
+}
+
+
 .btn {
   background-color: aqua;
+}
+.posts_slide_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

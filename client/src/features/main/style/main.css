@@ -10,6 +10,45 @@
   margin: 24px;
 
 }
+.naming {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+
+ 
+}
+
+.stop-scrolling {
+  position: absolute;
+  top: 620px;
+}
+h1 {
+  font-size: 80px;
+  color: yellow
+ 
+  /* min-width: 100%;
+  min-height: 100%; */
+}
+
+/* #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  color: #f1f1f1;
+  width: 100%;
+  padding-left: 400px;
+  padding-bottom: 200px;
+} */
+
 
 .btn {
  

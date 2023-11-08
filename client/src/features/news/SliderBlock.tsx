@@ -19,7 +19,7 @@ export default function SliderBlock(): JSX.Element {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
   };
 
@@ -36,17 +36,7 @@ export default function SliderBlock(): JSX.Element {
       <Slider {...settings} ref={sliderRef}>
         {posts?.map((post) => <SliderItem key={post.id} post={post} />)}
 
-        {/* {posts.map((post) => (
-          <div className="posts_slide_container" key={post.id}>
-            <div>
-              <img src={post.img} alt="post" />
-            </div>
-            <div>{post.text}</div>
-            <button type="button">
-              <Link to={`/news/${post.id}`}>Посмотреть статью</Link>
-            </button>
-          </div>
-        ))} */}
+  
       </Slider>
 
       <button className='btn' onClick={previousSlide}>Previous</button>
