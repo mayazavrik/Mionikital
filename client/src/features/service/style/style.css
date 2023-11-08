@@ -100,3 +100,16 @@ input {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin: 10px;
 }
+.comm-content {
+  display: flex;
+}
+.comm-rate {
+  display: flex;
+  margin: 2px;
+}
+.comment-item {
+  margin-bottom: 10px;
+  background: orange;
+  border-radius: 2px;
+  padding: 5px;
+}

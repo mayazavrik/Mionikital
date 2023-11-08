@@ -22,7 +22,6 @@ import { loadMarks, loadOrder, loadUslugas } from '../features/usluga/uslugaSlic
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
-import Footer from '../features/footer/Footer';
 import PersonalAreaPerson from '../features/personalArea/PersonalAreaPerson';
 
 function App(): JSX.Element {

@@ -105,11 +105,24 @@ const servicesSlice = createSlice({
         state.services = state.services.filter((el) => el.id !== action.payload.id);
       })
       .addCase(addComments.fulfilled, (state, action) => {
-        state.services.forEach((service) =>
-          service.id === action.payload.service_id
-            ? (service.Comments = [...service.Comments, action.payload])
-            : service,
-        );
+        if (!action.payload.rate) {
+          state.services.forEach((service) =>
+            service.id === action.payload.comment.service_id
+              ? (service.Comments = [...service.Comments, action.payload.comment])
+              : service,
+          );
+        } else {
+          state.services.forEach((service) =>
+            service.id === action.payload.comment.service_id
+              ? (service.Comments = [...service.Comments, action.payload.comment])
+              : service,
+          );
+          state.services.forEach((service) =>
+            service.id === action.payload.comment.service_id
+              ? (service.Rates = [...service.Rates, action.payload.rate])
+              : service,
+          );
+        }
       })
       .addCase(addComments.rejected, (state, action) => {
         state.error = action.error.message ? action.error.message : null;
@@ -125,6 +138,14 @@ const servicesSlice = createSlice({
                 Comments: service.Comments.filter(
                   (comment) => comment.id !== action.payload.comment_id,
                 ),
+              }
+            : service,
+        );
+        state.services = state.services.map((service) =>
+          service.id === action.payload.service_id
+            ? {
+                ...service,
+                Rates: service.Rates.filter((rate) => rate.id !== action.payload.rate_id),
               }
             : service,
         );
