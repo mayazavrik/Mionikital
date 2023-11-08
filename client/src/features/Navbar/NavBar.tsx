@@ -11,6 +11,7 @@ import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
 import { chooseCity } from '../sales/salesSlice';
 import Footer from '../footer/Footer';
+import picnav from '../../images/16.png';
 
 function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,10 +25,12 @@ function NavBar(): JSX.Element {
   return (
     <>
       <div className="collapse navbar-collapse" id="navbarResponsive">
+      <img className='picnav' src={picnav} alt='pic' />
         <div className="nav-item">
+     
           <label className="form-label">
             Выберите город
-            <div>
+        
               <select
                 onChange={(e) => dispatch(chooseCity(e.target.value))}
                 id="group"
@@ -46,7 +49,7 @@ function NavBar(): JSX.Element {
                   Екатеринбург
                 </option>
               </select>
-            </div>
+           
           </label>
         </div>
         <li className="nav-item">

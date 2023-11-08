@@ -2,12 +2,12 @@
 #navbarResponsive{
   display: flex;
   width: 100%;
-  margin: 30px;
+  margin: 10px;
   flex-direction: row;
 
     align-items: center;
     justify-content: space-between;
-    padding: 0 60px;
+    padding: 0 30px;
 
     font-size: 100%;
     font-weight: 400;
@@ -106,9 +106,9 @@ html{
     background:var(--light-yellow);
     color:var(--black);
     cursor: pointer;
-    font-size: 1.7rem;
-    border-radius: .5rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    border-radius: 30px;
+    font-weight: 400;
     text-align: center;
 }
 .btn:hover{

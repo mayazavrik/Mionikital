@@ -56,7 +56,13 @@ input {
 }
 
 .biginput {
-  height: 200px;
+  background-color: rgb(78, 77, 77);
+  height: 100px;
+  border-radius: 20px;
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
 }
 
 .service-card {
@@ -64,6 +70,11 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+}
+
+.serviceimg{
+  width: 50%;
 }
 
 .form__label {
@@ -82,8 +93,10 @@ input {
 }
 .selector {
   display: flex;
-  width: 20vw;
+  width: 100%;
+  align-items: center;
   justify-content: space-between;
+
 }
 #usluga {
   display: flex;
@@ -100,6 +113,50 @@ input {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin: 10px;
 }
+.containerServiceForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sortServices{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid yellow;
+  border-radius: 20px;
+  width: 500px;
+  height: 400px;
+
+}
+
+.variant{
+  background-color: yellow;
+  width: 230px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+
+}
+
+.swiper {
+  padding: 30px;
+}
+
+.servicename {
+  font-size: xx-large;
+  font-weight: 900;
+  margin: 20px;
+}
+.serviceadres {
+  margin: 20px;
+}
+
+.picservis {
+  width: 120px;
+}
 .comm-content {
   display: flex;
 }
@@ -113,3 +170,4 @@ input {
   border-radius: 2px;
   padding: 5px;
 }
+

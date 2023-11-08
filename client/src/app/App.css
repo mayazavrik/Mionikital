@@ -30,3 +30,35 @@ body{
 }
 
 
+.font-link {
+	
+
+	font-family: 'Orbitron';
+	text-shadow: 2px 2px 2px orangered;
+
+
+  }
+
+  .error-window {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+  }
+  
+  .error-title {
+	margin: 50px;
+	font-size: 50px;
+	color: #ff0000;
+  }
+  
+  .error-message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  #error-video {
+width: 100%;
+  }

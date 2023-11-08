@@ -23,10 +23,10 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
     <div className="sale-card">
       <img src={sale.img} alt="saleImg" />
       <h3>{sale.text}</h3>
-      <button onClick={onHandleDelete} type="button" style={{ background: 'red' }}>
+      <button className='btn' onClick={onHandleDelete} type="button" >
         удалить акцию
       </button>
-      <button onClick={() => setFlag(!flag)} type="button">
+      <button className='btn' onClick={() => setFlag(!flag)} type="button">
         Редактировать
       </button>
       {flag && (
@@ -39,7 +39,7 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
             Картинка акции
             <input name="img" defaultValue={img} onChange={(e) => setImg(e.target.value)} />
           </label>
-          <button type="submit">Изменить</button>
+          <button className='btn' type="submit">Изменить</button>
         </form>
       )}
     </div>

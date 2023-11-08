@@ -12,10 +12,9 @@ function ChangeNewsForm({
   post: Post;
   setModalActive: Dispatch<SetStateAction<boolean>>;
 }): JSX.Element {
-
   const [img, setImg] = useState(post?.img);
   const [text, setText] = useState(post?.text);
-1
+  1;
   const dispatch = useAppDispatch();
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -38,7 +37,8 @@ function ChangeNewsForm({
         </label>
         <label className="form__label ">
           Текст статьи
-          <input
+          <textarea
+            minlength="20"
             className="biginput"
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -46,10 +46,10 @@ function ChangeNewsForm({
           />
         </label>
 
-        <button className="addbtn" type="submit">
+        <button className="btn" type="submit">
           Сохранить изменения
         </button>
-        <button className="backbtn" type="button">
+        <button onClick={() => setModalActive(false)} className="btn" type="button">
           Отмена
         </button>
       </form>

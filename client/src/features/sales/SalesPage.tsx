@@ -19,7 +19,7 @@ function SalesPage(): JSX.Element {
 
   return (
     <div className="containerSaleForm">
-      <h2>Тут страница с акциями</h2>
+   
 {/* <img src={pic} alt='img'/> */}
       <div className="sales">
         <div className="sales__container">

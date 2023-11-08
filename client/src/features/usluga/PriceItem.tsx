@@ -41,16 +41,16 @@ export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Elemen
 
   return (
     <div className="price-item">
-      <h4>Вид услуги: {price.Usluga.title}|</h4>
-      <h4> Марка: {price.Mark.title}|</h4>
-      <h4> Модель: {price.CarModel.title}|</h4>
-      <h4>Цена: {price.cost} рублей</h4>
+      <h4 className='table'>Вид услуги: {price.Usluga.title}|</h4>
+      <h4 className='table'> Марка: {price.Mark.title}|</h4>
+      <h4 className='table'> Модель: {price.CarModel.title}|</h4>
+      <h4 className='table'>Цена: {price.cost} рублей</h4>
       {serviceAuth && (
         <>
-          <button type="button" style={{ background: 'red' }} onClick={onHandleDelete}>
+          <button className='btn' type="button" style={{ background: 'red' }} onClick={onHandleDelete}>
             Удалить услугу
           </button>
-          <button type="button" onClick={() => setFlag(!flag)}>
+          <button className='btn' type="button" onClick={() => setFlag(!flag)}>
             Изменить услугу
           </button>
         </>
@@ -58,11 +58,11 @@ export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Elemen
       {!serviceAuth && (
         <>
           {userAuth ? (
-            <button type="submit" onClick={handleButtonClick}>
+            <button className='btn' type="submit" onClick={handleButtonClick}>
               Записаться на услугу
             </button>
           ) : (
-            <button type="submit" onClick={handleButtonClickRega}>
+            <button className='btn' type="submit" onClick={handleButtonClickRega}>
               Записаться на услугу
             </button>
           )}
