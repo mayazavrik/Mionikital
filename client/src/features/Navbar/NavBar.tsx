@@ -51,20 +51,33 @@ function NavBar(): JSX.Element {
           </label>
         </div>
         <li className="nav-item">
-          <NavLink className='navlink' to="/main">На главную</NavLink>
+          <NavLink className="navlink" to="/main">
+            На главную
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className='navlink' to="/services">Сервисы</NavLink>
+          <NavLink className="navlink" to="/services">
+            Сервисы
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className='navlink' to="/news">Статьи</NavLink>
+          <NavLink className="navlink" to="/news">
+            Статьи
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className='navlink' to="/sales">Акции</NavLink>
+          <NavLink className="navlink" to="/sales">
+            Акции
+          </NavLink>
         </li>
         {service || user ? (
           <>
-            <NavLink className='navlink' style={{ color: 'orange' }} onClick={onHandleLogout} to="/">
+            <NavLink
+              className="navlink"
+              style={{ color: 'orange' }}
+              onClick={onHandleLogout}
+              to="/"
+            >
               logout
             </NavLink>
             {user && <div>Hello, {user.name}</div>}
@@ -72,29 +85,26 @@ function NavBar(): JSX.Element {
           </>
         ) : (
           <li className="nav-item">
-            <NavLink className='navlink' to="reg">Вход</NavLink>
+            <NavLink className="navlink" to="reg">
+              Вход
+            </NavLink>
           </li>
         )}
         {service && (
-          <NavLink className='navlink' style={{ color: 'orange' }} to="/personalArea">
+          <NavLink className="navlink" style={{ color: 'orange' }} to="/personalArea">
             Личный кабинет
           </NavLink>
         )}
-        {user?.id === 1 && (
-          <NavLink className='navlink' style={{ color: 'orange' }} to="/personalArea/admin">
+        {user?.isAdmin && (
+          <NavLink className="navlink" style={{ color: 'orange' }} to="/personalArea/admin">
             Личный кабинет
           </NavLink>
         )}{' '}
-        {user && (
+        {user?.isAdmin === false && (
           <NavLink style={{ color: 'orange' }} to="/personalArea/person">
             Личный кабинет
           </NavLink>
         )}{' '}
-        {user && (
-          <NavLink style={{ color: 'orange' }} to="/personalArea/person">
-            Личный кабинет
-          </NavLink>
-        )}
       </div>
       {service?.isChecked === false && (
         <span className="centered-text" style={{ textAlign: 'center', fontSize: '15px' }}>
@@ -102,12 +112,11 @@ function NavBar(): JSX.Element {
           активным и пользователи смогут записаться или связаться с вами.
         </span>
       )}
-      
+
       <Outlet />
-      
-      <Footer/>
+
+      <Footer />
     </>
-    
   );
 }
 export default NavBar;

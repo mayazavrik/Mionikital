@@ -122,7 +122,7 @@ const servicesSlice = createSlice({
             ? {
                 ...service,
                 Comments: service.Comments.filter(
-                  (comment) => comment.id != action.payload.comment_id,
+                  (comment) => comment.id !== action.payload.comment_id,
                 ),
               }
             : service,
