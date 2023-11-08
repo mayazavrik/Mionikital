@@ -1,4 +1,4 @@
-import type { Sale, SaleId, ServiceCard } from '../types/type';
+import type { CommentData, CommentDelete, Sale, SaleId, ServiceCard } from '../types/type';
 
 export async function fetchServices(): Promise<ServiceCard[]> {
   const res = await fetch('/api/services');
@@ -27,6 +27,24 @@ export async function fetchUpdSale(sale: Sale): Promise<Sale> {
       'Content-type': 'application/json',
     },
     body: JSON.stringify({ img: sale.img, text: sale.text, service_id: sale.service_id }),
+  });
+  return res.json();
+}
+export async function fetchAddComments(comment: CommentData): Promise<Comment> {
+  const res = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(comment),
+  });
+  return res.json();
+}
+export async function fetchDeleteComments(id: number): Promise<CommentDelete> {
+  console.log(id);
+
+  const res = await fetch(`/api/comments/${id}`, {
+    method: 'Delete',
   });
   return res.json();
 }
