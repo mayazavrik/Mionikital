@@ -25,7 +25,7 @@ export default function CommentItem({
   if (rate) {
     rating = rate.score;
   }
-  console.log(rate);
+  console.log(new Date(comment.updatedAt).toLocaleDateString('ru-Ru'));
 
   return (
     <div className="comment-item">
@@ -36,7 +36,7 @@ export default function CommentItem({
         </section>
         <section className="comm-rate">
           <ReactStars value={rating} edit={false} count={5} size={10} activeColor="#ffd700" />
-          <p>{comment.updatedAt}</p>
+          <p>{new Date(comment.updatedAt).toLocaleDateString('ru-Ru')}</p>
         </section>
       </div>
       <p>{comment.text}</p>
