@@ -149,6 +149,15 @@ input {
   font-size: xx-large;
   font-weight: 900;
   margin: 20px;
+  padding-right: .5rem;
+}
+.servicename:hover {
+  padding-right: 2rem;
+  color: yellow;
+  font-size: 40px;
+  font-weight: 900;
+  margin: 20px;
+  padding-right: .5rem;
 }
 .serviceadres {
   margin: 20px;
@@ -167,7 +176,23 @@ input {
 .comment-item {
   margin-bottom: 10px;
   background: orange;
-  border-radius: 2px;
+  border-radius: 20px;
   padding: 5px;
+  width: 100%;
 }
-
+.comments-content {
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  flex-direction: column;
+  border: 1px solid yellow;
+  margin: 20px;
+  border-radius: 10px;
+  height: 100%;
+  font-size: x-large;
+}
+.servicerate {
+  font-size: x-large;
+}

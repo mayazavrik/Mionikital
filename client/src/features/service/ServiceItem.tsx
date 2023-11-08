@@ -13,14 +13,14 @@ export default function ServiceItem({ service }: { service: ServiceCard }): JSX.
   }
   return (
     <div className="service-card">
-      <h3>{service.title}</h3>
+      <h3 className='servicename'>{service.title}</h3>
       <br />
       <img className="serviceimg" src={service.img} alt="servicePhoto" />
-      <h4>Адрес: {service.adress}</h4>
-      <button className="btn" type="button">
+      <h3 className='serviceadres'>Адрес: {service.adress}</h3>
+      {/* <button className="btn" type="button">
         x
-      </button>
-      <h4>
+      </button> */}
+      <h4 className='servicerate'>
         Рейтинг:
         <ReactStars
           isHalf={true}
@@ -31,7 +31,7 @@ export default function ServiceItem({ service }: { service: ServiceCard }): JSX.
           activeColor="#ffd700"
         />
       </h4>
-      <h4>Отзывы:{comments}</h4>
+      <h4 className='servicerate'>Отзывы:{comments}</h4>
       <button type="button">
         <Link to={`/services/${service.id}`}>Подробнее</Link>
       </button>

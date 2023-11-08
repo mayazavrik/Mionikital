@@ -87,3 +87,11 @@ body {
     align-items: center;
     justify-content: center;
   } */
+
+  .post-page__text {
+    padding: 50px;
+  }
+
+  .post-page__img {
+    padding: 50px;
+  }
