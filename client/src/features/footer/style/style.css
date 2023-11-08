@@ -1,23 +1,29 @@
 
 .footer{
- 
-    padding-bottom: 8rem;
+ background-color: black;
+ width: 100%;
     display: flex;
-    flex-direction: column;
-    height: 30vh;
+    flex-direction: row;
+   
+   
 }
 a{
     text-decoration: none;
 }
 .footer .box-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap:1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  padding: 50px;
+    /* grid-template-rows: repeat(auto-fit, minmax(25rem, 1fr)); */
+    /* gap:20px; */
 }
 
 .footer .box-container .box2 h3{
     font-size: 2.2rem;
-    padding:1rem 0;
+    /* padding:1rem 0; */
     color:gold;
 }
 .footer .box-container .box h3{
@@ -26,7 +32,9 @@ a{
 
   
 }
-
+.box {
+    margin-left: 20px;
+}
 .footer .box-container .box2 a{
     display: block;
     font-size: 1.4rem;
@@ -50,6 +58,16 @@ a{
     padding-right: .5rem;
   
 }
+.footer .box-container .box .footerlink{
+    padding-right: .5rem;
+    color: rgb(254, 254, 254);
+  
+}
+.footer .box-container .box .footerlink:hover{
+    padding-right: 2rem;
+    color: yellow;
+  
+}
 
 
 .footer .box-container .box2 a:hover i{
@@ -63,10 +81,10 @@ a{
 
 .footer .credit{
     text-align: center;
-    padding:1.5rem;
+    /* padding:1.5rem;
     padding-top: 2.5rem;
-    margin-top: 2rem;
-    border-top: var(--border);
+    margin-top: 2rem; */
+
     font-size: 2rem;
     color:gold;
 }
@@ -81,3 +99,14 @@ a.nav-link.active {
     border-bottom: solid 2.5px #0E1333;
     padding-bottom: 2.5em;
 }
+
+
+.totop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+   
+}
+

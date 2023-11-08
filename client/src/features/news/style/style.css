@@ -37,6 +37,7 @@ body {
  img {
    width: 80vw;
    margin: 20px;
+   border-radius: 20px;
   }
 
   h3 {
@@ -57,3 +58,32 @@ body {
     border-width: 3px;
     margin: 24px;
   }
+  .posts__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 70px;
+  }
+
+  .post__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    border: 1px solid yellow; 
+    border-radius: 50px;
+  }
+
+  h2{
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+
+  /* .swiper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
