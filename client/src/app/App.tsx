@@ -18,7 +18,7 @@ import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
-import { loadMarks, loadUslugas } from '../features/usluga/uslugaSlice';
+import { loadMarks, loadOrder, loadUslugas } from '../features/usluga/uslugaSlice';
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
@@ -42,6 +42,7 @@ function App(): JSX.Element {
     dispatch(loadMarks());
     dispatch(loadPrices());
     dispatch(loadSales());
+    dispatch(loadOrder());
   }, []);
 
   useEffect(() => {
@@ -51,7 +52,7 @@ function App(): JSX.Element {
   }, [service?.isChecked]);
 
   return (
-    <div id='huge' className={`App ${isPageClickable ? '' : 'unclickable'}`}>
+    <div id="huge" className={`App ${isPageClickable ? '' : 'unclickable'}`}>
       {/* {isPageClickable == false && (
         <div
           style={{
@@ -76,14 +77,10 @@ function App(): JSX.Element {
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
           <Route path="/personalArea/person" element={<PersonalAreaPerson />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
-       
         </Route>
-       
-
       </Routes>
       <Footer />
     </div>
-    
   );
 }
 

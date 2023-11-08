@@ -29,7 +29,7 @@ export type UslugasState = {
   uslugas: Usluga[];
   marks: Mark[] | [];
   error: string | null;
-  order: OrderAndUslugaAndMArk[] | [];
+  orders: OrderAdd[];
   loading: boolean;
 };
 export type UslugaPriceState = {
@@ -41,22 +41,25 @@ export type UslugaPriceState = {
 export type OrderAdd = {
   id: number;
   user_id: number;
-  isClosed: boolean;
-  service_id: number;
+  OrderItems: OrderItemAdd[];
 };
 export type OrderItemAdd = {
   id: number;
   order_id: number;
   uslugaPrice_id: number;
   date: string;
+  UslugaPrice: UslugaPrice;
 };
 export type UslugasAdd = {
   carModel: CarModel;
   mark: Mark;
   usluga: Usluga;
 };
-export type OrderAndUslugaAndMArk = {
-  order: OrderAdd;
-  orderItem: OrderItemAdd;
-  uslugas: UslugasAdd;
+export type UslugaPriceAdd = {
+  id: number;
+  usluga_id: number;
+  service_id: number;
+  cost: number;
+  mark_id: number;
+  carModel_id: number;
 };

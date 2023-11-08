@@ -15,7 +15,7 @@ export default function ServicePage(): JSX.Element {
   const service = useSelector((store: RootState) =>
     store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
   );
-  console.log(service);
+  // console.log(service);
 
   return (
     <div className="services-page">
