@@ -39,8 +39,8 @@ export default function SliderBlock(): JSX.Element {
   
       </Slider>
 
-      <button className='btn' onClick={previousSlide}>Previous</button>
-      <button className='btn' onClick={nextSlide}>Next</button>
+      {/* <button className='btn' onClick={previousSlide}>Previous</button>
+      <button className='btn' onClick={nextSlide}>Next</button> */}
     </div>
   );
 }
