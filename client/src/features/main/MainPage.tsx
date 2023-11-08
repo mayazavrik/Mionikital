@@ -28,7 +28,7 @@ function MainPage(): JSX.Element {
       <div className="container">
         <div className="forname">
           <div className={`naming ${classStopScroll}`}>
-            <h1>Garage Guru</h1>
+            <h1 className="font-link" id='bigName'>Garage Guru</h1>
           </div>
         </div>
 

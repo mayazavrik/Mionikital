@@ -4,16 +4,29 @@
   align-items: center;
   justify-content: center;
 }
-.price-item {
-  display: flex;
-}
+
 .usluga-cont {
-  height: 300px;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  border: 1px solid #c1c1c1;
-  padding: 3px;
+  border: 1px solid yellow;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+
+}
+
+select {
+  font-size: x-large;
+  background-color: #f9d806;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px
 }
 
 .containerPay {
@@ -41,4 +54,34 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
+}
+.content {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.price-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: x-large;
+}
+
+.prices {
+  margin: 20px;
+  border: 1px solid yellow;
+  border-radius: 20px;
+}
+
+.table{
+  border: 1px solid yellow;
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+}
+.costinput {
+  background-color: #f9d806;
+  
 }

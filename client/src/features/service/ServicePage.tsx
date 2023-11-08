@@ -8,6 +8,7 @@ import UslugaContainter from '../usluga/UslugaContainter';
 import AddSaleForm from './AddSaleForm';
 import CommentsContainer from './CommentsContainer';
 import './style/style.css';
+import picservis from '../../images/4.png';
 
 export default function ServicePage(): JSX.Element {
   const { serviceId } = useParams();
@@ -19,20 +20,22 @@ export default function ServicePage(): JSX.Element {
 
   return (
     <div className="services-page">
+      
       <div className="post-page">
-        <h2>{service?.title}</h2>
+        <h2 className='servicename'>{service?.title}</h2>
         <img className="photo" src={service?.img} alt="" />
-        <h3>Адрес: {service?.adress}</h3>
+        <h3 className='serviceadres'>Адрес: {service?.adress}</h3>
       </div>
       <div className="content">
         <div className="selector">
-          <button type="button" onClick={() => setFlag('sale')}>
+        <img className='picservis' src={picservis} alt='pic' />
+          <button className='btn' type="button" onClick={() => setFlag('sale')}>
             Акции и скидки
           </button>
-          <button type="button" onClick={() => setFlag('usluga')}>
+          <button className='btn' type="button" onClick={() => setFlag('usluga')}>
             Услуги
           </button>
-          <button type="button" onClick={() => setFlag('comments')}>
+          <button className='btn' type="button" onClick={() => setFlag('comments')}>
             Отзывы
           </button>
         </div>

@@ -19,6 +19,7 @@ export default function SliderBlock(): JSX.Element {
     dots: true,
     infinite: false,
     speed: 500,
+    arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
   };

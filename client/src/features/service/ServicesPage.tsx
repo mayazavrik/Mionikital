@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import ServiceItem from './ServiceItem';
 import './style/style.css';
+import pic from '../../images/6.png';
 
 export default function ServicesPage(): JSX.Element {
   const city = useSelector((store: RootState) => store.sales.city);
@@ -30,18 +31,19 @@ export default function ServicesPage(): JSX.Element {
 
   return (
     <div className="containerServiceForm">
-      <h2>Тут страница с сервисами</h2>
+   
 
       <div className="sortServices">
-        <select name="mark" defaultValue={mark} onChange={(e) => setMark(e.target.value)}>
-          <option value="Все">Выберите марку</option>
+      <img className='carpic' src={pic} alt='pic' />
+        <select className='variant' name="mark" defaultValue={mark} onChange={(e) => setMark(e.target.value)}>
+          <option className='choose' value="Все">Выберите марку</option>
           {marks.map((marka) => (
             <option key={marka.id} value={marka.title}>
               {marka.title}
             </option>
           ))}
         </select>
-        <select name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
+        <select className='variant' name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
           <option value="Все">Выберите услугу</option>
           {uslugas.map((uslugaa) => (
             <option key={uslugaa.id} value={uslugaa.title}>

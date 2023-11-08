@@ -14,25 +14,24 @@
  margin: 20px;
  padding: 20px;
  width: 50%;
- border-radius: 20px;
+ border-radius: 30px;
  display: flex;
  align-items: center;
- justify-content: center;
+ justify-content: space-around;
  flex-direction: column;
 }
 
 input {
   background-color: rgb(78, 77, 77);
   border-radius: 20px;
-
+width: 300px;
    margin-top: 20px;
    margin-bottom: 20px;
    color: black;
+   padding: 10px;
 }
 
-.biginput{
-  height: 200px;
-}
+
 
 
 .addbtn {
@@ -43,4 +42,7 @@ input {
 
 .form__label {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

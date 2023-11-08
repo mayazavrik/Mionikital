@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../redux/store';
 import type { RootState } from '../../redux/store';
 import type { UslugaPrice } from './types/types';
 import { updPrice } from './uslugaPriceSlice';
+import './style/style.css';
 
 export default function UpdateUslugaForm({
   price,
@@ -42,9 +43,9 @@ export default function UpdateUslugaForm({
   };
 
   return (
-    <div>
+    <div className='uslugadiv'>
       <form id="usluga" onSubmit={onHandleUpd}>
-        <select name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
+        <select className='uslugaselect' name="usluga" defaultValue={usluga} onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
           {uslugas.map((uslugaa) => (
             <option key={uslugaa.id} value={uslugaa.title}>
@@ -52,7 +53,7 @@ export default function UpdateUslugaForm({
             </option>
           ))}
         </select>
-        <select
+        <select className='uslugaselect'
           name="mark"
           id="mark"
           defaultValue={marka}
@@ -67,7 +68,7 @@ export default function UpdateUslugaForm({
             </option>
           ))}
         </select>
-        <select name="model" defaultValue={model} onChange={(e) => setModel(e.target.value)}>
+        <select className='uslugaselect' name="model" defaultValue={model} onChange={(e) => setModel(e.target.value)}>
           <option value="">Выберите модель авто</option>
           {marka !== '' &&
             marks.map(

@@ -24,6 +24,7 @@ import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
 import Footer from '../features/footer/Footer';
 import PersonalAreaPerson from '../features/personalArea/PersonalAreaPerson';
+import ErrorPage from '../features/404/404';
 
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
@@ -77,6 +78,7 @@ function App(): JSX.Element {
           <Route path="/personalArea/person" element={<PersonalAreaPerson />} />
           <Route path="/news/:postId" element={<NewsPostPage />} />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

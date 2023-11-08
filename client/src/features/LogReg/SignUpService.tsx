@@ -48,16 +48,16 @@ function SignUpService(): JSX.Element {
       {signService === false ? (
         <SignInService />
       ) : (
-        <div>
-          <h1>Регистрация (Сервиса)</h1>
+        <div className='regcont'>
+          <h1 >Регистрация Сервиса</h1>
           <form
-            style={{ display: 'flex', flexDirection: 'column' }}
+            
             onSubmit={(e) => {
               void onHandleServiceAdd(e);
             }}
           >
-            <label htmlFor="a">
-              Title
+            <label className='form-label' htmlFor="a">
+              Название сервиса
               <input
                 placeholder="title"
                 type="text"
@@ -66,7 +66,7 @@ function SignUpService(): JSX.Element {
                 required
               />
             </label>
-            <label htmlFor="a">
+            <label className='form-label' htmlFor="a">
               Email
               <input
                 placeholder="email"
@@ -76,8 +76,8 @@ function SignUpService(): JSX.Element {
                 required
               />
             </label>
-            <label htmlFor="a">
-              Password
+            <label className='form-label' htmlFor="a">
+              Пароль
               <input
                 placeholder="password"
                 type="text"
@@ -86,8 +86,8 @@ function SignUpService(): JSX.Element {
                 required
               />
             </label>
-            <label htmlFor="a">
-              Adress
+            <label className='form-label' htmlFor="a">
+              Адрес сервиса
               <input
                 placeholder="adress"
                 type="text"
@@ -96,8 +96,8 @@ function SignUpService(): JSX.Element {
                 required
               />
             </label>
-            <label htmlFor="a">
-              Phone +7
+            <label className='form-label' htmlFor="a">
+              Телефон +7
               <input
                 placeholder="phone"
                 type="tel"
@@ -115,21 +115,24 @@ function SignUpService(): JSX.Element {
                 required
               />
             </label>
-            <label htmlFor="a">
-              Tarif
+            <label className='form-label' htmlFor="a">
+              Тариф
               <select style={{ width: '300px' }} id="selectClickService">
                 <option value="Service" disabled selected>
-                  Выберите
+                  Выберите тариф
                 </option>
                 <option value="5000$">На месяц 5000$</option>
                 <option value="10000$">На год 10000$</option>
               </select>
             </label>
-            <button type="submit">save</button>
-            <button type="submit">Забыли пароль?</button>
+            <div className='btns'>
+            <button className='btn' type="submit">Зарегистрироваться</button>
+            <button className='btn' type="submit">Забыли пароль?</button>
+            </div>
+
           </form>
-          <button type="submit" onClick={() => setSignService(false)}>
-            У меня есть
+          <button className='btn' type="submit" onClick={() => setSignService(false)}>
+            У меня уже есть аккаунт
           </button>
         </div>
       )}

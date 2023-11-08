@@ -18,6 +18,12 @@ background-color: blue;
     background-color: yellow;
     border-radius: 10px;
   }
+   .slick-dots{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
 
   .slick-dots li.slick-active{
 
@@ -25,17 +31,8 @@ background-color: blue;
     border-radius: 10px;
   }
 .post__img{
-  width: 500px;
+  width: 50%;
 
-}
-
- .slick-next {
-  background-color: yellow;
-  display: none;
-}
-.slick-prev {
-  background-color: yellow;
-  display: none;
 }
 
 
@@ -47,4 +44,16 @@ background-color: blue;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
 }
+
+.slick-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+.bigslider {  display: flex;
+  justify-content: center;
+  align-items: center;}

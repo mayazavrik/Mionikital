@@ -8,9 +8,9 @@ export default function ServiceItem({ service }: { service: ServiceCard }): JSX.
     <div className="service-card">
       <h3>{service.title}</h3>
       <br />
-      <img src={service.img} alt="servicePhoto" />
+      <img className='serviceimg'  src={service.img} alt="servicePhoto" />
       <h4>Адрес: {service.adress}</h4>
-      <button type="button">
+      <button className='btn' type="button">
         <Link to={`/services/${service.id}`}>Подробнее</Link>
       </button>
     </div>

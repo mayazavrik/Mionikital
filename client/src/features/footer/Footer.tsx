@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import '../footer/style/style.css';
 import { NavLink, Outlet } from 'react-router-dom';
 import { BiSolidToTop } from 'react-icons/bi';
+import pic from '../../images/7.png';
 
 function Footer(): JSX.Element {
   return (
@@ -61,13 +62,16 @@ function Footer(): JSX.Element {
           <div className="credit shadow">
             {' '}
             created by LAPOCHKI
+        
             <button
               className="totop"
               onClick={() => window.scrollTo({ top: 0, bahavior: 'smooth' })}
             >
               <BiSolidToTop />
             </button>
+            <img className='carpic' src={pic} alt='pic' />
           </div>
+       
         </div>
       </div>
      

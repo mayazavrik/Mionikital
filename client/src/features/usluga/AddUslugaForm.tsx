@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../redux/store';
 import type { RootState } from '../../redux/store';
 import type { ServiceCard } from '../service/types/type';
 import { addUsluga } from './uslugaPriceSlice';
+import './style/style.css';
 
 export default function AddUslugaForm({ service }: { service: ServiceCard }): JSX.Element {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
   };
 
   return (
-    <div>
+    <div className='uslugas'>
       <form id="usluga" onSubmit={onHandleAdd}>
         <select name="usluga" onChange={(e) => setUsluga(e.target.value)}>
           <option value="1">Выберите услугу</option>
@@ -67,7 +68,7 @@ export default function AddUslugaForm({ service }: { service: ServiceCard }): JS
                 )),
             )}
         </select>
-        <input type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)} />
+        <input className='costinput' type="number" name="cost" value={cost} onChange={(e) => setCost(e.target.value)} />
         {serviceAuth && <button type="submit">Добавить услугу</button>}
       </form>
     </div>

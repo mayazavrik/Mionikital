@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,6 +16,7 @@ function NewsBlock(): JSX.Element {
   const posts = useSelector((store: RootState) => store.news.posts);
   const error = useSelector((store: RootState) => store.news.error);
   const loading = useSelector((store: RootState) => store.news.loading);
+  // const [modalActive, setModalActive]=useState(false)
 
   const checkError = <h1 style={{ color: 'red' }}>{error}</h1>;
   const spin = <img src={spinner} alt="preloader" />;
@@ -37,7 +38,7 @@ function NewsBlock(): JSX.Element {
   // slideShow();
   return (
     <div className="containerPostForm">
-      <h2>Тут страница со статьями и форма</h2>
+  
       <AddNewsForm />
 
       <div className="swiper">

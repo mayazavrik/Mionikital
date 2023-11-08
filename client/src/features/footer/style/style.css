@@ -8,6 +8,7 @@
    
 }
 a{
+   font-weight: 900;
     text-decoration: none;
 }
 .footer .box-container{
@@ -127,3 +128,6 @@ a.nav-link.active {
     padding-right: .5rem;
 }
 
+.footer li {
+  color: aquamarine;
+}

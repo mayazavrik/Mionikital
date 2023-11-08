@@ -23,13 +23,21 @@ function AddNewsForm(): JSX.Element {
         </label>
         <label className="form__label ">
           Текст статьи  
-          <input
+        {/* это старый рабочий вариант с кривым инпутом */}
+           {/* <input
             className="biginput"
             value={text}
             onChange={(e) => setText(e.target.value)}
             type="text"
-          />
-        </label>
+          />  */}
+ 
+         <textarea minlength="20"
+            className="biginput"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            type="text" />
+             </label>
+ 
 
         <button className="addbtn" type="submit">
           Добавить статью
