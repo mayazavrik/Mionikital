@@ -26,13 +26,25 @@ export const fetchUpdateStatus = async (
   const data = await res.json();
   return data;
 };
-export const fetchDeleteOne = async (id: Service): Promise<{ message: string; id: number }> => {
-  const res = await fetch(`/api/service/person/delete/${id}`, {
-    method: 'delete',
+// export const fetchServiceRemove = async (id: number): Promise<ServiceId> => {
+//   const res = await fetch(`/api/services/${id}`, {
+//     method: 'DELETE',
+//   });
+//   return res.json();
+// };
+// export const fetchDeleteOne = async (id: Service): Promise<{ message: string; id: number }> => {
+//   const res = await fetch(`/api/service/person/delete/${id}`, {
+//     method: 'delete',
+//   });
+
+//   const data = await res.json();
+//   console.log(data);
+
+//   return data;
+// };
+export const fetchDeleteOne = async (id: number): Promise<ServiceId> => {
+  const res = await fetch(`/api/services/${id}`, {
+    method: 'DELETE',
   });
-
-  const data = await res.json();
-  console.log(data);
-
-  return data;
+  return res.json();
 };

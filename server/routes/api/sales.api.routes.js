@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { Sale, Service } = require("../../db/models");
+const { Sale} = require("../../db/models");
 
 router.get("/", async (req, res) => {
 	try {
-		const sales = await Sale.findAll({include:{model:Service}});
+		const sales = await Sale.findAll();
 
 		res.json(sales);
 	} catch ({ message }) {
@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
 	try {
 		const { id, img, text } = req.body;
 		if ((img.trim(), text.trim())) {
-			const sale = await Sale.create({ service_id: id, img, text });
+			const sale = await Sale.create({  img, text });
 			res.status(200).json(sale);
 		} else {
 			res.json("Заполните все поля");
@@ -30,10 +30,10 @@ router.delete("/:saleId", async (req, res) => {
 		const { saleId } = req.params;
 		const sale = await Sale.findOne({ where: { id: +saleId } });
 		if (sale) {
-			const service_id = sale.service_id;
+			
 			const result = await Sale.destroy({ where: { id: +saleId } });
 			if (result > 0) {
-				res.json({ saleId: +saleId, service_id });
+				res.json({ saleId: +saleId});
 			}
 		}
 	} catch ({ message }) {
@@ -43,7 +43,7 @@ router.delete("/:saleId", async (req, res) => {
 router.put("/:saleId", async (req, res) => {
 	try {
 		const { saleId } = req.params;
-		const { img, text, service_id } = req.body;
+		const { img, text} = req.body;
 		const sale = await Sale.findOne({ where: { id: +saleId } });
 		if (sale) {
 			const result = await Sale.update({ img, text }, { where: { id: +saleId } });

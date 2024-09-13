@@ -1,54 +1,30 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import type { RootState } from '../../redux/store';
-import SaleItem from '../sales/SaleItem';
-import UslugaContainter from '../usluga/UslugaContainter';
-import AddSaleForm from './AddSaleForm';
-import CommentsContainer from './CommentsContainer';
+
 import './style/style.css';
-import picservis from '../../images/4.png';
+
 
 export default function ServicePage(): JSX.Element {
   const { serviceId } = useParams();
-  const [flag, setFlag] = useState('usluga');
-  const service = useSelector((store: RootState) =>
-    store.servicesSlice.services.find((servicee) => servicee.id === +serviceId),
-  );
-
-  return (
+  const navigate = useNavigate();
+  const services = useSelector((store: RootState) => store.servicesSlice.services)
+  const service = services.find((service) => serviceId && service.id === +serviceId);
+  const error = <h1>Такой услуги нет</h1>;
+  const content= (
     <div className="services-page">
       
       <div className="post-page">
         <h2 className='servicename'>{service?.title}</h2>
-        <img className="photo" src={service?.img} alt="" />
-        <h3 className='serviceadres'>Адрес: {service?.adress}</h3>
+        <img className="post-page__img" src={service?.img} alt="post" />
+      <h3 className="post-page__text">{service?.text}</h3>
       </div>
-      <div className="content">
-        <div className="selector">
-        <img className='picservis' src={picservis} alt='pic' />
-          <button className='btn' type="button" onClick={() => setFlag('sale')}>
-            Акции и скидки
-          </button>
-          <button className='btn' type="button" onClick={() => setFlag('usluga')}>
-            Услуги
-          </button>
-          <button className='btn' type="button" onClick={() => setFlag('comments')}>
-            Отзывы
-          </button>
-        </div>
-        {flag === 'sale' ? (
-          <div className="sales-container">
-            <AddSaleForm service={service} />
-            {service?.Sales.map((sale) => <SaleItem sale={sale} key={sale.id} />)}
-          </div>
-        ) : flag === 'usluga' ? (
-          <UslugaContainter service={service} />
-        ) : (
-          <CommentsContainer service={service} />
-        )}
-      </div>
+      <button onClick={() => navigate(-1)} type="button">
+        Назад к списку услуг
+      </button>
     </div>
   );
+  return <div className="services-page__container">{!service ? error : content}</div>;
 }

@@ -37,23 +37,7 @@ function PersonalAreaAdmin(): JSX.Element {
   return (
     <div className='adminPage'>
       <h1 className='adminh'>Личный кабинет администратора</h1>
-      <select
-   
-        value={selectedOption}
-        onChange={(event) => handleSelectChange(event)}
-      >
-        <option disabled value="">
-          Сортировать аккаунты
-        </option>
-        <option>Активированные аккаунты</option>
-        <option>Неактивированные аккаунты</option>
-      </select>
-      <input
-   
-        placeholder="Поиск сервиса по Email"
-        value={emailPosik}
-        onChange={(e) => setEmailPoisk(e.target.value)}
-      />
+     
 
       <div>
         {filteredServices.map((el) => (

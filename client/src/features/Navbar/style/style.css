@@ -45,7 +45,7 @@ li {
 
 
 :root{
-    --yellow:#f9d806;
+    --yellow:rgb(249, 232, 206);;
     --light-yellow:#ac9500;
     --black:#130f40;
     --light-color:#666;
@@ -74,6 +74,31 @@ html{
 /* body{
     height: 300rem;
 } */
+.menu_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* position: fixed; */
+    top:0; left:0; right:0;
+    padding:3rem 9%;
+    z-index: 1000; 
+}
+  /* МАЛЕНЬКИЙ ЭКРАН */
+
+  @media (max-width: 761px) {
+    .menu_list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        /* position: fixed; */
+        top:0; left:0; right:0;
+        padding:3rem 9%;
+        z-index: 1000; 
+    }
+
+  }
+
 .navbar-collapse{
     display: flex;
     align-items: center;
@@ -82,7 +107,7 @@ html{
     top:0; left:0; right:0;
     padding:3rem 9%;
     z-index: 1000;
-    background: #000000;
+    background-image: url("https://i.pinimg.com/originals/25/c8/5a/25c85ad9cde83d7c0c5e347fea5c8789.jpg");
 }
 
 .header .logo{
@@ -119,7 +144,7 @@ html{
     display: inline-block;
     margin-top: 1rem;
     padding:.8rem 3rem;
-    background:gold;
+    background:rgb(240, 229, 168);
     color:var(--black);
     cursor: pointer;
     font-size: 2.5rem;
@@ -128,7 +153,7 @@ html{
     text-align: center;
 }
 .btn:hover{
-    background-color: rgb(236, 236, 68);
+    background-color: rgb(177, 177, 120);
 }
 .btn:visited{
     background:var(--yellow);
@@ -186,11 +211,13 @@ li{list-style: none;}
     box-shadow: var(--box-shadow);
 }
 .navlink {
-    color: yellow;
-    
+    color: #ACD3BE;;
+    font-size: xx-large;
+    text-shadow: 1px 1px 1px #734E38;
 }
 .navlink2 {
-    color: yellow;
+    width: 100%;
+    color: rgb(239, 189, 114);;
     font-size: large;
     font-weight: bold;
     
@@ -205,9 +232,10 @@ li{list-style: none;}
     font-size: xx-large;
     cursor: pointer;
    
-    text-shadow: 1px 1px 1px orangered;
+    text-shadow: 1px 1px 1px #260F01;
 }
 
 #b1 {
-    border: 1px solid orangered;
+    border: 1px solid #260F01;
+    background-color: wheat;
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import type { Service, User } from '../type';
+import type { User } from '../type';
 
 export const fetchLogOut = async (): Promise<{ message: string }> => {
   const res = await fetch('/api/auth/logout');
@@ -17,66 +17,23 @@ export const fetchSignIn = async (user: User): Promise<{ message: string; user: 
     },
     body: JSON.stringify(user),
   });
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
   return res.json();
 };
 
-export const fetchSignInService = async (
-  service: Service,
-): Promise<{ message: string; service: Service }> => {
-  const res = await fetch('/api/auth/sign-in/service', {
-    method: 'post',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(service),
-  });
 
-  return res.json();
-};
 
-export const fetchSignUp = async (user: User): Promise<User> => {
-  const res = await fetch('/api/auth/sign-up', {
-    method: 'post',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  });
 
-  // Добавляем setTimeout на 1 секунду
-
-  return res.json();
-};
-
-export const fetchSignUpService = async (service: Service): Promise<Service> => {
-  const res = await fetch('/api/auth/sign-up/service', {
-    method: 'post',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(service),
-  });
-  return res.json();
-};
 
 export const fetchCheckUser = async (): Promise<{ message: string; user: User }> => {
   const res = await fetch('/api/auth/check');
   // await new Promise((resolve) => setTimeout(resolve, 1000));
   if (res.status > 399) {
-    throw new Error('Такого сервиса не существует или пароль неверный');
+    throw new Error('Такого юзера не существует или пароль неверный');
   }
   const data = await res.json();
 
   return data;
 };
 
-export const fetchCheckService = async (): Promise<{ message: string; service: Service }> => {
-  const res = await fetch('/api/auth/check/service');
-  if (res.status > 399) {
-    throw new Error('Такого сервиса не существует или пароль неверный');
-  }
 
-  const data = await res.json();
-  return data;
-};

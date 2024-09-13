@@ -9,9 +9,28 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+    
       title: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
+      img:{
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      text: {
+        allowNull: true,
+        type: Sequelize.TEXT
+      },
+      price:{
+        allowNull: false,
+				type: Sequelize.INTEGER,
+      },
+      price2:{
+        allowNull: false,
+				type: Sequelize.INTEGER,
+      },
+    
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

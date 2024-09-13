@@ -16,7 +16,7 @@ export default function SliderBlock(): JSX.Element {
   const sliderRef = useRef<Slider | null>(null);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     arrows: true,

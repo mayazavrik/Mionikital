@@ -7,7 +7,7 @@ const ErrorPage = (): JSX.Element => {
         <h1 className='error-title'>404</h1></div>
       
       <video id="error-video" muted loop autoPlay>
-            <source src={videoerror} type="video/mp4" />
+            {/* <source src={videoerror} type="video/mp4" /> */}
           </video>
     </div>
   );

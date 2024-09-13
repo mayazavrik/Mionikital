@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
-import { addSales } from './servicesSlice';
-import type { ServiceCard } from './types/type';
+import { addSales } from '../sales/salesSlice';
+
 import './style/style.css';
 
-export default function AddSaleForm({ service }: { service: ServiceCard }): JSX.Element {
+export default function AddSaleForm(): JSX.Element {
   const [text, setText] = useState('');
   const [img, setImg] = useState('');
   const dispatch = useAppDispatch();
 
   const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(addSales({ id: 1, service_id: service.id, img, text }));
+    dispatch(addSales({ id: 1, img, text }));
     setText('');
     setImg('');
   };

@@ -4,6 +4,7 @@ h2, h3, h4 {
 
 body {
     height: 100%;
+    background-color: rgb(215, 250, 217);
 }
 
 .containerPostForm{
@@ -46,9 +47,14 @@ body {
     font-size: large;
 
   }
+  *{
+    
 
+    box-sizing: border-box;
+  }
+  
   button {
-    background-color: goldenrod;
+    background-color: rgb(243, 215, 173);;
     color: black;
     padding-top: 1.3%;
     padding-bottom: 1.3%;
@@ -59,14 +65,44 @@ body {
     border-width: 3px;
     margin: 24px;
   }
-  .posts__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 70px;
+  .posts__container  {
+    display: grid;
+    grid-template-columns: repeat(2,4fr);
+    grid-template-rows: auto;
+    gap: 1rem;
   }
+  /* .posts__container {
+row-gap: 10px;
+    display: flex;
+ flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+justify-content: space-between;
+
+gap: 20px;
+
+  
+  } */
+  /* МАЛЕНЬКИЙ ЭКРАН */
+
+@media (max-width: 761px) {
+	.posts__container{
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+
+		justify-content: flex-start;
+		position: absolute;
+		width: 100%;
+		/* visibility: hidden; */
+	}
+  .menu2 {
+		display: block;
+	}
+	.menu_close {
+		display: block;
+	}
+
+}
 
   .post__container {
     display: flex;
@@ -76,6 +112,7 @@ body {
     width: 90%;
     border: 1px solid yellow; 
     border-radius: 50px;
+    
   }
 
   h2{
@@ -104,7 +141,7 @@ body {
  
     height: 200px; /* высота нашего блока */
     width: 400px; /* ширина нашего блока */
-    background: #000000; /* цвет фона, белый */
+    background: #D8C2AA /* цвет фона, белый */
     overflow-x: scroll; /* прокрутка по горизонтали */
     overflow-y: scroll; /* прокрутка по вертикали */
     

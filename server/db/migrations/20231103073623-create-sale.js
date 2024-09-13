@@ -9,12 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      service_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Services', key: 'id' },
-        onDelete: 'CASCADE',
-      },
+   
       img: {
         allowNull: false,
         type: Sequelize.TEXT,

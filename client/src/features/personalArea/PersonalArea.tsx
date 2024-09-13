@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import type { Service } from '../LogReg/type';
+
 import { useAppDispatch, type RootState } from '../../redux/store';
 import Calendarr from './Calendar';
-import { updatePhoto } from '../LogReg/AuthSlice';
+
 
 function PersonalArea(): JSX.Element {
   const [photo, setPhoto] = useState(true);

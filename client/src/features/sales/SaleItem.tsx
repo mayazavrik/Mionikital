@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { deleteSale, updateSale } from '../service/servicesSlice';
+import { deleteSale, updateSale } from '../sales/salesSlice';
 import type { Sale } from '../service/types/type';
 import './style/style.css';
 
@@ -12,7 +13,7 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
 
   const onHandleUpd = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(updateSale({ id: sale.id, text, img, service_id: sale.service_id }));
+    dispatch(updateSale({ id: sale.id, text, img }));
     setFlag((prev) => !prev);
   };
   const onHandleDelete = (): void => {

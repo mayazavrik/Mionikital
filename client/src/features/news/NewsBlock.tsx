@@ -17,7 +17,7 @@ function NewsBlock(): JSX.Element {
   const error = useSelector((store: RootState) => store.news.error);
   const loading = useSelector((store: RootState) => store.news.loading);
   // const [modalActive, setModalActive]=useState(false)
-
+  const user = useSelector((store: RootState) => store.auth.user);
   const checkError = <h1 style={{ color: 'red' }}>{error}</h1>;
   const spin = <img src={spinner} alt="preloader" />;
 
@@ -38,8 +38,8 @@ function NewsBlock(): JSX.Element {
   // slideShow();
   return (
     <div className="containerPostForm">
-  
-      <AddNewsForm />
+  {user && user.isAdmin && (
+      <AddNewsForm />)}
 
       <div className="swiper">
         <div className="posts__container">

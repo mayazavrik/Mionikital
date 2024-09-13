@@ -5,7 +5,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SignIn from '../features/LogReg/RegistrUser';
-import { checkService, checkUser } from '../features/LogReg/AuthSlice';
+import { checkUser } from '../features/LogReg/AuthSlice';
 import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
 import NavBar from '../features/Navbar/NavBar';
@@ -18,12 +18,13 @@ import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
-import { loadMarks, loadOrder, loadUslugas } from '../features/usluga/uslugaSlice';
+import {  loadCourses } from '../features/usluga/courseSlice';
 import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
-import PersonalAreaPerson from '../features/personalArea/PersonalAreaPerson';
+
 import ErrorPage from '../features/404/404';
+import CoursesPage from '../features/usluga/CoursesPage';
 
 function App(): JSX.Element {
   const [isPageClickable, setIsPageClickable] = useState(false);
@@ -33,16 +34,16 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(loadServices());
     dispatch(loadPosts());
-    dispatch(checkService());
   }, []);
 
   useEffect(() => {
     dispatch(checkUser());
-    dispatch(loadUslugas());
-    dispatch(loadMarks());
+    dispatch(loadCourses());
+  
+    dispatch(loadServices());
     dispatch(loadPrices());
     dispatch(loadSales());
-    dispatch(loadOrder());
+  
   }, []);
 
   useEffect(() => {
@@ -53,29 +54,18 @@ function App(): JSX.Element {
 
   return (
     <div id="huge" className={`App ${isPageClickable ? '' : 'unclickable'}`}>
-      {/* {isPageClickable == false && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '0vh', // Задайте желаемую высоту, чтобы текст был посередине
-          }}
-        >
-          <h1>Pдравствуйте, {service?.title}, ваша учетная пока не активна</h1>
-        </div>
-      )} */}
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/reg" element={<SignIn />} />
-          <Route path="/main" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/courses" element={<CoursesPage />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/personalArea" element={<PersonalArea />} />
           <Route path="/personalArea/admin" element={<PersonalAreaAdmin />} />
-          <Route path="/personalArea/person" element={<PersonalAreaPerson />} />
+
           <Route path="/news/:postId" element={<NewsPostPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />

@@ -24,14 +24,16 @@ router.get('/:postId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { img, text } = req.body;
+    const { title, img, text } = req.body;
     const post = await Post.create({
+      title:title,
       img: img,
       text: text,
+      
     });
-    res.status(200).json(post);
-  } catch ({ message }) {
-    res.status(500).json({ message });
+    res.status(201).json(post); // Изменим статус на 201 для создания ресурса
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 router.delete('/:postId', async (req, res) => {
@@ -52,9 +54,10 @@ router.delete('/:postId', async (req, res) => {
 router.put('/:postId', async (req, res) => {
   try {
     const { postId } = req.params;
-    const { img, text } = req.body;
+    const { title, img, text } = req.body;
     const [result] = await Post.update(
       {
+        title,
         img,
         text,
       },

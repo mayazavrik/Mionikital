@@ -6,10 +6,16 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Post.init(
 		{
+
+			title:{
+				allowNull: false,
+				type: DataTypes.TEXT,
+			},
 			img: {
 				allowNull: false,
 				type: DataTypes.TEXT,
 			},
+
 			text: {
 				allowNull: false,
 				type: DataTypes.TEXT,

@@ -2,24 +2,22 @@ export type User = {
   id?: number;
   name?: string;
   email: string;
-  phone?: string;
   password: string;
   isAdmin?: boolean;
 };
+
 export type Service = {
   id?: number;
   title?: string;
-  email?: string;
-  adress?: string;
-  phone?: string;
-  password?: string;
-  tarif?: string;
   img?: string;
-  isChecked?: boolean;
+  text?: string;
+  price?: number;
+  price2?: number;
+  
 };
 
 export type AuthState = {
   user: User | undefined;
-  service: Service | undefined;
+  // service: Service | undefined;
   error: string | null;
 };

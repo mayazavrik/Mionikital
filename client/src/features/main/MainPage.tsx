@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import video from './style/vid_1.mp4';
+import image from './style/hands2.webp';
 import './style/main.css';
 import SliderBlock from '../news/SliderBlock';
 import { BiSolidToTop } from 'react-icons/bi';
@@ -28,14 +28,22 @@ function MainPage(): JSX.Element {
       <div className="container">
         <div className="forname">
           <div id='namecont' className={`naming ${classStopScroll}`}>
-            <h1 className="font-link" id='bigName'>Garage Guru</h1>
-            <h1 className='par'>Ищите сервисы в вашем городе по марке авто и предоставляемым услугам.</h1>
-           
-                                    <button id="b1" type="button" className="btn btn-outline-light">
+            <h1 className="font-link" id='bigName'>Сlinica di massaggio</h1>
+            <h1 className='par'>
+            Мы рады помочь вам в решении ваших проблем, не стесняйтесь обращаться к нам</h1>
+           <div className='navbtns'>
+           <button id="b1" type="button" className="btn btn-outline-light">
                                   <NavLink className="navlink2" to="/services">
-                                  Перейти к поиску сервиса
+                                  Массаж
                                   </NavLink>
                                 </button>
+                                <button id="b1" type="button" className="btn btn-outline-light">
+                                  <NavLink className="navlink2" to="/courses">
+                                  Абонементы
+                                  </NavLink>
+                                </button>
+           </div>
+                                 
           </div>
         </div>
 
@@ -58,14 +66,14 @@ function MainPage(): JSX.Element {
                                 </button>
                               </div> */}
         <div className="videocontainer">
-          <video id="background-video" muted loop autoPlay>
-            <source src={video} type="video/mp4" />
-          </video>
+        
+            <div id='background-video'>
+            <img className='hands' src={image} alt="main" /> </div>
+   
         </div>
 
         <div className="about">
-          <div className='abouttext'>Garage Guru- портал, необходимый каждому автомобилисту. Ищите автосервисы в вашем городе по марке авто и предоставляемым услугам, ставьте рейтинг, оставляйте отзывы к сервисам,читайте статьи и ищите лучшие акции вашего города.
-Автосервисам доступно размещение на портале с добавлением своих услуг и акций.</div>
+          <div className='abouttext'>Клиника массажа на Итальянской. Массаж стельки остеопатия.</div>
         </div>
         <div className="sliderPart">
           <SliderBlock />

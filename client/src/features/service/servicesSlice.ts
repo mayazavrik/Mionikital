@@ -1,33 +1,43 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { CommentData, Sale, SaleId, ServicesState } from './types/type';
+import type {  Sale, SaleId, ServiceCard, ServiceId, ServicesState } from './types/type';
 import * as api from './api/api';
 import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
 import type { Service } from '../LogReg/type';
+
 
 const initialState: ServicesState = {
   services: [],
   error: null,
   loading: true,
-  city: 'Санкт-Петербург',
+  
 };
 
 export const loadServices = createAsyncThunk('services/load', () => api.fetchServices());
 
-export const addSales = createAsyncThunk('services/sales/add', (sale: Sale) =>
-  api.fetchAddSale(sale),
+// export const addSales = createAsyncThunk('sales/add', (sale: Sale) =>
+//   api.fetchAddSale(sale),
+// );
+// // export const changeSales = createAsyncThunk('sales/change', (sale: Sale) =>
+// //   api.fetchUpdSale(sale),
+// // );
+// export const deleteSale = createAsyncThunk('/sales/delete', (saleId: SaleId) =>
+//   api.fetchDeleteSale(saleId),
+// );
+// export const updateSale = createAsyncThunk('/sales/upd', (sale: Sale) =>
+//   api.fetchUpdSale(sale),
+// );
+export const addService = createAsyncThunk('services/add', (service: ServiceCard) =>
+  api.fetchAddService(service),
 );
-export const deleteSale = createAsyncThunk('services/sales/delete', (saleId: SaleId) =>
-  api.fetchDeleteSale(saleId),
+export const upStatusService = createAsyncThunk('update/status', (service: ServiceCard) =>
+  fetchUpdateStatus(service),
 );
-export const updateSale = createAsyncThunk('services/sales/upd', (sale: Sale) =>
-  api.fetchUpdSale(sale),
+export const deleteOneService = createAsyncThunk('services/delete', (id: number) =>
+  fetchDeleteOne(id),
 );
 
-export const upStatusService = createAsyncThunk('update/status', (id: Service) =>
-  fetchUpdateStatus(id),
-);
-export const deleteOneService = createAsyncThunk('service/delete', (id: Service) =>
-  fetchDeleteOne(id),
+export const changeService = createAsyncThunk('services/change', (service: ServiceCard) =>
+  api.fetchServiceChange(service),
 );
 export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>
   api.fetchAddComments(comment),
@@ -43,9 +53,7 @@ const servicesSlice = createSlice({
     stopLoading: (state) => {
       state.loading = false;
     },
-    chooseCity: (state, action) => {
-      state.city = action.payload;
-    },
+ 
   },
   extraReducers: (builder) => {
     builder
@@ -58,39 +66,15 @@ const servicesSlice = createSlice({
       .addCase(loadServices.pending, (state) => {
         state.loading = true;
       })
-      .addCase(addSales.fulfilled, (state, action) => {
-        state.services.forEach((service) =>
-          service.id === action.payload.service_id ? service.Sales.push(action.payload) : service,
+      .addCase(addService.fulfilled, (state, action) => {
+        state.services.push(action.payload);
+      })
+      .addCase(changeService.fulfilled, (state, action) => {
+        state.services = state.services.map((service) =>
+        service.id === action.payload.id ? (service = action.payload) : service,
         );
       })
-      .addCase(addSales.rejected, (state, action) => {
-        state.error = action.error.message ? action.error.message : null;
-      })
-      .addCase(addSales.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(deleteSale.fulfilled, (state, action) => {
-        state.services.forEach((service) =>
-          service.id === action.payload.service_id
-            ? (service.Sales = service.Sales.filter((sale) => sale.id !== action.payload.saleId))
-            : service,
-        );
-      })
-      .addCase(deleteSale.rejected, (state, action) => {
-        state.error = action.error.message ? action.error.message : null;
-      })
-      .addCase(deleteSale.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(updateSale.fulfilled, (state, action) => {
-        state.services.forEach((service) =>
-          service.id === action.payload.service_id
-            ? (service.Sales = service.Sales.map((sale) =>
-                sale.id === action.payload.id ? (sale = action.payload) : sale,
-              ))
-            : service,
-        );
-      })
+  
       .addCase(upStatusService.fulfilled, (state, action) => {
         if (action.payload.message === 'success') {
           state.services = state.services.map((el) =>
@@ -102,7 +86,7 @@ const servicesSlice = createSlice({
         state.error = action.error.message ? action.error.message : null;
       })
       .addCase(deleteOneService.fulfilled, (state, action) => {
-        state.services = state.services.filter((el) => el.id !== action.payload.id);
+        state.services = state.services.filter((service) => service.id !== action.payload);
       })
       .addCase(addComments.fulfilled, (state, action) => {
         if (!action.payload.rate) {
@@ -141,22 +125,10 @@ const servicesSlice = createSlice({
               }
             : service,
         );
-        state.services = state.services.map((service) =>
-          service.id === action.payload.service_id
-            ? {
-                ...service,
-                Rates: service.Rates.filter((rate) => rate.id !== action.payload.rate_id),
-              }
-            : service,
-        );
+     
       })
-      .addCase(deleteComment.rejected, (state, action) => {
-        state.error = action.error.message ? action.error.message : null;
-      })
-      .addCase(deleteComment.pending, (state) => {
-        state.loading = true;
-      });
+    
   },
 });
-export const { stopLoading, chooseCity } = servicesSlice.actions;
+export const { stopLoading } = servicesSlice.actions;
 export default servicesSlice.reducer;

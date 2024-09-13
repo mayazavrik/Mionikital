@@ -8,7 +8,13 @@
   border-radius: 30px;
   border-width: 3px;
   margin: 24px;
+  width: 200px;
 
+}
+.navbtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .naming {
   width: 100%;
@@ -16,7 +22,7 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index:99999;
+  z-index:999;
 
  
 }
@@ -27,8 +33,9 @@
 }
 #bigName {
   font-size: 80px;
-  color: yellow;
+  color: #e7c499;
   margin-bottom: 30px;
+  text-shadow: 2px 2px 2px #734E38;
 
   
  
@@ -60,7 +67,7 @@
   /* font-weight: 700; */
 }
 .btn:hover{
-  background-color: rgb(236, 236, 68);
+  background-color: rgb(221, 221, 183);
 }
 
 .btn a{
@@ -95,9 +102,9 @@
 
 }
 .container {
-  background-color: black;
+  /* background-color: rgb(255, 255, 255); */
   width: 100%;
-
+  
 
 }
 .content {
@@ -106,8 +113,15 @@
 
 #background-video {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.hands {
+  opacity: 0.6;
 
+  
+}
 
 .footeritem{
   margin:0 1rem;
@@ -116,11 +130,11 @@
   color: #ffc400;
 
 }
-.footeritem:hover{
+/* .footeritem:hover{
   color: orange;
   padding-right: 2rem;
   text-shadow: 1px 1px 1px orangered;
-}
+} */
 .footeritem{
   text-decoration: none;
   padding-right: .5rem;
@@ -129,7 +143,7 @@
 
 h1 {
   font-size: 25px;
-  color: yellow;
+  color: #734E38;
 
 }
 /* rega */
@@ -152,7 +166,7 @@ h1 {
     text-shadow: 1px 1px 1px orangered;
 }
 .form-label {
-  color: yellow;
+  color: rgb(239, 189, 114);;
   display: flex;
   align-items: center;
  flex-direction: column;
@@ -234,14 +248,15 @@ input value {
 .par {
   width: 800px;
   text-align: center;
-  text-shadow: 1px 1px 1px orangered;
+  text-shadow: 1px 1px 1px #260F01;
   /* display: flex;
 justify-content: center;
   align-items: center; */
 }
 
 .about {
-  background-color: gold;
+  background-image: url("https://i.pinimg.com/originals/25/c8/5a/25c85ad9cde83d7c0c5e347fea5c8789.jpg");
+
   display: flex;
   color: black;
   flex-direction: column;
@@ -249,6 +264,7 @@ justify-content: center;
   text-align: center;
   padding: 90px;
   margin: 30px;
+  border-radius: 20px;
 }
 .abouttext{
   color: black;

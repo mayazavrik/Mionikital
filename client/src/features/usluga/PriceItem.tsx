@@ -7,8 +7,8 @@ import { useAppDispatch } from '../../redux/store';
 import type { UslugaPrice } from './types/types';
 import './style/style.css';
 import { deletePrice } from './uslugaPriceSlice';
-import UpdateUslugaForm from './UpdateUslugaForm';
-import AddOrderWindow from './AddOrderWindow';
+import UpdateUslugaForm from './ChangeCourseForm';
+// import AddOrderWindow from './AddOrderWindow';
 
 export default function PriceItem({ price }: { price: UslugaPrice }): JSX.Element {
   const dispatch = useAppDispatch();

@@ -86,7 +86,7 @@ input {
   }
   .calendar{
     padding: 10px;
-    color: yellow;
+    color: rgb(239, 189, 114);;
     font-size: 2rem;
     text-shadow: 1px 1px 1px orangered;
     display: flex;

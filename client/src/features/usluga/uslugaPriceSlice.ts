@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { UslugaPrice, UslugaPriceState } from './types/types';
-import * as api from './api';
+import * as api from './api/api';
 
 const initialState: UslugaPriceState = {
   uslugasPrices: [],

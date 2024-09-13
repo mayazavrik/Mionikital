@@ -22,10 +22,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      phone: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
+    
       isAdmin: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
