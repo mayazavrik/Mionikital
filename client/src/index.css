@@ -3,8 +3,10 @@ body {
   margin: 0;
   display: flex;
   /* place-items: center; */
-  min-width: 320px;
-  min-height: 100vh;
+  /* min-width: 320px; */
+  /* min-height: 100vh; */
+  /* width: fit-content; */
+  background-color: #AE9787;
 }
 
 h1 {

@@ -45,7 +45,7 @@
     bottom: 0;
     width:50%;
     height: 100vh;
-    background-color: #f8f8f8;
+    background-color:  #5c5552;;
     z-index: 199999;
     transition: left 1s;
   }
@@ -56,5 +56,6 @@
 
   .menu a {
     font-size: 28px;
+    text-align: center;
   }
 }

@@ -1,9 +1,9 @@
 import type {
 
-    Course,
+    
     CourseId,
     CourseCard,
-  } from '../types/type';
+  } from '../types/types';
   
   
 

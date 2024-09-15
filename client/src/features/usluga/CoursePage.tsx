@@ -17,9 +17,11 @@ export default function CoursePage(): JSX.Element {
     <div className="services-page">
       
       <div className="post-page">
-        <h2 className='servicename'>{course?.title}</h2>
+        <h2 className='servicenamepage'>{course?.title}</h2>
  
-      <h3 className="post-page__text">{course?.text}</h3>
+      <h2 className="post-page__text">{course?.text}</h2>
+      <div className='visit'>Количество визитов :{course?.visit}</div>
+      <div className='price'>Стоимость курса :{course?.price}</div>
       </div>
       <button onClick={() => navigate(-1)} type="button">
         Назад к списку услуг

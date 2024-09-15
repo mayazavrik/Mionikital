@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable import/prefer-default-export */
 
-import type { Service } from '../LogReg/type';
+import type { DoctorId } from '../doctor/types/types';
+import type { Service } from '../logreg/type';
+import type { ServiceId } from '../service/types/type';
 
 export const fetchUpdatePhoto = async (
   obj: Service,
@@ -44,6 +46,12 @@ export const fetchUpdateStatus = async (
 // };
 export const fetchDeleteOne = async (id: number): Promise<ServiceId> => {
   const res = await fetch(`/api/services/${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+};
+export const fetchDeleteOneDoctor = async (id: number): Promise<DoctorId> => {
+  const res = await fetch(`/api/doctors/${id}`, {
     method: 'DELETE',
   });
   return res.json();

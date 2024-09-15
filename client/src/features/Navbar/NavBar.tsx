@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { logOut } from '../LogReg/AuthSlice';
+import { logOut } from '../logreg/AuthSlice';
 import style from './style/Navbar.module.css';
 import './style/style.css';
 import type { RootState } from '../../redux/store';
@@ -18,6 +18,17 @@ function NavBar(): JSX.Element {
   };
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
+  const scrollToFooter = () => {
+    const footerElement = document.getElementById('footer');
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: 'smooth' });
+      closeMenu(); // Закрыть меню после клика
+    }
+  };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu(); // Закрыть меню после клика
+  };
 
   const onHandleLogout = async (): Promise<void> => {
     try {
@@ -38,30 +49,40 @@ function NavBar(): JSX.Element {
             }
           >
             <li className="nav-item">
-              <NavLink onClick={closeMenu} className={style.mobile_btn} className="navlink" to="/">
+              <NavLink onClick={closeMenu} className="navlink" to="/">
                 На главную
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu} className={style.mobile_btn}  className="navlink" to="/services">
+              <NavLink onClick={closeMenu}  className="navlink" to="/services">
                 Массаж
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu} className={style.mobile_btn} className="navlink" to="/courses">
+              <NavLink onClick={scrollToTop}   className="navlink" to="/doctors">
+                Врачи
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink onClick={closeMenu} className="navlink" to="/courses">
                 Абонементы
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu} className={style.mobile_btn} className="navlink" to="/news">
+              <NavLink onClick={closeMenu}  className="navlink" to="/news">
                 Статьи
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu} className={style.mobile_btn} className="navlink" to="/sales">
+              <NavLink onClick={closeMenu}  className="navlink" to="/sales">
                 Акции
               </NavLink>
             </li>
+            <button onClick={scrollToFooter} id="b2" type="button" className="navlink">
+						<NavLink className="navlink3" to="#footer">
+							Связаться
+						</NavLink>
+					</button>
             {user ? (
               <>
                 <li className="nav-item">
@@ -79,13 +100,7 @@ function NavBar(): JSX.Element {
               </li>
             )}
 
-            {user?.isAdmin && (
-              <li className="nav-item">
-                <NavLink className="navlink" to="/personalArea/admin">
-                  Личный кабинет
-                </NavLink>
-              </li>
-            )}
+          
           </ul>
           <div onClick={() => setNav(!nav)} className={style.mobile_btn}>
             {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}

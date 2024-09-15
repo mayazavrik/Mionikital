@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type {  CourseCard, CourseId, CoursesState } from './types/type';
+import type {  CourseCard,  CoursesState } from './types/types';
 import * as api from './api/api';
-import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
-import type { Service } from '../LogReg/type';
+
 
 
 const initialState: CoursesState = {
@@ -37,12 +36,12 @@ export const deleteСourse = createAsyncThunk('courses/delete', (id: number) =>
 export const changeCourse = createAsyncThunk('courses/change', (course: CourseCard) =>
   api.fetchCourseChange(course),
 );
-export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>
-  api.fetchAddComments(comment),
-);
-export const deleteComment = createAsyncThunk('comments/delete', (id: number) =>
-  api.fetchDeleteComments(id),
-);
+// export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>
+//   api.fetchAddComments(comment),
+// );
+// export const deleteComment = createAsyncThunk('comments/delete', (id: number) =>
+//   api.fetchDeleteComments(id),
+// );
 
 const coursesSlice = createSlice({
   name: 'courses',
@@ -72,47 +71,49 @@ const coursesSlice = createSlice({
         course.id === action.payload.id ? (course = action.payload) : course,
         );
       })
-  
+      .addCase(deleteСourse.fulfilled, (state, action) => {
+        state.courses = state.courses.filter((course) => course.id !== action.payload);
+      })
     
-      .addCase(addComments.fulfilled, (state, action) => {
-        if (!action.payload.rate) {
-          state.services.forEach((service) =>
-            service.id === action.payload.comment.service_id
-              ? (service.Comments = [...service.Comments, action.payload.comment])
-              : service,
-          );
-        } else {
-          state.services.forEach((service) =>
-            service.id === action.payload.comment.service_id
-              ? (service.Comments = [...service.Comments, action.payload.comment])
-              : service,
-          );
-          state.services.forEach((service) =>
-            service.id === action.payload.comment.service_id
-              ? (service.Rates = [...service.Rates, action.payload.rate])
-              : service,
-          );
-        }
-      })
-      .addCase(addComments.rejected, (state, action) => {
-        state.error = action.error.message ? action.error.message : null;
-      })
-      .addCase(addComments.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(deleteComment.fulfilled, (state, action) => {
-        state.services = state.services.map((service) =>
-          service.id === action.payload.service_id
-            ? {
-                ...service,
-                Comments: service.Comments.filter(
-                  (comment) => comment.id !== action.payload.comment_id,
-                ),
-              }
-            : service,
-        );
+      // .addCase(addComments.fulfilled, (state, action) => {
+      //   if (!action.payload.rate) {
+      //     state.services.forEach((service) =>
+      //       service.id === action.payload.comment.service_id
+      //         ? (service.Comments = [...service.Comments, action.payload.comment])
+      //         : service,
+      //     );
+      //   } else {
+      //     state.services.forEach((service) =>
+      //       service.id === action.payload.comment.service_id
+      //         ? (service.Comments = [...service.Comments, action.payload.comment])
+      //         : service,
+      //     );
+      //     state.services.forEach((service) =>
+      //       service.id === action.payload.comment.service_id
+      //         ? (service.Rates = [...service.Rates, action.payload.rate])
+      //         : service,
+      //     );
+      //   }
+      // })
+      // .addCase(addComments.rejected, (state, action) => {
+      //   state.error = action.error.message ? action.error.message : null;
+      // })
+      // .addCase(addComments.pending, (state) => {
+      //   state.loading = true;
+      // })
+      // .addCase(deleteComment.fulfilled, (state, action) => {
+      //   state.services = state.services.map((service) =>
+      //     service.id === action.payload.service_id
+      //       ? {
+      //           ...service,
+      //           Comments: service.Comments.filter(
+      //             (comment) => comment.id !== action.payload.comment_id,
+      //           ),
+      //         }
+      //       : service,
+      //   );
      
-      })
+      // })
     
   },
 });

@@ -1,18 +1,21 @@
 import React from 'react';
 import './style/style.css';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiSolidToTop } from 'react-icons/bi';
-import { FaWhatsappSquare } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
+
+import { FaTelegram, FaPhone, FaWhatsappSquare  } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa";
+
 import pic from '../../images/6.jpg';
+import DentistryMap from '../map/DentistryMap';
+
 
 function Footer(): JSX.Element {
   return (
     <div className="footer" id="footer">
       <div className="box-container">
+      <DentistryMap />
         <div className="box">
         <h3>Навигация</h3>
           <li className="footeritem">
@@ -94,8 +97,8 @@ function Footer(): JSX.Element {
 
         <div className="credit shadow">
           {' '}
-          created by LAPOCHKI
-          <button className="totop" onClick={() => window.scrollTo({ top: 0, bahavior: 'smooth' })}>
+          created by mayazavrik
+          <button className="totop" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <BiSolidToTop />
           </button>
          

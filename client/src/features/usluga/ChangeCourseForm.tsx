@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import './style/modal.css';
-import { RootState, useAppDispatch } from '../../redux/store';
-import { addCourse, changeCourse} from './courseSlice';
-import { useSelector } from 'react-redux';
-import { CourseCard} from './types/type';
+import {  useAppDispatch } from '../../redux/store';
+import {  changeCourse} from './courseSlice';
+
+import type { CourseCard} from './types/types';
 
 function ChangeCourseForm({
   course,
@@ -17,19 +17,20 @@ function ChangeCourseForm({
   const [visit, setVisit] = useState(course?.visit);
   const [text, setText] = useState(course?.text);
   const [price, setPrice] = useState(course?.price);
+ 
 
-
-  1;
-  const dispatch = useAppDispatch();
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    dispatch(addCourse({ id: course.id,  title, visit, text, price }));
-    setVisit(0);
-    setText('');
-    setTitle('');
-    setPrice(0);
   
-  };
+  const dispatch = useAppDispatch();
+  // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  //   e.preventDefault();
+  //   dispatch(addCourse({ id: course.id,  title, visit, text, price }));
+  //   setVisit(0);
+  //   setText('');
+  //   setTitle('');
+  //   setPrice(0);
+   
+  
+  // };
   const onHandleChange = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(changeCourse({ id: course.id, visit, title, text , price}));
@@ -54,11 +55,21 @@ function ChangeCourseForm({
         <label className="form__label ">
           Текст абонемента
           <textarea
-            minlength="20"
+            
             className="biginput"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            type="text"
+           
+          />
+        </label>
+        <label className="form__label">
+          Количество визитов
+          <input
+            className="biginput"
+            value={visit}
+            name="text"
+            type="number"
+            onChange={(e) => setVisit(e.target.value ? Number(e.target.value) : 0)}
           />
         </label>
         <label className="form__label">
@@ -67,8 +78,8 @@ function ChangeCourseForm({
             className="biginput"
             value={price}
             name="text"
-            type="text"
-            onChange={(e) => setPrice(e.target.value)}
+            type="number"
+            onChange={(e) => setPrice(e.target.value ? Number(e.target.value) : 0)}
           />
         </label>
    

@@ -1,38 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import image from './style/hands2.webp';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './style/main.css';
 import SliderBlock from '../news/SliderBlock';
-import { BiSolidToTop } from 'react-icons/bi';
-import Footer from '../footer/Footer';
-import { NavLink } from 'react-router-dom';
+
+
 
 function MainPage(): JSX.Element {
-  const [classStopScroll, setClassStopScrolling] = useState<'' | 'stop-scrolling'>(''); // Initial top position
-  const stopPoint = 450;
+  const [, setClassStopScrolling] = useState<"" | "stop-scrolling">(""); // Изначальное состояние
+	// const scrollToFooter = () => {
+	// 	const footerElement = document.getElementById("footer");
+	// 	if (footerElement) {
+	// 		footerElement.scrollIntoView({ behavior: "smooth" });
+	// 	}
+	// };
+  const navigate = useNavigate();
+
+const handleServices = () => {
+    navigate('/services');
+};
+	const stopPoint = 450;
   useEffect(() => {
     const handleScroll = (): void => {
       const { scrollY } = window;
       if (scrollY > stopPoint) {
-        setClassStopScrolling('stop-scrolling');
+        setClassStopScrolling("stop-scrolling");
       } else {
-        setClassStopScrolling('');
+        setClassStopScrolling("");
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div className="wrapper">
-      <div className="container">
-        <div className="forname">
-          <div id='namecont' className={`naming ${classStopScroll}`}>
+  
+       
+       
             <h1 className="font-link" id='bigName'>Сlinica di massaggio</h1>
             <h1 className='par'>
             Мы рады помочь вам в решении ваших проблем, не стесняйтесь обращаться к нам</h1>
            <div className='navbtns'>
-           <button id="b1" type="button" className="btn btn-outline-light">
+           <button onClick={handleServices} id="b1" type="button" className="btn btn-outline-light ">
                                   <NavLink className="navlink2" to="/services">
                                   Массаж
                                   </NavLink>
@@ -44,8 +54,8 @@ function MainPage(): JSX.Element {
                                 </button>
            </div>
                                  
-          </div>
-        </div>
+           <div className="container">
+        
 
         {/* <div className="preload" data-preaload>
                   <div className="circle"></div>
@@ -78,8 +88,9 @@ function MainPage(): JSX.Element {
         <div className="sliderPart">
           <SliderBlock />
         </div>
-      </div>
+      
       {/* <Footer/> */}
+    </div>
     </div>
   );
 }

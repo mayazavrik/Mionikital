@@ -17,7 +17,7 @@ export default function ServicePage(): JSX.Element {
     <div className="services-page">
       
       <div className="post-page">
-        <h2 className='servicename'>{service?.title}</h2>
+        <h2 className='servicenamepage'>{service?.title}</h2>
         <img className="post-page__img" src={service?.img} alt="post" />
       <h3 className="post-page__text">{service?.text}</h3>
       </div>

@@ -20,4 +20,5 @@ export type AuthState = {
   user: User | undefined;
   // service: Service | undefined;
   error: string | null;
+  service: undefined;
 };

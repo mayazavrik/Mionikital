@@ -18,9 +18,15 @@ export const addSales = createAsyncThunk('sales/add', (sale: Sale) =>
 // export const changeSales = createAsyncThunk('sales/change', (sale: Sale) =>
 //   api.fetchUpdSale(sale),
 // );
-export const deleteSale = createAsyncThunk('sales/delete', (id: number) =>
-  api.fetchDeleteSale(id),
-);
+// export const deleteSale = createAsyncThunk('sales/delete', (id: number) =>
+//   api.fetchDeleteSale(id),
+
+// );
+export const deleteSale = createAsyncThunk('sales/delete', async (id: number) => {
+  await api.fetchDeleteSale(id);
+  return id; // возвращаем id в fulfilled
+});
+
 export const updateSale = createAsyncThunk('sales/upd', (sale: Sale) =>
   api.fetchUpdSale(sale),
 );

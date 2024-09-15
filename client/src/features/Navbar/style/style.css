@@ -1,20 +1,20 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,500&family=Roboto+Condensed:wght@300;400;700&display=swap');
 #navbarResponsive{
   display: flex;
   width: 100%;
   margin: 10px;
   padding: 10px;
   flex-direction: row;
-
+  justify-content: space-between;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0 30px;
 
     font-size: 100%;
     font-weight: 400;
 
     letter-spacing: 1px;
-    color: #fff;
+    color:  #5c5552;;
     font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji";
@@ -41,7 +41,7 @@ li {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,500&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
 
 
 :root{
@@ -102,12 +102,13 @@ html{
 .navbar-collapse{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     /* position: fixed; */
     top:0; left:0; right:0;
     padding:3rem 9%;
     z-index: 1000;
-    background-image: url("https://i.pinimg.com/originals/25/c8/5a/25c85ad9cde83d7c0c5e347fea5c8789.jpg");
+    background-color: #5c5552;
+    /* background-image: url("https://i.pinimg.com/originals/25/c8/5a/25c85ad9cde83d7c0c5e347fea5c8789.jpg"); */
 }
 
 .header .logo{
@@ -144,7 +145,7 @@ html{
     display: inline-block;
     margin-top: 1rem;
     padding:.8rem 3rem;
-    background:rgb(240, 229, 168);
+    background:#474747;
     color:var(--black);
     cursor: pointer;
     font-size: 2.5rem;
@@ -153,7 +154,8 @@ html{
     text-align: center;
 }
 .btn:hover{
-    background-color: rgb(177, 177, 120);
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 .btn:visited{
     background:var(--yellow);
@@ -201,7 +203,16 @@ li{list-style: none;}
     position: absolute;
     margin-top: 350px;
     margin-right: 20px;
-    background-color: wheat;
+    background-color: #5c5552;
+    border-radius: 20px;
+    transition: 0.5s;
+
+}
+.nav3{
+    position: absolute;
+    margin-top: 350px;
+    margin-right: 20px;
+    background-color: #1d1e1e;
     border-radius: 20px;
     transition: 0.5s;
 
@@ -209,23 +220,41 @@ li{list-style: none;}
 .nav2:hover{
     color: var(--yellow);
     box-shadow: var(--box-shadow);
+    background-color: black;
 }
 .navlink {
-    color: #ACD3BE;;
-    font-size: xx-large;
+    color: azure;
+    font-size: x-large;
     text-shadow: 1px 1px 1px #734E38;
 }
 .navlink2 {
     width: 100%;
-    color: rgb(239, 189, 114);;
+    text-align: center;
+    color: azure;
     font-size: large;
     font-weight: bold;
     
+    
+}
+.navlink3{
+    color: azure;
+    font-size: large;
+    font-weight: bold;
+    width: 100%;
+
 }
 .navlink2:hover {
   
     font-size: large;
     font-weight: bold;
+    color: black;
+    
+}
+.navlink3:hover {
+  
+    font-size: large;
+    font-weight: bold;
+    color: black;
     
 }
 .navlink:hover {
@@ -235,7 +264,7 @@ li{list-style: none;}
     text-shadow: 1px 1px 1px #260F01;
 }
 
-#b1 {
+/* #b1 {
     border: 1px solid #260F01;
     background-color: wheat;
-}
+} */

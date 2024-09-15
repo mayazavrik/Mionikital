@@ -1,14 +1,11 @@
-h2,
-h3 {
+h2 {
   color: aliceblue;
 }
 body {
   height: 100%;
 }
 
-h3 {
-  line-height: 30px;
-}
+
 
 button {
   background-color: rgb(249, 221, 178);;
@@ -42,7 +39,7 @@ button {
   border: 1px solid white;
   margin: 20px;
   padding: 30px;
-  width: 80%;
+  width: 90%;
   border-radius: 20px;
 }
 
@@ -65,9 +62,8 @@ input {
   padding: 10px;
   margin-bottom: 20px;
   color: black;
-  border: 1px solid yellow;
+  border: 1px solid rgb(130, 98, 56);
 }
-
 /* .service-card {
   display: flex;
   flex-direction: column;
@@ -161,20 +157,7 @@ input {
   justify-content: center;
   align-items: center;
 }
-.servicename {
-  font-size: xx-large;
-  font-weight: 900;
-  margin: 20px;
-  padding-right: .5rem;
-}
-.servicename:hover {
-  padding-right: 2rem;
-  color: rgb(239, 189, 114);;
-  font-size: 40px;
-  font-weight: 900;
-  margin: 20px;
-  padding-right: .5rem;
-}
+
 .serviceadres {
   margin: 20px;
 }

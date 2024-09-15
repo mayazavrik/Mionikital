@@ -5,12 +5,12 @@ import type { Post } from './types/Post';
 import './style/style.css';
 import { deleteNews } from './newsSlice';
 import ChangeNewsForm from './ChangeNewsForm';
-import type { RootState } from '../../redux/store';
+import type { AppDispatch, RootState } from '../../redux/store';
 
 function PostItem({ post }: { post: Post }): JSX.Element {
   const [modalActive, setModalActive] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();;
 
   const onHandleRemove = (): void => {
     dispatch(deleteNews(post.id));
@@ -18,23 +18,26 @@ function PostItem({ post }: { post: Post }): JSX.Element {
 
   return (
     <div className="post__container">
-      <img className="post__img" src={post.img} alt="post" />
-      <h2>{post.text}</h2>
-      {user && user.isAdmin && (
-        <>
-          {' '}
-          <button onClick={() => onHandleRemove()} type="button">
-            Удалить статью
-          </button>
-          {modalActive && <ChangeNewsForm post={post} setModalActive={setModalActive} />}
-          <button onClick={() => setModalActive(!modalActive)} type="button">
-            Изменить статью
-          </button>
-        </>
-      )}
-      <button className='btn' type="button">
-        <Link to={`/news/${post.id}`}>Посмотреть статью</Link>
-      </button>
+      <div className="postcontent">
+        <h3 className='posttitle'>{post.title}</h3>
+        <img className="post__img" src={post.img} alt="post" />
+        <h2 className='posttext'>{post.text}</h2>
+        {user && user.isAdmin && (
+          <>
+            {' '}
+            <button onClick={() => onHandleRemove()} type="button">
+              Удалить статью
+            </button>
+            {modalActive && <ChangeNewsForm post={post} setModalActive={setModalActive} />}
+            <button onClick={() => setModalActive(!modalActive)} type="button">
+              Изменить статью
+            </button>
+          </>
+        )}
+        <button className="btn" type="button">
+          <Link to={`/news/${post.id}`}>Посмотреть статью</Link>
+        </button>
+      </div>
     </div>
   );
 }

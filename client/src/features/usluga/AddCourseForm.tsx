@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import {  addCourse } from './courseSlice';
-import type { CourseCard } from './types/type';
+
 import './style/style.css';
 
-export default function AddCourseForm({ course }: { course : CourseCard }): JSX.Element {
+export default function AddCourseForm(): JSX.Element {
     
     const [title, setTitle] = useState('');
     const [visit, setVisit] = useState('');
@@ -18,8 +18,8 @@ export default function AddCourseForm({ course }: { course : CourseCard }): JSX.
     dispatch(addCourse({ id: 1,title, visit, text , price,}));
     setTitle('');
     setText('');
-    setVisit('');
-    setPrice('');
+    setVisit(0);
+    setPrice(0);
     
   };
   return (
@@ -47,12 +47,22 @@ export default function AddCourseForm({ course }: { course : CourseCard }): JSX.
           />
         </label>
         <label className="form__label">
+          Количество визитов
+          <input
+            className="biginput"
+            value={visit}
+            name="text"
+            type="number"
+            onChange={(e) => setVisit(e.target.value)}
+          />
+        </label>
+        <label className="form__label">
           Цена 
           <input
             className="biginput"
             value={price}
             name="text"
-            type="text"
+            type="number"
             onChange={(e) => setPrice(e.target.value)}
           />
         </label>

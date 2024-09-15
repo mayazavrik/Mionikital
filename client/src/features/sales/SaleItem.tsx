@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../redux/store';
-import { deleteSale, updateSale } from '../service/servicesSlice';
-import { deleteSale, updateSale } from '../sales/salesSlice';
+import { AppDispatch, useAppDispatch } from '../../redux/store';
+
+import { deleteSale, updateSale } from './salesSlice';
 import type { Sale } from '../service/types/type';
 import './style/style.css';
 
 export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch<AppDispatch>();
   const [flag, setFlag] = useState(false);
   const [text, setText] = useState(sale.text);
   const [img, setImg] = useState(sale.img);
@@ -25,7 +25,7 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
       <img className='saleimg' src={sale.img} alt="saleImg" />
       <h3>{sale.text}</h3>
       <button className='btn' onClick={onHandleDelete} type="button" >
-        удалить акцию
+        Удалить акцию
       </button>
       <button className='btn' onClick={() => setFlag(!flag)} type="button">
         Редактировать

@@ -38,11 +38,11 @@ function AddNewsForm(): JSX.Element {
         <label className='itemrow'>
         <p className='itemName'>Текст статьи </p>
         <p className='iteminfo'>
-        <textarea minlength="20"
+        <textarea 
             className="biginput"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            type="text" />
+             />
         </p>
            
         {/* это старый рабочий вариант с кривым инпутом */}

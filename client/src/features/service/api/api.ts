@@ -1,8 +1,9 @@
+import type { Service } from '../../logreg/type';
 import type {
 ServiceId,
   Sale,
-  SaleId,
-  ServiceCard,
+ 
+  
 } from '../types/type';
 
 
@@ -20,7 +21,7 @@ export const fetchSales = async (): Promise<Sale[]> => {
 //   const res = await fetch('/api/services');
 //   return res.json();
 // }
-export const fetchServices = async (): Promise<ServiceCard[]> => {
+export const fetchServices = async (): Promise<Service[]> => {
   const res = await fetch('/api/services');
 
   if (res.status >= 400) {
@@ -28,7 +29,7 @@ export const fetchServices = async (): Promise<ServiceCard[]> => {
   }
   return res.json();
 };
-export const fetchAddService= async (service: ServiceCard): Promise<ServiceCard> => {
+export const fetchAddService= async (service: Service): Promise<Service> => {
   const res = await fetch('/api/services', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
@@ -36,7 +37,7 @@ export const fetchAddService= async (service: ServiceCard): Promise<ServiceCard>
   });
   return res.json();
 }
-export const fetchServiceChange=async(service: ServiceCard): Promise<ServiceCard> => {
+export const fetchServiceChange=async(service: Service): Promise<Service> => {
   const res = await fetch(`/api/services/${service.id}`, {
     method: 'PUT',
     headers: {

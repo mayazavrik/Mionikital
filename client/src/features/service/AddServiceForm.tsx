@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
-import { addSales, addService } from './servicesSlice';
-import type { ServiceCard } from './types/type';
+import {addService } from './servicesSlice';
+
 import './style/style.css';
 
-export default function AddServiceForm({ service }: { service: ServiceCard }): JSX.Element {
+export default function AddServiceForm(): JSX.Element {
     
     const [title, setTitle] = useState('');
     const [img, setImg] = useState('');
@@ -19,8 +19,8 @@ export default function AddServiceForm({ service }: { service: ServiceCard }): J
     setTitle('');
     setText('');
     setImg('');
-    setPrice('');
-    setPrice2('');
+    setPrice(0);
+    setPrice2(0);
   };
   return (
     <div className="form__container">
@@ -55,13 +55,14 @@ export default function AddServiceForm({ service }: { service: ServiceCard }): J
             onChange={(e) => setText(e.target.value)}
           />
         </label>
+     
         <label className="form__label">
           Цена за час
           <input
             className="biginput"
             value={price}
             name="text"
-            type="text"
+            type="number"
             onChange={(e) => setPrice(e.target.value)}
           />
         </label>
@@ -71,7 +72,7 @@ export default function AddServiceForm({ service }: { service: ServiceCard }): J
             className="biginput"
             value={price2}
             name="text"
-            type="text"
+            type="number"
             onChange={(e) => setPrice2(e.target.value)}
           />
         </label>
