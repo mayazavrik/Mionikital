@@ -18,7 +18,7 @@ const store = configureStore({
     auth: AuthSlice,
     doctorSlice, 
     courseSlice,
-    doctorSlice,
+
 		// prices: uslugaPriceSlice,
 		sales: salesSlice,
 		adminArea: PersonalSlice,
