@@ -4,21 +4,37 @@ import { useAppDispatch } from '../../redux/store';
 import { addNews } from '../news/newsSlice';
 
 function AddNewsForm(): JSX.Element {
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState<File | null>(null);
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const dispatch = useAppDispatch();
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async(e) => {
     e.preventDefault();
-    dispatch(addNews({ id: 1, title, img, text }));
-    setImg('');
-    setText('');
+    if(!img) {
+      alert('Добавьте фото');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('title',title);
+    formData.append('text',text);
+  
+    formData.append('img',img);
+    dispatch(addNews(formData));
+    setImg(null);
     setTitle('');
+    setText('');
+   
   };
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e.target.files);
+    if (e.target.files) {
+      setImg(e.target.files[0]);
+    }
+  }
 
   return (
     <div className="form__container">
-      <form className="form__add-post" onSubmit={(e) => onHandleSubmit(e)}>
+      <form className="form-sale" onSubmit={onHandleSubmit}>
       <label className='itemrow'>
         <p className='itemName'>  Заголовок статьи</p>
         <p className='iteminfo'>
@@ -28,10 +44,14 @@ function AddNewsForm(): JSX.Element {
          
         </label>
         <label className='itemrow'>
-        <p className='itemName'>  Фото статьи</p>
-        <p className='iteminfo'>
-        <input value={img} onChange={(e) => setImg(e.target.value)} type="text" />
-        </p>
+
+       <input
+            className="form__label"
+        
+            name="img"
+            type="file"
+            onChange={onFileChange}
+          />
          
          
         </label>

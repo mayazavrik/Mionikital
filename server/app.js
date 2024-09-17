@@ -43,6 +43,7 @@
 // require('@babel/register');
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const serverConfig = require("./config/serverConfig");
 const serverConfigServer = require("./config/serverConfigServer");
 const indexRoutes = require("./routes/index.routes");
@@ -52,6 +53,16 @@ serverConfigServer(app);
 // serverConfig(app);
 app.use("/", indexRoutes);
 const PORT = process.env.PORT || 4000;
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'../client/dist')));
+// Добавляем временный маршрут для проверки запросов на изображения
+// app.get('/img/:filename', (req, res) => {
+//   console.log(`Запрос на изображение: ${req.params.filename}`);
+//   res.sendFile(path.join(__dirname, 'public', 'img', req.params.filename));
+// });
+app.get('*',(req,res)=> {
+  res.sendFile(path.resolve('../client/dist/index.html'));
+})
 
 app.listen(PORT, () => {
   console.log(`App has been started in port ${PORT}...`);

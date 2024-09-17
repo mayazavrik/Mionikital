@@ -19,7 +19,7 @@ export default function DoctorPage(): JSX.Element {
 		<div className="services-page">
 			<div className="post-page">
 				<div className="servicenamepage">{doctor?.title}</div>
-				<img className="post-page__img" src={doctor?.img} alt="post" />
+				<img className="serviceimg" src={`http://localhost:4000${doctor?.img}`} alt="servicePhoto" />
 
 				<p className="post-page__text">{doctor?.about}</p>
 			</div>

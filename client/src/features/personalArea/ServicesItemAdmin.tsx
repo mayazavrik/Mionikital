@@ -9,7 +9,11 @@ function ServicesItemAdmin({ servic }: { servic: Service }): JSX.Element {
 
 
   const onHandeldeleteService = (): void => {
-    dispatch(deleteOneService(servic.id));
+    if (servic.id !== undefined) {
+      dispatch(deleteOneService(servic.id));
+    } else {
+      console.error("Service ID is undefined.");
+    }
   };
 
   return (

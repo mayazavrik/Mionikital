@@ -1,5 +1,16 @@
 const router = require('express').Router();
 const { Post } = require('../../db/models');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req,file,cb){
+    cb(null, 'public/img');
+  },
+  filename: function(req,file,cb){
+    cb(null, file.originalname);
+  },
+})
+const upload = multer({storage});
+
 
 router.get('/', async (req, res) => {
   try {
@@ -22,12 +33,13 @@ router.get('/:postId', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/',upload.single('img'), async (req, res) => {
   try {
-    const { title, img, text } = req.body;
+    const { title,  text } = req.body;
+    const imgPath = `/img/${req.file.filename}`; 
     const post = await Post.create({
       title:title,
-      img: img,
+      img: imgPath,
       text: text,
       
     });
@@ -51,24 +63,27 @@ router.delete('/:postId', async (req, res) => {
   }
 });
 
-router.put('/:postId', async (req, res) => {
+router.put('/:id', upload.single('img'), async (req, res) => {
   try {
-    const { postId } = req.params;
-    const { title, img, text } = req.body;
-    const [result] = await Post.update(
+    const { id } = req.params;
+    const { title,  text } = req.body;
+    const img = req.file ? `/img/${req.file.filename}` : null;
+    const [updated] = await Post.update(
       {
         title,
         img,
         text,
       },
-      { where: { id: postId } }
+      { where: { id: +id } }
     );
-    if (result > 0) {
-      const post = await Post.findOne({ where: { id: +postId } });
-      res.json(post);
+    if (updated) {
+      const updatedPost = await Post.findOne({ where: { id: +id }});
+      res.json(updatedPost);
+    } else {
+      res.status(404).json({ message: 'Post not found' });
     }
-  } catch ({ message }) {
-    res.json({ message });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 

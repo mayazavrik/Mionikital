@@ -236,6 +236,22 @@ li{list-style: none;}
     
     
 }
+.navlink4 {
+    width: 100%;
+    text-align: center;
+    color: azure;
+    font-size: xx-large;
+    font-weight: bold;
+    
+    
+}
+.navlink4:hover {
+  
+    font-size: large;
+    font-weight: bold;
+    color: black;
+    
+}
 .navlink3{
     color: azure;
     font-size: large;

@@ -6,26 +6,43 @@ import './style/style.css';
 
 export default function AddSaleForm(): JSX.Element {
   const [text, setText] = useState('');
-  const [img, setImg] = useState('');
+  const [img, setImg] =   useState<File | null>(null);
   const dispatch = useAppDispatch();
 
-  const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
+  const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async(e) => {
     e.preventDefault();
-    dispatch(addSales({ id: 1, img, text }));
+    if(!img) {
+      alert('Добавьте фото');
+      return;
+    }
+    const formData = new FormData();
+
+    formData.append('text',text);
+ 
+    formData.append('img',img);
+    dispatch(addSales(formData));
+    setImg(null);
+ 
     setText('');
-    setImg('');
+  
   };
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e.target.files);
+    if (e.target.files) {
+      setImg(e.target.files[0]);
+    }
+  }
   return (
     <div className="form__container">
-      <form className="formsale" onSubmit={onHandleAdd}>
+      <form className="formsale"  onSubmit={onHandleSubmit}>
         <label className="form__label">
           Фото акции
           <input
             className="form__label"
-            value={img}
+        
             name="img"
-            type="text"
-            onChange={(e) => setImg(e.target.value)}
+            type="file"
+            onChange={onFileChange}
           />
         </label>
         <label className="form__label">

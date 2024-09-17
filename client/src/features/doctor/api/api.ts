@@ -19,24 +19,26 @@ import type {
     }
     return res.json();
   };
-  export const fetchAddDoctor= async (doctor: DoctorCard): Promise<DoctorCard> => {
+  export const fetchAddDoctor= async (doctor: FormData): Promise<DoctorCard> => {
     const res = await fetch('/api/doctors', {
       method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(doctor),
+  
+      body: doctor,
     });
     return res.json();
   }
-  export const fetchDoctorChange=async(doctor: DoctorCard): Promise<DoctorCard> => {
-    const res = await fetch(`/api/doctors/${doctor.id}`, {
+  
+  export const fetchDoctorChange=async(formData: FormData): Promise<DoctorCard> => {
+    const res = await fetch(`/api/doctors/${formData.get('id')}`, {
       method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ title:doctor.title, img:doctor.img,  about: doctor.about, }),
+     
+      body: formData,
     });
+    if (!res.ok) {
+      throw new Error('Failed to update doctor');
+    }
     return res.json();
-  }
+  };
   export const fetchDoctorRemove = async (id: number): Promise<DoctorId> => {
     const res = await fetch(`/api/doctors/${id}`, {
       method: 'DELETE',

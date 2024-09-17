@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PostsState } from './types/State';
 import * as api from './api/api';
 import { fetchPostAdd } from '../admin/api/api';
-import type { Post } from './types/Post';
+
 
 const initialState: PostsState = {
   posts: [],
@@ -11,9 +11,9 @@ const initialState: PostsState = {
 };
 
 export const loadPosts = createAsyncThunk('posts/load', () => api.fetchPosts());
-export const addNews = createAsyncThunk('posts/add', (post: Post) => fetchPostAdd(post));
+export const addNews = createAsyncThunk('posts/add', (post: FormData) => fetchPostAdd(post));
 export const deleteNews = createAsyncThunk('posts/delete', (id: number) => api.fetchPostRemove(id));
-export const changeNews = createAsyncThunk('posts/change', (post: Post) =>
+export const changeNews = createAsyncThunk('posts/change', (post: FormData) =>
   api.fetchPostChange(post),
 );
 

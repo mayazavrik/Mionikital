@@ -29,24 +29,27 @@ export const fetchServices = async (): Promise<Service[]> => {
   }
   return res.json();
 };
-export const fetchAddService= async (service: Service): Promise<Service> => {
+export const fetchAddService= async (service: FormData): Promise<Service> => {
   const res = await fetch('/api/services', {
     method: 'POST',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify(service),
+   
+    body: service,
   });
   return res.json();
 }
-export const fetchServiceChange=async(service: Service): Promise<Service> => {
-  const res = await fetch(`/api/services/${service.id}`, {
+
+export const fetchServiceChange = async (formData: FormData): Promise<Service> => {
+  const res = await fetch(`/api/services/${formData.get('id')}`, {  // Используйте ID из FormData
     method: 'PUT',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ title:service.title,  img: service.img, text: service.text, price:service.price, price2:service.price2 }),
+    body: formData,
   });
+  if (!res.ok) {
+    throw new Error('Failed to update service');
+  }
   return res.json();
-}
+};
+
+
 export const fetchServiceRemove = async (id: number): Promise<ServiceId> => {
   const res = await fetch(`/api/services/${id}`, {
     method: 'DELETE',

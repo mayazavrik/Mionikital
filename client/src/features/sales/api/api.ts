@@ -10,11 +10,11 @@ export const fetchSales = async (): Promise<Sale[]> => {
   }
   return res.json();
 };
-export async function fetchAddSale(sale: Sale): Promise<Sale> {
+export async function fetchAddSale(sale: FormData): Promise<Sale> {
   const res = await fetch('/api/sales', {
     method: 'POST',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify({  img: sale.img, text: sale.text }),
+   
+    body: sale,
   });
   return res.json();
 }
@@ -26,16 +26,16 @@ export const fetchDeleteSale=async(id: number): Promise< SaleId > => {
   return res.json();
 }
 
-export async function fetchUpdSale(sale: Sale): Promise<Sale> {
-  const res = await fetch(`/api/sales/${sale.id}`, {
+export async function fetchUpdSale(formData: FormData): Promise<Sale> {
+  const res = await fetch(`/api/sales/${formData.get('id')}`, {
     method: 'PUT',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ img: sale.img, text: sale.text }),
+    body: formData,
   });
+  if (!res.ok) {
+    throw new Error('Failed to update sale');
+  }
   return res.json();
-}
+};
 
 
 

@@ -12,7 +12,7 @@ function ChangeNewsForm({
   post: Post;
   setModalActive: Dispatch<SetStateAction<boolean>>;
 }): JSX.Element {
-  const [img, setImg] = useState(post?.img);
+  const [img, setImg] = useState<File | string | null>(post?.img);
   const [text, setText] = useState(post?.text);
   const [title, setTitle] = useState(post?.title);
   const dispatch = useAppDispatch();
@@ -22,16 +22,55 @@ function ChangeNewsForm({
   //   setImg('');
   //   setText('');
   // };
-  const onHandleChange = (e: React.FormEvent<HTMLFormElement>): void => {
+  const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    dispatch(changeNews({ id: post.id, title, img, text }));
-    setModalActive(false);
+    
+    if (!img) {
+      alert('Добавьте фото');
+      return;
+    }
+    
+    const formData = new FormData();
+    formData.append('id', post.id.toString());
+    formData.append('title', title);
+    formData.append('text', text);
+ 
+    formData.append('img', img);
+  
+    try {
+      // Отправка данных на сервер и ожидание результата
+       await dispatch(changeNews(formData)).unwrap();
+      
+      // Обновление состояния или перезапрос данных
+      // Можно добавить dispatch(fetchServices()) если нужно перезапросить список услуг
+      
+      // Очистка состояния формы
+      setImg(null);
+      setTitle('');
+      setText('');
+    
+  
+      // Закрытие модального окна
+      setModalActive(false);
+      
+      // Опционально: Обновление состояния непосредственно (если применимо)
+      // dispatch(updateServiceInState(updatedService));
+    } catch (error) {
+      console.error("Failed to update post:", error);
+    }
   };
+  
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e.target.files);
+    if (e.target.files) {
+      setImg(e.target.files[0]);
+    }
+  }
 
   return (
     <div className='darkened'>
       <div className="modal active">
-      <form className="modal-content active" onSubmit={onHandleChange}>
+      <form className="modal-content active" onSubmit={onHandleSubmit}>
       <label className="form__label ">
           Заголовок статьи
           <textarea
@@ -45,8 +84,15 @@ function ChangeNewsForm({
         </label>
         <label className="form__label">
           Фото статьи
-          <input value={img} onChange={(e) => setImg(e.target.value)} type="text" />
-        </label>
+          <input
+            className="form__label"
+        
+            name="img"
+            type="file"
+            onChange={onFileChange}
+          />
+				</label>
+
         <label className="form__label ">
           Текст статьи
           <textarea

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { DoctorId, DoctorCard, DoctorsState } from './types/types';
+import type { DoctorId,  DoctorsState } from './types/types';
 import * as api from './api/api';
 import { fetchDeleteOneDoctor} from '../personalArea/api';
 
@@ -26,7 +26,7 @@ export const loadDoctors = createAsyncThunk('doctors/load', () => api.fetchDocto
 // export const updateSale = createAsyncThunk('/sales/upd', (sale: Sale) =>
 //   api.fetchUpdSale(sale),
 // );
-export const addDoctor = createAsyncThunk('doctors/add', (doctor: DoctorCard) =>
+export const addDoctor = createAsyncThunk('doctors/add', (doctor: FormData) =>
   api.fetchAddDoctor(doctor),
 );
 
@@ -38,7 +38,7 @@ export const deleteOneDoctor= createAsyncThunk<DoctorId, number>('doctors/delete
   fetchDeleteOneDoctor(id),
 );
 
-export const changeDoctor = createAsyncThunk('doctors/change', (doctor: DoctorCard) =>
+export const changeDoctor = createAsyncThunk('doctors/change', (doctor: FormData) =>
   api.fetchDoctorChange(doctor),
 );
 // export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>

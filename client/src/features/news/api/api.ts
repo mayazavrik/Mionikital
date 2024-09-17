@@ -18,11 +18,14 @@ export const fetchPostRemove = async (id: number): Promise<PostId> => {
   return res.json();
 };
 
-export const fetchPostChange = async (obj: Post): Promise<Post> => {
-  const res = await fetch(`/api/news/${obj.id}`, {
+export const fetchPostChange = async (formData: FormData): Promise<Post> => {
+  const res = await fetch(`/api/news/${formData.get('id')}`, {
     method: 'PUT',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify({ img: obj.img, text: obj.text }),
+
+    body: formData,
   });
+  if (!res.ok) {
+    throw new Error('Failed to update post');
+  }
   return res.json();
 };

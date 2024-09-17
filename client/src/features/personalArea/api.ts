@@ -21,7 +21,7 @@ export const fetchUpdatePhoto = async (
 
 export const fetchUpdateStatus = async (
   id: Service,
-): Promise<{ message: string; service: Service }> => {
+): Promise<{ message: string; service: Service}> => {
   const res = await fetch(`/api/service/person/status/${id}`, {
     method: 'put',
   });

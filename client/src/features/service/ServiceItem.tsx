@@ -13,16 +13,26 @@ export default function ServiceItem({ service }: { service: Service }): JSX.Elem
   const [modalActive, setModalActive] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
   const dispatch = useDispatch<AppDispatch>();
-  
+
   const onHandleRemove = (): void => {
-    dispatch(deleteOneService(service.id));
+    if (service.id !== undefined) {
+      dispatch(deleteOneService(service.id));
+    } else {
+      console.error('Service ID is undefined');
+    }
   };
+  
+
   return (
     <div className="service-card">
       <div className="content">
         <h3 className="servicename">{service.title}</h3>
         <br />
-        <img className="serviceimg" src={service.img} alt="servicePhoto" />
+        {/* <img className="serviceimg" src={service.img} alt="servicePhoto" /> */}
+{/* <img className="serviceimg" src={`http://localhost:3000${service.img}`} alt="servicePhoto" /> */}
+<img className="serviceimg" src={`http://localhost:4000${service.img}`} alt="servicePhoto" />
+
+
 
         {user && user.isAdmin && (
           <>

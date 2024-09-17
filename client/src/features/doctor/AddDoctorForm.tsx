@@ -8,21 +8,36 @@ export default function AddDoctorForm(): JSX.Element {
 	const [title, setTitle] = useState("");
 	const [about, setAbout] = useState("");
 
-  const [img, setImg] = useState("");
+  const [img, setImg] =  useState<File | null>(null);
 
 	const dispatch = useAppDispatch();
 
-	const onHandleAdd = (e: React.FormEvent<HTMLFormElement>): void => {
+	const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async(e) => {
 		e.preventDefault();
-		dispatch(addDoctor({ id: 1, title,img, about }));
-		setTitle("");
-	
-		setAbout("");
-    setImg("");
-	};
+		if(!img) {
+		  alert('Добавьте фото');
+		  return;
+		}
+		const formData = new FormData();
+		formData.append('title',title);
+		formData.append('about',about);
+		
+		formData.append('img',img);
+		dispatch(addDoctor(formData));
+		setImg(null);
+		setTitle('');
+		setAbout('');
+		
+	  };
+	  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+		console.log(e.target.files);
+		if (e.target.files) {
+		  setImg(e.target.files[0]);
+		}
+	  }
 	return (
 		<div className="form__container">
-			<form className="formsale" onSubmit={onHandleAdd}>
+			<form className="formsale" onSubmit={onHandleSubmit}>
 				<label className="form__label">
 					Имя врача
 					<input
@@ -36,12 +51,12 @@ export default function AddDoctorForm(): JSX.Element {
         <label className="form__label">
 					Фото врача
 					<input
-						className="biginput"
-						value={img}
-						name="text"
-						type="text"
-						onChange={(e) => setImg(e.target.value)}
-					/>
+            className="form__label"
+        
+            name="img"
+            type="file"
+            onChange={onFileChange}
+          />
 				</label>
 				<label className="form__label">
 					О враче

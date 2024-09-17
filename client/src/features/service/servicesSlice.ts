@@ -26,7 +26,7 @@ export const loadServices = createAsyncThunk('services/load', () => api.fetchSer
 // export const updateSale = createAsyncThunk('/sales/upd', (sale: Sale) =>
 //   api.fetchUpdSale(sale),
 // );
-export const addService = createAsyncThunk('services/add', (service: Service) =>
+export const addService = createAsyncThunk('services/add', (service: FormData) =>
   api.fetchAddService(service),
 );
 export const upStatusService = createAsyncThunk('update/status', (service: Service) =>
@@ -36,7 +36,7 @@ export const deleteOneService = createAsyncThunk<ServiceId, number>('services/de
   fetchDeleteOne(id),
 );
 
-export const changeService = createAsyncThunk('services/change', (service: Service) =>
+export const changeService = createAsyncThunk('services/change', (service: FormData) =>
   api.fetchServiceChange(service),
 );
 // export const addComments = createAsyncThunk('comments/add', (comment: CommentData) =>

@@ -16,11 +16,12 @@ function ChangeDoctorForm({
   const [title, setTitle] = useState(doctor?.title);
  
   const [about, setAbout] = useState(doctor?.about);
-  const [img, setImg] = useState(doctor?.img);
+  const [img, setImg] = useState<File | string | null>(doctor?.img);
+  
 
 
 
-  1;
+  
   const dispatch = useAppDispatch();
   // const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
   //   e.preventDefault();
@@ -32,16 +33,54 @@ function ChangeDoctorForm({
 
   
   // };
-  const onHandleChange = (e: React.FormEvent<HTMLFormElement>): void => {
+  const onHandleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    dispatch(changeDoctor({ id: doctor.id,  title, img, about }));
-    setModalActive(false);
+    
+    if (!img) {
+      alert('Добавьте фото');
+      return;
+    }
+    
+    const formData = new FormData();
+    formData.append('id', doctor.id.toString());
+    formData.append('title', title);
+    formData.append('about', about);
+ 
+    formData.append('img', img);
+  
+    try {
+      // Отправка данных на сервер и ожидание результата
+      await dispatch(changeDoctor(formData)).unwrap();
+      
+      // Обновление состояния или перезапрос данных
+      // Можно добавить dispatch(fetchServices()) если нужно перезапросить список услуг
+      
+      // Очистка состояния формы
+      setImg(null);
+      setTitle('');
+      setAbout('');
+    
+  
+      // Закрытие модального окна
+      setModalActive(false);
+      
+      // Опционально: Обновление состояния непосредственно (если применимо)
+      // dispatch(updateServiceInState(updatedService));
+    } catch (error) {
+      console.error("Failed to update service:", error);
+    }
   };
-
+  
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e.target.files);
+    if (e.target.files) {
+      setImg(e.target.files[0]);
+    }
+  }
   return (
     <div className='darkened'>
       <div className="modal active">
-      <form className="modal-content active" onSubmit={onHandleChange}>
+      <form className="modal-content active" onSubmit={onHandleSubmit}>
       <label className="form__label">
           Имя врача
           <input
@@ -54,13 +93,13 @@ function ChangeDoctorForm({
         </label>
         <label className="form__label">
 					Фото врача
-					<input
-						className="biginput"
-						value={img}
-						name="text"
-						type="text"
-						onChange={(e) => setImg(e.target.value)}
-					/>
+          <input
+            className="form__label"
+        
+            name="img"
+            type="file"
+            onChange={onFileChange}
+          />
 				</label>
         <label className="form__label ">
           О враче

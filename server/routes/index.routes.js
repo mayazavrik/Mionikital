@@ -7,7 +7,7 @@ const servicesApiRouter = require('./api/services.api.routes');
 const coursesApiRouter = require('./api/uslugas.api.routes');
 const salesApiRouter = require('./api/sales.api.routes');
 // const uslugasApiRouter = require('./api/uslugas.api.routes');
-
+const doctorsApiRouter = require('./api/doctors.api.routes');
 const uslugasPricesApiRouter = require('./api/uslugasPrices.api.routes');
 const authPersonRoute = require('./api/person.spi');
 
@@ -24,6 +24,6 @@ router.use('/api/auth', authApiRouter);
 
 router.use('/api/uslugasPrice', uslugasPricesApiRouter);
 router.use('/api/service', authPersonRoute);
-
+router.use('/api/doctors', doctorsApiRouter);
 router.use('/api/order', authOrder);
 module.exports = router;

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { SalesState } from './types/State';
 
 import * as api from './api/api';
-import type { Sale} from './types/Sale';
+
 
 const initialState: SalesState = {
   sales: [],
@@ -12,7 +12,7 @@ const initialState: SalesState = {
 };
 
 export const loadSales = createAsyncThunk('sales/load', () => api.fetchSales());
-export const addSales = createAsyncThunk('sales/add', (sale: Sale) =>
+export const addSales = createAsyncThunk('sales/add', (sale: FormData) =>
   api.fetchAddSale(sale),
 );
 // export const changeSales = createAsyncThunk('sales/change', (sale: Sale) =>
@@ -27,7 +27,7 @@ export const deleteSale = createAsyncThunk('sales/delete', async (id: number) =>
   return id; // возвращаем id в fulfilled
 });
 
-export const updateSale = createAsyncThunk('sales/upd', (sale: Sale) =>
+export const updateSale = createAsyncThunk('sales/upd', (sale: FormData) =>
   api.fetchUpdSale(sale),
 );
 
