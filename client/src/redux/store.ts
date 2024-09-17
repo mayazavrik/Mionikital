@@ -18,9 +18,10 @@ const store = configureStore({
     auth: AuthSlice,
     doctorSlice, 
     courseSlice,
-    // prices: uslugaPriceSlice,
-    sales: salesSlice,
-    adminArea: PersonalSlice,
+    doctorSlice,
+		// prices: uslugaPriceSlice,
+		sales: salesSlice,
+		adminArea: PersonalSlice,
   },
 });
 

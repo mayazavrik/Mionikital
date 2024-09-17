@@ -7,7 +7,7 @@ import { signIn} from './AuthSlice';
 
 
 function SignIn(): JSX.Element {
- 
+
   const [email, setEmail] = useState('');
   // const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,11 @@ function SignIn(): JSX.Element {
     dispatch(signIn({ password, email }));
   };
 
-
+  // const onHandleSignIn = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  //   e.preventDefault();
+  //   setPhone(phone.replace(/-/g, ''));
+  //   dispatch(signUp({ name, password, phone, email }));
+  // };
   const fontSelectClick = function (): void {
     const select = document.getElementById('selectClick');
     select?.addEventListener('change', () => {
@@ -38,13 +42,22 @@ function SignIn(): JSX.Element {
       }
     });
   };
-
+  // const fontService = function (): void {
+  //   const select = document.getElementById('selectClickService');
+  //   select?.addEventListener('change', () => {
+  //     const { value } = select;
+  //     if (value) {
+        
+  //       setTearif(value);
+  //     }
+  //   });
+  // };
   useEffect(() => {
     if (user || service) {
       navigate('/');
     }
     fontSelectClick();
- 
+    // fontService();
   }, [user, status,  sign]);
 
   return (
