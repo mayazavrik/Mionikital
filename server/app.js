@@ -51,10 +51,11 @@ const indexRoutes = require("./routes/index.routes");
 const app = express();
 serverConfigServer(app);
 // serverConfig(app);
-app.use("/", indexRoutes);
-const PORT = process.env.PORT || 4000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname,'../client/dist')));
+app.use("/", indexRoutes);
+const PORT = process.env.PORT || 4000;
+
 // Добавляем временный маршрут для проверки запросов на изображения
 // app.get('/img/:filename', (req, res) => {
 //   console.log(`Запрос на изображение: ${req.params.filename}`);
