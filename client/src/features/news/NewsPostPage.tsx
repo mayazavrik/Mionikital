@@ -16,13 +16,13 @@ function NewsPostPage(): JSX.Element {
 
   const content = (
     <div className="post-page">
-      
+      {post && (
       <img
           className="serviceimg"
           src={`https://mionikital.onrender.com/img/${post.img}`}
           alt="servicePhoto"
         />
-        
+        )}
       <h3 className="post-page__text">{post?.text}</h3>
 
       <button onClick={() => navigate(-1)} type="button">
