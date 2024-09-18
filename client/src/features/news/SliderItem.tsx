@@ -21,8 +21,12 @@ function SliderItem({ post }: { post: Post }): JSX.Element {
       <div className="sliderwrapper">
         <div className='slidertitle' >{post.title}</div>
 
-        <img className="post__img" src={`/images/${post.img}`} alt="servicePhoto" />
-
+        <img
+          className="serviceimg"
+          src={`https://mionikital.onrender.com/img/${post.img}`}
+          alt="servicePhoto"
+        />
+        
         {user && user.isAdmin && (
           <>
             {' '}

@@ -31,9 +31,10 @@ export default function ServiceItem({ service }: { service: Service }): JSX.Elem
         {/* <img className="serviceimg" src={`http://localhost:3000${service.img}`} alt="servicePhoto" /> */}
         <img
           className="serviceimg"
-          src={`/images/${service.img}`}
+          src={`https://mionikital.onrender.com/img/${service.img}`}
           alt="servicePhoto"
         />
+        
 
         {user && user.isAdmin && (
           <>
