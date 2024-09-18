@@ -1,12 +1,5 @@
-
-import { Service } from '../../logreg/type';
-import type {
-ServiceId,
-  Sale,
- 
-  
-} from '../types/type';
-
+import { Service } from '../../LogReg/type';
+import type { ServiceId, Sale } from '../types/type';
 
 export const fetchSales = async (): Promise<Sale[]> => {
   const res = await fetch('/api/sales');
@@ -16,7 +9,6 @@ export const fetchSales = async (): Promise<Sale[]> => {
   }
   return res.json();
 };
-
 
 // export async function fetchServices(): Promise<ServiceCard[]> {
 //   const res = await fetch('/api/services');
@@ -30,17 +22,18 @@ export const fetchServices = async (): Promise<Service[]> => {
   }
   return res.json();
 };
-export const fetchAddService= async (service: FormData): Promise<Service> => {
+export const fetchAddService = async (service: FormData): Promise<Service> => {
   const res = await fetch('/api/services', {
     method: 'POST',
-   
+
     body: service,
   });
   return res.json();
-}
+};
 
 export const fetchServiceChange = async (formData: FormData): Promise<Service> => {
-  const res = await fetch(`/api/services/${formData.get('id')}`, {  // Используйте ID из FormData
+  const res = await fetch(`/api/services/${formData.get('id')}`, {
+    // Используйте ID из FormData
     method: 'PUT',
     body: formData,
   });
@@ -49,7 +42,6 @@ export const fetchServiceChange = async (formData: FormData): Promise<Service> =
   }
   return res.json();
 };
-
 
 export const fetchServiceRemove = async (id: number): Promise<ServiceId> => {
   const res = await fetch(`/api/services/${id}`, {
@@ -84,4 +76,3 @@ export const fetchServiceRemove = async (id: number): Promise<ServiceId> => {
 //   });
 //   return res.json();
 // }
-

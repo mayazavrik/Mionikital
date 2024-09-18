@@ -10,12 +10,12 @@ import { useAppDispatch } from '../../redux/store';
 
 import Footer from '../footer/Footer';
 import picnav from '../../images/vecteezy_wellness-icon-png-clipart-free_23618239.png';
-import { logOut } from '../logreg/AuthSlice';
+import { logOut } from '../LogReg/AuthSlice';
 
 function NavBar(): JSX.Element {
   const [nav, setNav] = useState(false);
   const closeMenu = () => {
-    setNav(false); 
+    setNav(false);
   };
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
@@ -42,25 +42,21 @@ function NavBar(): JSX.Element {
   return (
     <>
       <div className="collapse navbar-collapse" id="navbarResponsive">
-        <img className='picnav' src={picnav} alt='pic' />
+        <img className="picnav" src={picnav} alt="pic" />
         <div className={style.box}>
-          <ul
-            className={
-              nav ? [style.menu, style.active].join(' ') : [style.menu].join(' ')
-            }
-          >
+          <ul className={nav ? [style.menu, style.active].join(' ') : [style.menu].join(' ')}>
             <li className="nav-item">
               <NavLink onClick={closeMenu} className="navlink" to="/">
                 На главную
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu}  className="navlink" to="/services">
+              <NavLink onClick={closeMenu} className="navlink" to="/services">
                 Массаж
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={scrollToTop}   className="navlink" to="/doctors">
+              <NavLink onClick={scrollToTop} className="navlink" to="/doctors">
                 Врачи
               </NavLink>
             </li>
@@ -70,20 +66,20 @@ function NavBar(): JSX.Element {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu}  className="navlink" to="/news">
+              <NavLink onClick={closeMenu} className="navlink" to="/news">
                 Статьи
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink onClick={closeMenu}  className="navlink" to="/sales">
+              <NavLink onClick={closeMenu} className="navlink" to="/sales">
                 Акции
               </NavLink>
             </li>
             <button onClick={scrollToFooter} id="b2" type="button" className="navlink">
-						<NavLink className="navlink3" to="#footer">
-							Связаться
-						</NavLink>
-					</button>
+              <NavLink className="navlink3" to="#footer">
+                Связаться
+              </NavLink>
+            </button>
             {user ? (
               <>
                 <li className="nav-item">
@@ -100,8 +96,6 @@ function NavBar(): JSX.Element {
                 </NavLink> */}
               </li>
             )}
-
-          
           </ul>
           <div onClick={() => setNav(!nav)} className={style.mobile_btn}>
             {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
@@ -121,11 +115,11 @@ export default NavBar;
 //     <>
 //       <div className="collapse navbar-collapse" id="navbarResponsive">
 //       <img className='picnav' src={picnav} alt='pic' />
-   
+
 //         <button onClick={() => setModalActive(!modalActive)} id="menu-close" className="menu_close btn flex">
 //         <img  className='menuclose' src={menuclose} alt='pic' />
 //       </button>
-    
+
 //     <div className={
 //               nav ? [style.menu, style.active].join(' ') : [style.menu]
 //             }>
@@ -138,7 +132,7 @@ export default NavBar;
 //           <NavLink className="navlink" to="/services">
 //             Массаж
 //           </NavLink>
-//         </li>   
+//         </li>
 //         <li className="nav-item">
 //           <NavLink className="navlink" to="/courses">
 //             Абонементы
@@ -158,14 +152,14 @@ export default NavBar;
 //           <>
 //             <NavLink
 //               className="nav-item"
-              
+
 //               onClick={onHandleLogout}
 //               to="/"
 //             >
 //               Выйти
 //             </NavLink>
 //             {user && <div className="nav-hello">Привет, {user.name}</div>}
-            
+
 //           </>
 //         ) : (
 //           <li className="nav-item">
@@ -174,7 +168,7 @@ export default NavBar;
 //             </NavLink> */}
 //           </li>
 //         )}
-      
+
 //         {user?.isAdmin && (
 //           <NavLink className="nav-item" to="/personalArea/admin">
 //             Личный кабинет
@@ -183,18 +177,15 @@ export default NavBar;
 //           <button onClick={() => setModalActive(modalActive)} id="menu-button" className="menu2 ">
 //         <img  className='menuicon' src={menuicon} alt='pic' /> </button>
 //       </div>
-    
+
 //     </div>
-     
+
 //       <Outlet />
 
 //       <Footer />
 //     </>
 //   );
 // }
-
-
-
 
 // /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -213,8 +204,6 @@ export default NavBar;
 // import Footer from '../footer/Footer';
 // import picnav from '../../images/vecteezy_wellness-icon-png-clipart-free_23618239.png';
 
-
-
 // function NavBar(): JSX.Element {
 //   const [nav, setNav] = useState(false);
 //   const dispatch = useAppDispatch();
@@ -229,11 +218,11 @@ export default NavBar;
 //     <>
 //       <div className="collapse navbar-collapse" id="navbarResponsive">
 //       <img className='picnav' src={picnav} alt='pic' />
-   
+
 //         <button onClick={() => setModalActive(!modalActive)} id="menu-close" className="menu_close btn flex">
 //         <img  className='menuclose' src={menuclose} alt='pic' />
 //       </button>
-    
+
 //     <div className={
 //               nav ? [style.menu, style.active].join(' ') : [style.menu]
 //             }>
@@ -246,7 +235,7 @@ export default NavBar;
 //           <NavLink className="navlink" to="/services">
 //             Массаж
 //           </NavLink>
-//         </li>   
+//         </li>
 //         <li className="nav-item">
 //           <NavLink className="navlink" to="/courses">
 //             Абонементы
@@ -266,14 +255,14 @@ export default NavBar;
 //           <>
 //             <NavLink
 //               className="nav-item"
-              
+
 //               onClick={onHandleLogout}
 //               to="/"
 //             >
 //               Выйти
 //             </NavLink>
 //             {user && <div className="nav-hello">Привет, {user.name}</div>}
-            
+
 //           </>
 //         ) : (
 //           <li className="nav-item">
@@ -282,7 +271,7 @@ export default NavBar;
 //             </NavLink> */}
 //           </li>
 //         )}
-      
+
 //         {user?.isAdmin && (
 //           <NavLink className="nav-item" to="/personalArea/admin">
 //             Личный кабинет
@@ -291,9 +280,9 @@ export default NavBar;
 //           <button onClick={() => setModalActive(modalActive)} id="menu-button" className="menu2 ">
 //         <img  className='menuicon' src={menuicon} alt='pic' /> </button>
 //       </div>
-    
+
 //     </div>
-     
+
 //       <Outlet />
 
 //       <Footer />

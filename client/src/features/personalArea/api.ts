@@ -2,7 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import type { DoctorId } from '../doctor/types/types';
-import { Service } from '../logreg/type';
+import { Service } from '../LogReg/type';
 
 import type { ServiceId } from '../service/types/type';
 
@@ -22,7 +22,7 @@ export const fetchUpdatePhoto = async (
 
 export const fetchUpdateStatus = async (
   id: Service,
-): Promise<{ message: string; service: Service}> => {
+): Promise<{ message: string; service: Service }> => {
   const res = await fetch(`/api/service/person/status/${id}`, {
     method: 'put',
   });

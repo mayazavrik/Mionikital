@@ -10,19 +10,19 @@ import salesSlice from '../features/sales/salesSlice';
 import PersonalSlice from '../features/personalArea/PersonalSlice';
 import courseSlice from '../features/usluga/courseSlice';
 import doctorSlice from '../features/doctor/doctorSlice';
-import AuthSlice from '../features/logreg/AuthSlice';
+import AuthSlice from '../features/LogReg/AuthSlice';
 
 const store = configureStore({
   reducer: {
     servicesSlice,
     news: newsSlice,
     auth: AuthSlice,
-    doctorSlice, 
+    doctorSlice,
     courseSlice,
 
-		// prices: uslugaPriceSlice,
-		sales: salesSlice,
-		adminArea: PersonalSlice,
+    // prices: uslugaPriceSlice,
+    sales: salesSlice,
+    adminArea: PersonalSlice,
   },
 });
 

@@ -7,8 +7,7 @@ import './style/style.css';
 import ChangeServiceForm from './ChangeServiceForm';
 import type { AppDispatch, RootState } from '../../redux/store';
 import { deleteOneService } from './servicesSlice';
-import { Service } from '../logreg/type';
-
+import { Service } from '../LogReg/type';
 
 export default function ServiceItem({ service }: { service: Service }): JSX.Element {
   const [modalActive, setModalActive] = useState(false);
@@ -22,7 +21,6 @@ export default function ServiceItem({ service }: { service: Service }): JSX.Elem
       console.error('Service ID is undefined');
     }
   };
-  
 
   return (
     <div className="service-card">
@@ -30,10 +28,12 @@ export default function ServiceItem({ service }: { service: Service }): JSX.Elem
         <h3 className="servicename">{service.title}</h3>
         <br />
         {/* <img className="serviceimg" src={service.img} alt="servicePhoto" /> */}
-{/* <img className="serviceimg" src={`http://localhost:3000${service.img}`} alt="servicePhoto" /> */}
-<img className="serviceimg" src={`http://localhost:4000${service.img}`} alt="servicePhoto" />
-
-
+        {/* <img className="serviceimg" src={`http://localhost:3000${service.img}`} alt="servicePhoto" /> */}
+        <img
+          className="serviceimg"
+          src={`http://localhost:4000${service.img}`}
+          alt="servicePhoto"
+        />
 
         {user && user.isAdmin && (
           <>

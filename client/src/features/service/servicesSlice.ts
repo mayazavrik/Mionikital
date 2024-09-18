@@ -1,16 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type {  ServiceId, ServicesState } from './types/type';
+import type { ServiceId, ServicesState } from './types/type';
 import * as api from './api/api';
 import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
-import { Service } from '../logreg/type';
-
-
+import { Service } from '../LogReg/type';
 
 const initialState: ServicesState = {
   services: [],
   error: null,
   loading: true,
-  
 };
 
 export const loadServices = createAsyncThunk('services/load', () => api.fetchServices());
@@ -33,8 +30,9 @@ export const addService = createAsyncThunk('services/add', (service: FormData) =
 export const upStatusService = createAsyncThunk('update/status', (service: Service) =>
   fetchUpdateStatus(service),
 );
-export const deleteOneService = createAsyncThunk<ServiceId, number>('services/delete', (id: number) =>
-  fetchDeleteOne(id),
+export const deleteOneService = createAsyncThunk<ServiceId, number>(
+  'services/delete',
+  (id: number) => fetchDeleteOne(id),
 );
 
 export const changeService = createAsyncThunk('services/change', (service: FormData) =>
@@ -54,7 +52,6 @@ const servicesSlice = createSlice({
     stopLoading: (state) => {
       state.loading = false;
     },
- 
   },
   extraReducers: (builder) => {
     builder
@@ -72,10 +69,10 @@ const servicesSlice = createSlice({
       })
       .addCase(changeService.fulfilled, (state, action) => {
         state.services = state.services.map((service) =>
-        service.id === action.payload.id ? (service = action.payload) : service,
+          service.id === action.payload.id ? (service = action.payload) : service,
         );
       })
-  
+
       // .addCase(upStatusService.fulfilled, (state, action) => {
       //   if (action.payload.message === 'success') {
       //     state.services = state.services.map((el) =>
@@ -88,47 +85,46 @@ const servicesSlice = createSlice({
       // })
       .addCase(deleteOneService.fulfilled, (state, action) => {
         state.services = state.services.filter((service) => service.id !== action.payload);
-      })
-      // .addCase(addComments.fulfilled, (state, action) => {
-      //   if (!action.payload.rate) {
-      //     state.services.forEach((service) =>
-      //       service.id === action.payload.comment.service_id
-      //         ? (service.Comments = [...service.Comments, action.payload.comment])
-      //         : service,
-      //     );
-      //   } else {
-      //     state.services.forEach((service) =>
-      //       service.id === action.payload.comment.service_id
-      //         ? (service.Comments = [...service.Comments, action.payload.comment])
-      //         : service,
-      //     );
-      //     state.services.forEach((service) =>
-      //       service.id === action.payload.comment.service_id
-      //         ? (service.Rates = [...service.Rates, action.payload.rate])
-      //         : service,
-      //     );
-      //   }
-      // })
-      // .addCase(addComments.rejected, (state, action) => {
-      //   state.error = action.error.message ? action.error.message : null;
-      // })
-      // .addCase(addComments.pending, (state) => {
-      //   state.loading = true;
-      // })
-      // .addCase(deleteComment.fulfilled, (state, action) => {
-      //   state.services = state.services.map((service) =>
-      //     service.id === action.payload.service_id
-      //       ? {
-      //           ...service,
-      //           Comments: service.Comments.filter(
-      //             (comment) => comment.id !== action.payload.comment_id,
-      //           ),
-      //         }
-      //       : service,
-      //   );
-     
-      // })
-    
+      });
+    // .addCase(addComments.fulfilled, (state, action) => {
+    //   if (!action.payload.rate) {
+    //     state.services.forEach((service) =>
+    //       service.id === action.payload.comment.service_id
+    //         ? (service.Comments = [...service.Comments, action.payload.comment])
+    //         : service,
+    //     );
+    //   } else {
+    //     state.services.forEach((service) =>
+    //       service.id === action.payload.comment.service_id
+    //         ? (service.Comments = [...service.Comments, action.payload.comment])
+    //         : service,
+    //     );
+    //     state.services.forEach((service) =>
+    //       service.id === action.payload.comment.service_id
+    //         ? (service.Rates = [...service.Rates, action.payload.rate])
+    //         : service,
+    //     );
+    //   }
+    // })
+    // .addCase(addComments.rejected, (state, action) => {
+    //   state.error = action.error.message ? action.error.message : null;
+    // })
+    // .addCase(addComments.pending, (state) => {
+    //   state.loading = true;
+    // })
+    // .addCase(deleteComment.fulfilled, (state, action) => {
+    //   state.services = state.services.map((service) =>
+    //     service.id === action.payload.service_id
+    //       ? {
+    //           ...service,
+    //           Comments: service.Comments.filter(
+    //             (comment) => comment.id !== action.payload.comment_id,
+    //           ),
+    //         }
+    //       : service,
+    //   );
+
+    // })
   },
 });
 export const { stopLoading } = servicesSlice.actions;

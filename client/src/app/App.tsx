@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-
 
 import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
@@ -17,7 +16,7 @@ import { loadPosts } from '../features/news/newsSlice';
 import ServicePage from '../features/service/ServicePage';
 import NewsPostPage from '../features/news/NewsPostPage';
 import { useAppDispatch } from '../redux/store';
-import {  loadCourses } from '../features/usluga/courseSlice';
+import { loadCourses } from '../features/usluga/courseSlice';
 // import { loadPrices } from '../features/usluga/uslugaPriceSlice';
 import { loadSales } from '../features/sales/salesSlice';
 import SalesPage from '../features/sales/SalesPage';
@@ -28,14 +27,12 @@ import CoursePage from '../features/usluga/CoursePage';
 import DoctorsPage from '../features/doctor/DoctorsPage';
 import DoctorPage from '../features/doctor/DoctorPage';
 import { loadDoctors } from '../features/doctor/doctorSlice';
-import NavBar from '../features/navbar/NavBar';
-import SignIn from '../features/logreg/RegistrUser';
-import { checkUser } from '../features/logreg/AuthSlice';
+import NavBar from '../features/Navbar/NavBar';
+import SignIn from '../features/LogReg/RegistrUser';
+import { checkUser } from '../features/LogReg/AuthSlice';
 
 function App(): JSX.Element {
-
   const dispatch = useAppDispatch();
-
 
   useEffect(() => {
     dispatch(loadServices());
@@ -45,17 +42,14 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(checkUser());
     dispatch(loadCourses());
-  	dispatch(loadDoctors());
+    dispatch(loadDoctors());
     dispatch(loadServices());
 
     dispatch(loadSales());
-  
   }, []);
 
-
-
   return (
-    <div id="huge" >
+    <div id="huge">
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route path="/reg" element={<SignIn />} />
@@ -65,10 +59,10 @@ function App(): JSX.Element {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/courses/:courseId" element={<CoursePage />} />
           <Route path="/doctors" element={<DoctorsPage />} />
-					<Route path="/doctors/:doctorId" element={<DoctorPage />} />
+          <Route path="/doctors/:doctorId" element={<DoctorPage />} />
           <Route path="/news" element={<NewsBlock />} />
           <Route path="/sales" element={<SalesPage />} />
-       
+
           <Route path="/news/:postId" element={<NewsPostPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
