@@ -24,7 +24,7 @@ export default function DoctorItem({ doctor }: { doctor: DoctorCard }): JSX.Elem
         <br />
         <h4 className="itemrow">
 
-          <img className="serviceimg" src={`http://localhost:4000${doctor.img}`} alt="servicePhoto" />
+          <img className="serviceimg" src={`/images/${doctor.img}`}alt="servicePhoto" />
         </h4>
         <h4 className="itemrow">
           <p className="iteminfo">{doctor.about}</p>

@@ -17,7 +17,11 @@ function NewsPostPage(): JSX.Element {
   const content = (
     <div className="post-page">
       
-      <img className="post__img" src={`http://localhost:4000${post?.img}`} alt="servicePhoto" />
+      {post && post.img ? (
+  <img className="serviceimg" src={`/images/${post.img}`} alt="servicePhoto" />
+) : (
+  <p>Изображение недоступно</p>
+)}
       <h3 className="post-page__text">{post?.text}</h3>
 
       <button onClick={() => navigate(-1)} type="button">

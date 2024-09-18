@@ -19,8 +19,11 @@ export default function DoctorPage(): JSX.Element {
 		<div className="services-page">
 			<div className="post-page">
 				<div className="servicenamepage">{doctor?.title}</div>
-				<img className="serviceimg" src={`http://localhost:4000${doctor?.img}`} alt="servicePhoto" />
-
+				{doctor && doctor.img ? (
+  <img className="serviceimg" src={`/images/${doctor.img}`} alt="servicePhoto" />
+) : (
+  <p>Изображение недоступно</p>
+)}
 				<p className="post-page__text">{doctor?.about}</p>
 			</div>
 			<button className='backBtn' onClick={() => navigate(-1)} type="button">

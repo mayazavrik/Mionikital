@@ -21,7 +21,7 @@ function SliderItem({ post }: { post: Post }): JSX.Element {
       <div className="sliderwrapper">
         <div className='slidertitle' >{post.title}</div>
 
-        <img className="post__img" src={`http://localhost:4000${post?.img}`} alt="servicePhoto" />
+        <img className="post__img" src={`/images/${post.img}`} alt="servicePhoto" />
 
         {user && user.isAdmin && (
           <>

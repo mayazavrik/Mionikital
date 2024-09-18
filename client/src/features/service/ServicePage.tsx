@@ -19,7 +19,11 @@ export default function ServicePage(): JSX.Element {
       <div className="post-page">
         <h2 className='servicenamepage'>{service?.title}</h2>
         {/* <img className="post-page__img" src={service?.img} alt="post" /> */}
-        <img className="post-page__img" src={`http://localhost:4000${service?.img}`} alt="servicePhoto" />
+        {service && service.img ? (
+  <img className="serviceimg" src={`/images/${service.img}`} alt="servicePhoto" />
+) : (
+  <p>Изображение недоступно</p>
+)}
       <h3 className="post-page__text">{service?.text}</h3>
       </div>
       <button onClick={() => navigate(-1)} type="button">

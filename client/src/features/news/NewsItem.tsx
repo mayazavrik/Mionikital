@@ -21,7 +21,7 @@ function PostItem({ post }: { post: Post }): JSX.Element {
       <div className="postcontent">
         <h3 className='posttitle'>{post.title}</h3>
 
-        <img className="post__img" src={`http://localhost:4000${post.img}`} alt="servicePhoto" />
+        <img className="post__img" src={`/images/${post?.img}`} alt="servicePhoto" />
         <h2 className='posttext'>{post.text}</h2>
         {user && user.isAdmin && (
           <>

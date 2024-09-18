@@ -31,7 +31,7 @@ export default function ServiceItem({ service }: { service: Service }): JSX.Elem
         {/* <img className="serviceimg" src={`http://localhost:3000${service.img}`} alt="servicePhoto" /> */}
         <img
           className="serviceimg"
-          src={`http://localhost:4000${service.img}`}
+          src={`/images/${service.img}`}
           alt="servicePhoto"
         />
 
