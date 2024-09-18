@@ -2,8 +2,9 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import './style/modal.css';
 import {  useAppDispatch } from '../../redux/store';
 import {  changeService } from './servicesSlice';
+import { Service } from '../logreg/type';
 
-import type { Service } from '../logreg/type';
+
 
 function ChangeServiceForm({
   service,

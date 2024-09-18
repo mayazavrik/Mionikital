@@ -1,7 +1,8 @@
 import React from 'react';
-import type { Service } from '../logreg/type';
+
 import { useAppDispatch } from '../../redux/store';
 import { deleteOneService,  } from '../service/servicesSlice';
+import { Service } from '../logreg/type';
 
 function ServicesItemAdmin({ servic }: { servic: Service }): JSX.Element {
   const dispatch = useAppDispatch();

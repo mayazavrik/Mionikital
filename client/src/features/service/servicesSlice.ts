@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type {  ServiceId, ServicesState } from './types/type';
 import * as api from './api/api';
 import { fetchDeleteOne, fetchUpdateStatus } from '../personalArea/api';
-import type { Service } from '../logreg/type';
+import { Service } from '../logreg/type';
+
 
 
 const initialState: ServicesState = {

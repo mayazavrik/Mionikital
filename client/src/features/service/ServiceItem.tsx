@@ -7,7 +7,8 @@ import './style/style.css';
 import ChangeServiceForm from './ChangeServiceForm';
 import type { AppDispatch, RootState } from '../../redux/store';
 import { deleteOneService } from './servicesSlice';
-import type { Service } from '../logreg/type';
+import { Service } from '../logreg/type';
+
 
 export default function ServiceItem({ service }: { service: Service }): JSX.Element {
   const [modalActive, setModalActive] = useState(false);

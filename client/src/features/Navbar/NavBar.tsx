@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { logOut } from '../logreg/AuthSlice';
+
 import style from './style/Navbar.module.css';
 import './style/style.css';
 import type { RootState } from '../../redux/store';
@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../redux/store';
 
 import Footer from '../footer/Footer';
 import picnav from '../../images/vecteezy_wellness-icon-png-clipart-free_23618239.png';
+import { logOut } from '../logreg/AuthSlice';
 
 function NavBar(): JSX.Element {
   const [nav, setNav] = useState(false);

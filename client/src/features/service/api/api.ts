@@ -1,4 +1,5 @@
-import type { Service } from '../../logreg/type';
+
+import { Service } from '../../logreg/type';
 import type {
 ServiceId,
   Sale,

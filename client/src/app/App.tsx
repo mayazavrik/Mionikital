@@ -4,11 +4,10 @@ import React, { useEffect} from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
-import SignIn from '../features/logreg/RegistrUser';
-import { checkUser } from '../features/logreg/AuthSlice';
+
 import { loadServices } from '../features/service/servicesSlice';
 import MainPage from '../features/main/MainPage';
-import NavBar from '../features/navbar/NavBar';
+
 import ServicesPage from '../features/service/ServicesPage';
 
 // import PersonalArea from '../features/personalArea/PersonalArea';
@@ -29,6 +28,9 @@ import CoursePage from '../features/usluga/CoursePage';
 import DoctorsPage from '../features/doctor/DoctorsPage';
 import DoctorPage from '../features/doctor/DoctorPage';
 import { loadDoctors } from '../features/doctor/doctorSlice';
+import NavBar from '../features/navbar/NavBar';
+import SignIn from '../features/logreg/RegistrUser';
+import { checkUser } from '../features/logreg/AuthSlice';
 
 function App(): JSX.Element {
 

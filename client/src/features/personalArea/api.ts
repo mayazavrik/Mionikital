@@ -2,7 +2,8 @@
 /* eslint-disable import/prefer-default-export */
 
 import type { DoctorId } from '../doctor/types/types';
-import type { Service } from '../logreg/type';
+import { Service } from '../logreg/type';
+
 import type { ServiceId } from '../service/types/type';
 
 export const fetchUpdatePhoto = async (
