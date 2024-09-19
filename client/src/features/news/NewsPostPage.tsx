@@ -18,10 +18,10 @@ function NewsPostPage(): JSX.Element {
     <div className="post-page">
       {post && (
       <img
-          className="serviceimg"
-          src={`https://mionikital.onrender.com${post?.img}`}
-          alt="servicePhoto"
-        />
+      className="serviceimg"
+      src={`https://mionikital.onrender.com${post?.img}`}
+      alt="servicePhoto"
+    />
         )}
       <h3 className="post-page__text">{post?.text}</h3>
 

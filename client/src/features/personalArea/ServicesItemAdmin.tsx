@@ -22,7 +22,11 @@ function ServicesItemAdmin({ servic }: { servic: Service }): JSX.Element {
       </div>
       <div className="itemrow">
         <p className="iteminfo">
-          <img className="serviceimg" src={servic.img} alt="servicePhoto" />
+        <img
+          className="serviceimg"
+          src={`https://mionikital.onrender.com${servic.img}`}
+          alt="servicePhoto"
+        />
         </p>{' '}
       </div>
       <div className="itemrow">

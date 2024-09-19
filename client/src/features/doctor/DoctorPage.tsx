@@ -20,7 +20,11 @@ export default function DoctorPage(): JSX.Element {
 			<div className="post-page">
 				<div className="servicenamepage">{doctor?.title}</div>
 				{doctor && doctor.img ? (
-  <img className="serviceimg" src={`/images/${doctor.img}`} alt="servicePhoto" />
+   <img
+   className="serviceimg"
+   src={`https://mionikital.onrender.com${doctor?.img}`}
+   alt="servicePhoto"
+ />
 ) : (
   <p>Изображение недоступно</p>
 )}

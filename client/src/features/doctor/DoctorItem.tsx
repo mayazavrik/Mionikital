@@ -23,8 +23,13 @@ export default function DoctorItem({ doctor }: { doctor: DoctorCard }): JSX.Elem
         <h3 className="servicename">{doctor.title}</h3>
         <br />
         <h4 className="itemrow">
-
-          <img className="serviceimg" src={`/images/${doctor.img}`}alt="servicePhoto" />
+     
+      <img
+          className="serviceimg"
+          src={`https://mionikital.onrender.com${doctor?.img}`}
+          alt="servicePhoto"
+        />
+       
         </h4>
         <h4 className="itemrow">
           <p className="iteminfo">{doctor.about}</p>

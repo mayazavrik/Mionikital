@@ -20,12 +20,13 @@ export default function ServicePage(): JSX.Element {
         <h2 className='servicenamepage'>{service?.title}</h2>
         {/* <img className="post-page__img" src={service?.img} alt="post" /> */}
         {service && (
-           <img
-          className="serviceimg"
-          src={`https://mionikital.onrender.com${service?.img}`}
-          alt="servicePhoto"
-        />
+         <img
+         className="serviceimg"
+         src={`https://mionikital.onrender.com${service?.img}`}
+         alt="servicePhoto"
+       />
         )}
+        
       <h3 className="post-page__text">{service?.text}</h3>
       </div>
       <button onClick={() => navigate(-1)} type="button">

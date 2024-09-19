@@ -26,7 +26,6 @@ function PostItem({ post }: { post: Post }): JSX.Element {
           src={`https://mionikital.onrender.com${post?.img}`}
           alt="servicePhoto"
         />
-        
         <h2 className='posttext'>{post.text}</h2>
         {user && user.isAdmin && (
           <>
