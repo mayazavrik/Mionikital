@@ -26,7 +26,11 @@ export default function SaleItem({ sale }: { sale: Sale }): JSX.Element {
     
         <h4 className="itemrow">
 
-      <img className="saleimg" src={`/images/${sale.img}`} alt="servicePhoto" />
+        <img
+          className="serviceimg"
+          src={`https://mionikital.onrender.com${sale?.img}`}
+          alt="servicePhoto"
+        />
       </h4>
         <h4 className="itemrow">
           <p className="iteminfo">{sale.text}</p>
