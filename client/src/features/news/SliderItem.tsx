@@ -23,7 +23,7 @@ function SliderItem({ post }: { post: Post }): JSX.Element {
 
         <img
           className="serviceimg"
-          src={`https://mionikital.onrender.com/img/${post.img}`}
+          src={`https://mionikital.onrender.com${post?.img}`}
           alt="servicePhoto"
         />
         

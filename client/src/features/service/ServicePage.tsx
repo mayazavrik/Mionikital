@@ -22,7 +22,7 @@ export default function ServicePage(): JSX.Element {
         {service && (
            <img
           className="serviceimg"
-          src={`https://mionikital.onrender.com/img/${service.img}`}
+          src={`https://mionikital.onrender.com${service?.img}`}
           alt="servicePhoto"
         />
         )}

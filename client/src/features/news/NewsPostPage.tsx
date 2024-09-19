@@ -19,7 +19,7 @@ function NewsPostPage(): JSX.Element {
       {post && (
       <img
           className="serviceimg"
-          src={`https://mionikital.onrender.com/img/${post.img}`}
+          src={`https://mionikital.onrender.com${post?.img}`}
           alt="servicePhoto"
         />
         )}
